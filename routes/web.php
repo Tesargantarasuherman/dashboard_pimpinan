@@ -26,6 +26,9 @@ Route::get('/map', 'HomeController@map')->name('map');
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::put('/profile', 'ProfileController@update')->name('profile.update');
 
+Route::get('agenda', 'ScheduleController@index')->name('agenda');
+Route::post('fullcalenderAjax', 'ScheduleController@ajax')->name('fullcalenderAjax');
+Route::post('agenda/tambah', 'ScheduleController@AddAgenda')->name('agenda.tambah');
 Route::get('/about', function () {
     return view('about');
 })->name('about');
