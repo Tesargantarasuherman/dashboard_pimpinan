@@ -24,6 +24,10 @@
         </div>
     @endif
 
+    <div>
+        {!! Toastr::message() !!}
+    </div>
+
     <div class="row">
 
         <!-- Earnings (Monthly) Card Example -->

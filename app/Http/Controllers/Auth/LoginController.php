@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -27,6 +28,7 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    
 
     /**
      * Create a new controller instance.
@@ -40,7 +42,26 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        session()->flash('success', 'You are logged in!');
+        // session()->flash('success', 'You are logged in!');
+        Toastr::info('You are logged in!', 'Info', ["positionClass" => "toast-top-center"]);
         return $this->redirectTo;
     }
+
+    // public function redirectTo()
+    // {
+    //     $role = Auth::user()->role;
+    //     switch ($role) {
+    //         case 'admin':
+    //             Toastr::info('Welcome', 'Info', ["positionClass" => "toast-top-center"]);
+    //             return ('home');
+    //             break;
+    //         case 'basic':
+    //             return ('/users-dashboard');
+    //             break;
+
+    //         default:
+    //             return ('home');
+    //             break;
+    //     }
+    // }
 }

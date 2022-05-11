@@ -24,4 +24,26 @@ class RedirectIfAuthenticated
 
         return $next($request);
     }
+
+    // public function handle($request, Closure $next, $guard = null)
+    // {
+    //     if (Auth::guard($guard)->check()) {
+    //         $role = Auth::user()->role;
+
+    //         switch ($role) {
+    //             case 'admin':
+    //                 Toastr::info('Welcome', 'Info', ["positionClass" => "toast-top-center"]);
+    //                 return ('home');
+    //                 break;
+    //             case 'basic':
+    //                 return redirect('/users-dashboard');
+    //                 break;
+
+    //             default:
+    //                 return redirect('home');
+    //                 break;
+    //         }
+    //     }
+    //     return $next($request);
+    // }
 }
