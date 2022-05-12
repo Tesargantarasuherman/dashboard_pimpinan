@@ -554,4 +554,12 @@ class IndikatorSpbeController extends Controller
             'message' => 'Import Success',
         ], 200);
     }
+
+
+    public function domainIndikatorIndex()
+    {
+        $getDomain = MasterIndikatorSpbe::orderBy('id', 'desc')->get();
+
+        return view('spbe.index', compact('getDomain'));
+    }
 }

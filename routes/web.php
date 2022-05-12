@@ -124,6 +124,8 @@ $router->group(['prefix' => 'spbe'], function () use ($router) {
 
     $router->post('import-master-indikator-spbe', 'IndikatorSpbeController@importMasterIndikatorSpbe');
 
+    $router->get('domain-indikator', 'IndikatorSpbeController@domainIndikatorIndex')->name('domainindikator.index');
+
 });
 
 $router->group(['prefix' => 'aplikasi'], function () use ($router) {

@@ -129,7 +129,7 @@
                         <a href="" class="collapse-item">
                             <span>{{ __('Indeks SPBE') }}</span>
                         </a>
-                        <a href="" class="collapse-item">
+                        <a href="{{ route('domainindikator.index') }}" class="collapse-item">
                             <span>{{ __('Domian Indikator') }}</span>
                         </a>
                     </div>
