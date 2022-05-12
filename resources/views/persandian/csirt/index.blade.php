@@ -8,11 +8,12 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-gray-800">CSIRT</h6><button class="btn btn-sm btn-primary"
+                    <h6 class="m-0 font-weight-bold text-gray-800">CSIRT
+                        {{-- </h6><button class="btn btn-sm btn-primary"
                         data-toggle="modal" data-target="#add-modal">Tambah Data</button>
-                    @include('persandian.csirt.modal-add')
+                    @include('persandian.csirt.modal-add') --}}
                 </div>
-                <table class="table">
+                {{-- <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -51,7 +52,7 @@
                             </tr>
                         @endforeach
                     </tbody>
-                </table>
+                </table> --}}
             </div>
         </div>
     </div>

@@ -107,7 +107,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
 
-                        <a href="" class="collapse-item">
+                        <a href="{{ route('covid.index') }}" class="collapse-item">
                             <span>{{ __('Covid 19') }}</span>
                         </a>
                         <a href="" class="collapse-item">

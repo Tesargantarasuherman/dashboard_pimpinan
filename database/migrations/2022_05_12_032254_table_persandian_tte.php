@@ -18,6 +18,8 @@ class TablePersandianTte extends Migration
             $table->string('nama_pegawai');
             $table->integer('status');
             $table->date('tanggal');
+            $table->bigInteger('nip');
+            $table->bigInteger('nik')->nullable();
             $table->timestamps();
         });
     }

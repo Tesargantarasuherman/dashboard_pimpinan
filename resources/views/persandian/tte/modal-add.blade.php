@@ -15,6 +15,12 @@
                 <div class="modal-body">
 
                     <div class="form-group">
+                        <label for="name">NIP</label>
+                        <input type="number" class="form-control form-control-user" name="nip"
+                            placeholder="{{ __('Nomor Induk Pegawai') }}" value="{{ old('nip') }}" required autofocus>
+                    </div>
+
+                    <div class="form-group">
                         <label for="name">Nama Pegawai</label>
                         <input type="text" class="form-control form-control-user" name="nama_pegawai"
                             placeholder="{{ __('Nama Pegawai') }}" value="{{ old('nama_pegawai') }}" required autofocus>

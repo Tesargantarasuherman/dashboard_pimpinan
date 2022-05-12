@@ -166,3 +166,9 @@ $router->group(['prefix' => 'persandian'], function () use ($router) {
 });
 
 $router->get('infrastruktur-tik/api/cctv', 'InfrastrukturController@index')->name('cctv');
+
+$router->group(['prefix' => 'data-statistik'], function () use ($router) {
+    $router->get('/covid19', 'DataStatistikController@covidIndex')->name('covid.index');
+    $router->get('/vaksin', 'DataStatistikController@vaksin.index')->name('vaksin.index');
+
+});

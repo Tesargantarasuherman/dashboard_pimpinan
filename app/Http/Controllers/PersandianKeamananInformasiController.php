@@ -79,7 +79,7 @@ class PersandianKeamananInformasiController extends Controller
         try {
 
             //Cek Duplicate data
-            $duplicate = PersandianTte::where('nama_pegawai', $request->input('nama_pegawai'))->first();
+            $duplicate = PersandianTte::where('nip', $request->input('nip'))->first();
 
             if ($duplicate) {
                 Toastr::warning('Duplicate data', 'Warning');
@@ -87,6 +87,7 @@ class PersandianKeamananInformasiController extends Controller
             } else {
 
                 $addData = new PersandianTte();
+                $addData->nip = $request->input('nip');
                 $addData->nama_pegawai = $request->input('nama_pegawai');
                 $addData->tanggal = $request->input('tanggal');
                 $addData->status = 1;

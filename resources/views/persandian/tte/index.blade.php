@@ -16,6 +16,7 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">NIP</th>
                             <th scope="col">Nama Pegawai</th>
                             <th scope="col">Tanggal</th>
                             <th scope="col">Status</th>
@@ -29,7 +30,11 @@
                                     {{ $loop->iteration }}
                                 </td>
                                 <td>
-                                    {{ $tte->nama_pegawai }}</td>
+                                    {{ $tte->nip }}
+                                </td>
+                                <td>
+                                    {{ $tte->nama_pegawai }}
+                                </td>
                                 <td>
                                     {{ $tte->tanggal }}</td>
                                 <td>
