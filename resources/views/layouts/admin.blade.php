@@ -148,7 +148,7 @@
                         <a href="" class="collapse-item">
                             <span>{{ __('CSIRT') }}</span>
                         </a>
-                        <a href="" class="collapse-item">
+                        <a href="{{ route('pentest.index') }}" class="collapse-item">
                             <span>{{ __('Pentes') }}</span>
                         </a>
                         <a href="" class="collapse-item">
@@ -188,7 +188,6 @@
                     <span>{{ __('About') }}</span>
                 </a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

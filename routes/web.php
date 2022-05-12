@@ -141,6 +141,11 @@ $router->group(['prefix' => 'infrastruktur-tik'], function () use ($router) {
     $router->get('/menara-telekomunikasi', 'InfrastrukturController@menaraIndex')->name('menara.index');
     $router->post('/menara-telekomunikasi', 'InfrastrukturController@menaraCreate')->name('menara.create');
 
+});
 
+
+$router->group(['prefix' => 'persandian'], function () use ($router) {
+    $router->get('/pentest', 'PersandianKeamananInformasiController@pentestIndex')->name('pentest.index');
+    $router->post('/pentest', 'PersandianKeamananInformasiController@pentestCreate')->name('pentest.create');
 
 });
