@@ -29,7 +29,7 @@
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
     <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 </head>
 
@@ -51,7 +51,7 @@
         <ul class="navbar-nav bg-gradient-light sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -61,20 +61,21 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item {{ Nav::isRoute('home') }}">
-                <a class="nav-link text-dark" href="{{ route('home') }}">
-                    <i class="fas fa-fw text-gray-500 fa-tachometer-alt"></i>
-                    <span>{{ __('Dashboard') }}</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                {{ __('Settings') }}
+                {{ __('Menu') }}
             </div>
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item {{ Nav::isRoute('home') }}">
+                <a class="nav-link text-dark" href="{{ route('home') }}">
+                    <i class="fas fa-fw text-gray-500 fa-tachometer-alt"></i>
+                    <span>{{ __('Dashboard') }}</span></a>
+            </li>
 
             <!-- Nav Item - Profile -->
             <li class="nav-item {{ Nav::isRoute('profile') }}">
@@ -84,6 +85,98 @@
                 </a>
             </li>
 
+            <!-- Nav Item - Aplikasi -->
+            <li class="nav-item {{ Nav::isRoute('aplikasi.index') }}">
+                <a class="nav-link text-dark" href="{{ route('aplikasi.index') }}">
+                    <i class="fas fa-fw text-gray-500 fa-desktop"></i>
+                    <span>{{ __('Aplikasi') }}</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse" data-target="#dataStatistik"
+                    aria-expanded="true" aria-controls="dataStatistik">
+                    <i class="fas fa-fw text-gray-500 fa-list-alt"></i>
+                    <span>Data dan Statistik</span>
+                </a>
+                <div id="dataStatistik" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        
+                        <a href="" class="collapse-item">
+                            <span>{{ __('Covid 19') }}</span>
+                        </a>
+                        <a href="" class="collapse-item">
+                            <span>{{ __('Vaksin') }}</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse" data-target="#spbe"
+                    aria-expanded="true" aria-controls="spbe">
+                    <i class="fas fa-fw text-gray-500 fa-list-alt"></i>
+                    <span>SPBE</span>
+                </a>
+                <div id="spbe" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a href="" class="collapse-item">
+                            <span>{{ __('Peraturan Perundangan') }}</span>
+                        </a>
+                        <a href="" class="collapse-item">
+                            <span>{{ __('Indeks SPBE') }}</span>
+                        </a>
+                        <a href="" class="collapse-item">
+                            <span>{{ __('Domian Indikator') }}</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse" data-target="#persandian"
+                    aria-expanded="true" aria-controls="persandian">
+                    <i class="fas fa-fw text-gray-500 fa-list-alt"></i>
+                    <span>Persandian dan Keamaan Informasi</span>
+                </a>
+                <div id="persandian" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a href="" class="collapse-item">
+                            <span>{{ __('CSIRT') }}</span>
+                        </a>
+                        <a href="" class="collapse-item">
+                            <span>{{ __('Pentes') }}</span>
+                        </a>
+                        <a href="" class="collapse-item">
+                            <span>{{ __('Insiden Siber') }}</span>
+                        </a>
+                        <a href="" class="collapse-item">
+                            <span>{{ __('SE/TTE') }}</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse" data-target="#infras"
+                    aria-expanded="true" aria-controls="infras">
+                    <i class="fas fa-fw text-gray-500 fa-list-alt"></i>
+                    <span>Infrastruktur TIK</span>
+                </a>
+                <div id="infras" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a href="" class="collapse-item">
+                            <span>{{ __('Menara Telekomunikasi') }}</span>
+                        </a>
+                        <a href="" class="collapse-item">
+                            <span>{{ __('Wifi') }}</span>
+                        </a>
+                        <a href="{{ route('cctv.index') }}" class="collapse-item">
+                            <span>{{ __('Data CCTV') }}</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
             <!-- Nav Item - About -->
             <li class="nav-item {{ Nav::isRoute('about') }}">
                 <a class="nav-link text-dark" href="{{ route('about') }}">
@@ -266,12 +359,14 @@
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
+                                        <div class="text-truncate">Am I a good boy? The reason I ask is because
+                                            someone told me that people say this to all dogs, even if they aren't
+                                            good...</div>
                                         <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More
+                                    Messages</a>
                             </div>
                         </li>
 
@@ -282,9 +377,9 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span
-                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->nama }}</span>
                                 <figure class="img-profile rounded-circle avatar font-weight-bold"
-                                    data-initial="{{ Auth::user()->name[0] }}"></figure>
+                                    data-initial="{{ Auth::user()->nama[0] }}"></figure>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -378,27 +473,19 @@
     <script src="https://unpkg.com/@videojs/http-streaming/dist/videojs-http-streaming.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
-
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
         integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
         crossorigin=""></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script>
-        var map = L.map('map').setView([-6.914744, 107.609810], 13);
-        var tiles = L.tileLayer(
-            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-                maxZoom: 18,
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-                    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1
-            }).addTo(map);
-        // for(let i =0 ;i<array.length;i++){
-        //     L.marker(array[i].locations).addTo(map).bindPopup(array[i].locations);
-        // }
+
+       
         $(document).ready(function() {
             // 
             var SITEURL = "{{ url('/') }}";
@@ -477,23 +564,13 @@
                     })
                 }
             });
-
-            $.getJSON('map', function(data) {
-                $.each(data, function(i) {
-                    L.marker([data[i].latitude, data[i].longitude]).addTo(map).on('click', (e) => {
-                        L.marker([data[i].latitude, data[i].longitude]).addTo(map)
-                            .bindPopup(
-                                '<video id="my-video" class="video-js" controls preload="auto" width="640" data-setup="{}"><source src="https://pelindung.bandung.go.id:3443/video/DAHUA/Pusda.m3u8" type="application/vnd.apple.mpegurl" /></video>'
-                                ).openPopup();
-                    });
-                });
-            });
         })
 
         function displayMessage(message) {
             toastr.success(message, 'Event');
         }
     </script>
+    @yield('js')
 </body>
 
 </html>

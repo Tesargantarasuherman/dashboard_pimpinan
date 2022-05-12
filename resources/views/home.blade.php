@@ -25,6 +25,10 @@
         </div>
     @endif
 
+    <div>
+        {!! Toastr::message() !!}
+    </div>
+
     <div class="row">
 
         <!-- Earnings (Monthly) Card Example -->
@@ -207,12 +211,11 @@
                     <h6 class="m-0 font-weight-bold text-primary">Illustrationss</h6>
                 </div>
                 <div class="card-body">
-                    <div id="map"></div>
-                    <!-- <div class="text-center">
+                    <div class="text-center">
                             <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{{ asset('img/svg/undraw_editable_dywm.svg') }}" alt="">
                         </div>
                         <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-                        <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw →</a> -->
+                        <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw →</a>
                 </div>
             </div>
 
