@@ -148,4 +148,13 @@ $router->group(['prefix' => 'persandian'], function () use ($router) {
     $router->get('/pentest', 'PersandianKeamananInformasiController@pentestIndex')->name('pentest.index');
     $router->post('/pentest', 'PersandianKeamananInformasiController@pentestCreate')->name('pentest.create');
 
+    $router->get('/csirt', 'PersandianKeamananInformasiController@csirtIndex')->name('csirt.index');
+    $router->post('/csirt', 'PersandianKeamananInformasiController@csirtCreate')->name('csirt.create');
+
+    $router->get('/insiden-siber', 'PersandianKeamananInformasiController@insidenSiberIndex')->name('insiden.index');
+    $router->post('/insiden-siber', 'PersandianKeamananInformasiController@insidenSiberCreate')->name('insiden.create');
+
+    $router->get('/tte', 'PersandianKeamananInformasiController@tteIndex')->name('tte.index');
+    $router->post('/tte', 'PersandianKeamananInformasiController@tteCreate')->name('tte.create');
+
 });

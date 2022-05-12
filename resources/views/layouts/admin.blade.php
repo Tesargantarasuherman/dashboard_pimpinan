@@ -145,16 +145,16 @@
                 <div id="persandian" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a href="" class="collapse-item">
+                        <a href="{{ route('csirt.index') }}" class="collapse-item">
                             <span>{{ __('CSIRT') }}</span>
                         </a>
                         <a href="{{ route('pentest.index') }}" class="collapse-item">
                             <span>{{ __('Pentes') }}</span>
                         </a>
-                        <a href="" class="collapse-item">
+                        <a href="{{ route('insiden.index') }}" class="collapse-item">
                             <span>{{ __('Insiden Siber') }}</span>
                         </a>
-                        <a href="" class="collapse-item">
+                        <a href="{{ route('tte.index') }}" class="collapse-item">
                             <span>{{ __('SE/TTE') }}</span>
                         </a>
                     </div>
