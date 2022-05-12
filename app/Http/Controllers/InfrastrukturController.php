@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class InfrastrukturController extends Controller
 {
+    public function index(){
+        $getCctv = MasterDataCctv::orderBy('id', 'desc')->get();
+        return $getCctv;
+    }
     public function cctvIndex()
     {
         $dataCctv = MasterDataCctv::count();

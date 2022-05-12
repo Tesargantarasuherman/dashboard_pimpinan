@@ -21,7 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/map', 'HomeController@map')->name('map');
+Route::get('/infrastruktur-tik/map', 'HomeController@map')->name('map');
 // Route::post('/', 'HomeController@login')->name('login');
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
@@ -133,6 +133,7 @@ $router->group(['prefix' => 'spbe'], function () use ($router) {
 
 $router->group(['prefix' => 'aplikasi'], function () use ($router) {
     $router->get('/', 'AplikasiController@aplikasiIndex')->name('aplikasi.index');
+    $router->get('/api', 'AplikasiController@index')->name('index');
 
 });
 
@@ -163,3 +164,5 @@ $router->group(['prefix' => 'persandian'], function () use ($router) {
     $router->post('/tte', 'PersandianKeamananInformasiController@tteCreate')->name('tte.create');
 
 });
+
+$router->get('infrastruktur-tik/api/cctv', 'InfrastrukturController@index')->name('cctv');

@@ -364,12 +364,14 @@
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
+                                        <div class="text-truncate">Am I a good boy? The reason I ask is because
+                                            someone told me that people say this to all dogs, even if they aren't
+                                            good...</div>
                                         <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More
+                                    Messages</a>
                             </div>
                         </li>
 
@@ -476,27 +478,19 @@
     <script src="https://unpkg.com/@videojs/http-streaming/dist/videojs-http-streaming.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
-
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
         integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
         crossorigin=""></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script>
-        var map = L.map('map').setView([-6.914744, 107.609810], 13);
-        var tiles = L.tileLayer(
-            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-                maxZoom: 18,
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-                    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1
-            }).addTo(map);
-        // for(let i =0 ;i<array.length;i++){
-        //     L.marker(array[i].locations).addTo(map).bindPopup(array[i].locations);
-        // }
+
+       
         $(document).ready(function() {
             // 
             var SITEURL = "{{ url('/') }}";
@@ -575,23 +569,13 @@
                     })
                 }
             });
-
-            $.getJSON('map', function(data) {
-                $.each(data, function(i) {
-                    L.marker([data[i].latitude, data[i].longitude]).addTo(map).on('click', (e) => {
-                        L.marker([data[i].latitude, data[i].longitude]).addTo(map)
-                            .bindPopup(
-                                '<video id="my-video" class="video-js" controls preload="auto" width="640" data-setup="{}"><source src="https://pelindung.bandung.go.id:3443/video/DAHUA/Pusda.m3u8" type="application/vnd.apple.mpegurl" /></video>'
-                                ).openPopup();
-                    });
-                });
-            });
         })
 
         function displayMessage(message) {
             toastr.success(message, 'Event');
         }
     </script>
+    @yield('js')
 </body>
 
 </html>
