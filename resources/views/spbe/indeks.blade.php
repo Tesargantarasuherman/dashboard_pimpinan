@@ -14,7 +14,7 @@
             <div class="card-body">
                 <h6 class="m-0 font-weight-bold mb-4 ml-3">Indeks SPBE Tahunan</h6>
                 <div class="col-md-12">
-                    <div class="card" style="max-height: 90vh; overflow: scroll;">
+                    <div class="card">
                         <div class="form-group my-2 mx-2"><label for="pilihTahun">Pilih Tahun</label>
                             <div>
                                 <div><input type="text" class="" value=""></div>
