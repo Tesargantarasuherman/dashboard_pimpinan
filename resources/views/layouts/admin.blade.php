@@ -45,7 +45,6 @@
         .nav-item.active>a {
             color: white !important;
         }
-        
 
     </style>
     <!-- Page Wrapper -->
@@ -102,9 +101,10 @@
                     <i class="fas fa-fw text-gray-500 fa-list-alt"></i>
                     <span>Data dan Statistik</span>
                 </a>
-                <div id="dataStatistik" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="dataStatistik" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        
+
                         <a href="" class="collapse-item">
                             <span>{{ __('Covid 19') }}</span>
                         </a>
@@ -142,7 +142,8 @@
                     <i class="fas fa-fw text-gray-500 fa-list-alt"></i>
                     <span>Persandian dan Keamaan Informasi</span>
                 </a>
-                <div id="persandian" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="persandian" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a href="" class="collapse-item">
                             <span>{{ __('CSIRT') }}</span>
@@ -168,10 +169,10 @@
                 </a>
                 <div id="infras" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a href="" class="collapse-item">
+                        <a href="{{ route('menara.index') }}" class="collapse-item">
                             <span>{{ __('Menara Telekomunikasi') }}</span>
                         </a>
-                        <a href="" class="collapse-item">
+                        <a href="{{ route('wifi.index') }}" class="collapse-item">
                             <span>{{ __('Wifi') }}</span>
                         </a>
                         <a href="{{ route('cctv.index') }}" class="collapse-item">
@@ -187,6 +188,28 @@
                     <span>{{ __('About') }}</span>
                 </a>
             </li>
+
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                        aria-expanded="true" aria-controls="collapsePages">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Pages</span>
+                    </a>
+                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Login Screens:</h6>
+                            <a class="collapse-item" href="login.html">Login</a>
+                            <a class="collapse-item" href="register.html">Register</a>
+                            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                            <div class="collapse-divider"></div>
+                            <h6 class="collapse-header">Other Pages:</h6>
+                            <a class="collapse-item" href="404.html">404 Page</a>
+                            <a class="collapse-item" href="blank.html">Blank Page</a>
+                        </div>
+                    </div>
+                </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -276,7 +299,8 @@
                                     </div>
                                     <div>
                                         <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                        <span class="font-weight-bold">A new monthly report is ready to
+                                            download!</span>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
