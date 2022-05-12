@@ -125,10 +125,10 @@
                 </a>
                 <div id="spbe" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a href="" class="collapse-item">
+                        <a href="{{ route('perpu.index') }}" class="collapse-item">
                             <span>{{ __('Peraturan Perundangan') }}</span>
                         </a>
-                        <a href="" class="collapse-item">
+                        <a href="{{ route('indeksspbe.index') }}" class="collapse-item">
                             <span>{{ __('Indeks SPBE') }}</span>
                         </a>
                         <a href="{{ route('domainindikator.index') }}" class="collapse-item">

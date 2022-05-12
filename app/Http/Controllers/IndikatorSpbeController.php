@@ -560,6 +560,17 @@ class IndikatorSpbeController extends Controller
     {
         $getDomain = MasterIndikatorSpbe::orderBy('id', 'desc')->get();
 
-        return view('spbe.index', compact('getDomain'));
+        return view('spbe.domain', compact('getDomain'));
+    }
+
+    public function perpuIndex()
+    {
+
+        return view('spbe.perpu');
+    }
+    public function indeksSpbeIndex()
+    {
+
+        return view('spbe.indeks');
     }
 }
