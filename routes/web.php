@@ -141,7 +141,6 @@ $router->group(['prefix' => 'infrastruktur-tik'], function () use ($router) {
     $router->get('/menara-telekomunikasi', 'InfrastrukturController@menaraIndex')->name('menara.index');
     $router->post('/menara-telekomunikasi', 'InfrastrukturController@menaraCreate')->name('menara.create');
 
-    $router->get('/blank', 'InfrastrukturController@blankindex')->name('blank.index');
 
 
 });
