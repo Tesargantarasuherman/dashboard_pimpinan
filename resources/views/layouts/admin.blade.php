@@ -110,7 +110,7 @@
                         <a href="{{ route('covid.index') }}" class="collapse-item">
                             <span>{{ __('Covid 19') }}</span>
                         </a>
-                        <a href="" class="collapse-item">
+                        <a href="{{ route('vaksin.index') }}" class="collapse-item">
                             <span>{{ __('Vaksin') }}</span>
                         </a>
                     </div>

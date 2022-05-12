@@ -12,4 +12,10 @@ class DataStatistikController extends Controller
 
         return view('data-statistik.covid19');
     }
+
+    public function vaksinIndex()
+    {
+
+        return view('data-statistik.vaksin');
+    }
 }

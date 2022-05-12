@@ -169,6 +169,6 @@ $router->get('infrastruktur-tik/api/cctv', 'InfrastrukturController@index')->nam
 
 $router->group(['prefix' => 'data-statistik'], function () use ($router) {
     $router->get('/covid19', 'DataStatistikController@covidIndex')->name('covid.index');
-    $router->get('/vaksin', 'DataStatistikController@vaksin.index')->name('vaksin.index');
+    $router->get('/vaksin', 'DataStatistikController@vaksinIndex')->name('vaksin.index');
 
 });
