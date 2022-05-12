@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\KebutuhanDataPendukung;
 use App\Models\MasterKuisionerSmartCity;
+use App\Models\MasterSkpd;
 use App\Models\NilaiKuisionerSmartCity;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 
@@ -489,6 +491,54 @@ class MasterSmartCityController extends Controller
                 ], 200);
             }
         } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+
+    public function kuisionerIndex()
+    {
+        $getData = MasterKuisionerSmartCity::orderBy('id', 'desc')->get();
+        $skpd = MasterSkpd::orderBy('id', 'desc')->get();
+
+
+        return view('smart-city.kuisioner.index', compact(['getData', 'skpd']));
+    }
+
+    public function nilaiIndex()
+    {
+        $getData = NilaiKuisionerSmartCity::orderBy('id', 'desc')->get();
+
+        return view('smart-city.nilai.index', compact('getData'));
+    }
+
+
+    public function kuisionerCreate(Request $request)
+    {
+
+        try {
+
+            //Cek Duplicate data
+            $duplicate = MasterKuisionerSmartCity::where('iso', $request->input('iso'))->first();
+
+            if ($duplicate) {
+                Toastr::warning('Duplicate data', 'Warning');
+                return back();
+            } else {
+
+                $addData = new MasterKuisionerSmartCity();
+                $addData->id_skpd = $request->input('id_skpd');
+                $addData->kuisioner = $request->input('kuisioner');
+                $addData->iso = $request->input('iso');
+                $addData->save();
+
+                Toastr::success('Data added successfully', 'Success');
+                return back();
+            }
+        } catch (\Throwable $th) {
+            //return error message
             return response()->json([
                 'success' => false,
                 'message' => $th

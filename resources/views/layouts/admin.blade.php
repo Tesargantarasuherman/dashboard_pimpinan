@@ -183,6 +183,25 @@
                     </div>
                 </div>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse" data-target="#kuisioner"
+                    aria-expanded="true" aria-controls="kuisioner">
+                    <i class="fas fa-fw text-gray-500 fa-list-alt"></i>
+                    <span>Smart City</span>
+                </a>
+                <div id="kuisioner" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        
+                        <a href="{{ route('kuisioner.index') }}" class="collapse-item">
+                            <span>{{ __('Kuisioner') }}</span>
+                        </a>
+                        <a href="{{ route('nilai.index') }}" class="collapse-item">
+                            <span>{{ __('Nilai') }}</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
             <!-- Nav Item - About -->
             <li class="nav-item {{ Nav::isRoute('about') }}">
                 <a class="nav-link text-dark" href="{{ route('about') }}">

@@ -174,3 +174,13 @@ $router->group(['prefix' => 'data-statistik'], function () use ($router) {
     $router->get('/vaksin', 'DataStatistikController@vaksinIndex')->name('vaksin.index');
 
 });
+
+$router->group(['prefix' => 'smart-city'], function () use ($router) {
+    $router->get('/kuisioner', 'MasterSmartCityController@kuisionerIndex')->name('kuisioner.index');
+    $router->post('/kuisioner', 'MasterSmartCityController@kuisionerCreate')->name('kuisioner.create');
+
+
+    $router->get('/nilai', 'MasterSmartCityController@nilaiIndex')->name('nilai.index');
+
+
+});
