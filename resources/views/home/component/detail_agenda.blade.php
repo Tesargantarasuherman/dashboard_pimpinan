@@ -1,6 +1,8 @@
 <div id="detail-dialog" style="visibility:hidden">
+    <div class="row">
+        <div class="col-md-12">
     <div class="detail-dialog-body">
-        <form action="" id="dayClick" action="{{route('fullcalenderAjax')}}">
+            <form action="" id="dayClick" action="{{route('fullcalenderAjax')}}">
             @csrf
             <div class="form-group">
                 <label for="">Title</label>
@@ -27,5 +29,7 @@
                 <input type="text" id="end_time" class="form-control" name="end_time" placeholder="Event Title" disabled>
             </div>
         </form>
+            </div>
+        </div>
     </div>
 </div>

@@ -34,6 +34,7 @@
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
 
 </head>
 
@@ -52,7 +53,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-light sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-white sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
@@ -105,12 +106,12 @@
                 </a>
                 <div id="dataStatistik" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
+                    <div class="bg-primary py-2 collapse-inner rounded">
 
-                        <a href="{{ route('covid.index') }}" class="collapse-item">
+                        <a href="{{ route('covid.index') }}" class="collapse-item text-light">
                             <span>{{ __('Covid 19') }}</span>
                         </a>
-                        <a href="{{ route('vaksin.index') }}" class="collapse-item">
+                        <a href="{{ route('vaksin.index') }}" class="collapse-item text-light">
                             <span>{{ __('Vaksin') }}</span>
                         </a>
                     </div>
@@ -488,93 +489,7 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script>
-
-       
-        $(document).ready(function() {
-            // 
-            var SITEURL = "{{ url('/') }}";
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $('#addEventButton').on('click', function() {
-                $('#dialog').css("visibility", "visible");
-                $('#dialog').dialog({
-                    title: 'Add Agenda',
-                    width: 600,
-                    height: 700,
-                    modal: true,
-                    show: {
-                        effect: 'clip',
-                        duration: 350
-                    },
-                    hide: {
-                        effect: 'clip',
-                        duration: 250
-                    }
-                })
-            })
-
-            var calendar = $('#calendar').fullCalendar({
-                height: 650,
-                showNonCurrentDates: false,
-                editable: false,
-                defaultView: 'month',
-                yearColums: 3,
-                header: {
-                    left: 'prev,next,today',
-                    center: 'title',
-                    right: 'year,month,basicweek,basicDay'
-                },
-                events: "{{ url('agenda') }}",
-
-                // dayClick:function(date,event,view){
-                //     $('#dialog').css("visibility", "visible");
-                //     $('#dialog').dialog({
-                //         title:'Add Agenda',
-                //         width:600,
-                //         height:700,
-                //         modal:true,
-                //         show:{effect:'clip',duration:350},
-                //         hide:{
-                //             effect:'clip',duration:250
-                //         }
-                //     })
-                // },
-                eventClick: function(e) {
-                    $('#detail-dialog').css("visibility", "visible");
-                    $('#title').val(e.title);
-                    $('#location').val(e.location);
-                    $('#start').val(e.start);
-                    $('#end').val(e.end);
-                    $('#end_time').val(e.end_time);
-                    $('#start_time').val(e.start_time);
-                    $('#detail-dialog').dialog({
-                        title: 'Detail Agenda',
-                        width: 600,
-                        height: 700,
-                        modal: true,
-                        show: {
-                            effect: 'clip',
-                            duration: 350
-                        },
-                        hide: {
-                            effect: 'clip',
-                            duration: 250
-                        }
-                    })
-                }
-            });
-        })
-
-        function displayMessage(message) {
-            toastr.success(message, 'Event');
-        }
-    </script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
     @yield('js')
 </body>
 
