@@ -177,4 +177,82 @@
             </div>
         </div>
     </div>
+@section('js')
+<script>
+    $(document).ready(function() {
+            $('#addEventButton').on('click', function() {
+                $('#dialog').css("visibility", "visible");
+                $('#dialog').dialog({
+                    title: 'Add Agenda',
+                    width: 600,
+                    height: 700,
+                    modal: true,
+                    show: {
+                        effect: 'clip',
+                        duration: 350
+                    },
+                    hide: {
+                        effect: 'clip',
+                        duration: 250
+                    }
+                })
+            })
+
+            var calendar = $('#calendar').fullCalendar({
+                height: 650,
+                showNonCurrentDates: false,
+                editable: false,
+                defaultView: 'month',
+                yearColums: 3,
+                header: {
+                    left: 'prev,next,today',
+                    center: 'title',
+                    right: 'year,month,basicweek,basicDay'
+                },
+                events: "{{ url('agenda') }}",
+
+                // dayClick:function(date,event,view){
+                //     $('#dialog').css("visibility", "visible");
+                //     $('#dialog').dialog({
+                //         title:'Add Agenda',
+                //         width:600,
+                //         height:700,
+                //         modal:true,
+                //         show:{effect:'clip',duration:350},
+                //         hide:{
+                //             effect:'clip',duration:250
+                //         }
+                //     })
+                // },
+                eventClick: function(e) {
+                    $('#detail-dialog').css("visibility", "visible");
+                    $('#title').val(e.title);
+                    $('#location').val(e.location);
+                    $('#start').val(e.start);
+                    $('#end').val(e.end);
+                    $('#end_time').val(e.end_time);
+                    $('#start_time').val(e.start_time);
+                    $('#detail-dialog').dialog({
+                        title: 'Detail Agenda',
+                        width: 600,
+                        height: 700,
+                        modal: true,
+                        show: {
+                            effect: 'clip',
+                            duration: 350
+                        },
+                        hide: {
+                            effect: 'clip',
+                            duration: 250
+                        }
+                    })
+                }
+            });
+        })
+
+        function displayMessage(message) {
+            toastr.success(message, 'Event');
+        }
+</script>
+@stop
 @endsection

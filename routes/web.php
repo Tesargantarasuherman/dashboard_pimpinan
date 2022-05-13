@@ -128,6 +128,7 @@ $router->group(['prefix' => 'spbe'], function () use ($router) {
     $router->post('import-master-indikator-spbe', 'IndikatorSpbeController@importMasterIndikatorSpbe');
 
     $router->get('domain-indikator', 'IndikatorSpbeController@domainIndikatorIndex')->name('domainindikator.index');
+    $router->get('/domain-indikator/api', 'IndikatorSpbeController@domainIndikator');
     $router->get('/peraturan-perundangan', 'IndikatorSpbeController@perpuIndex')->name('perpu.index');
     $router->get('/indeks-spbe', 'IndikatorSpbeController@indeksSpbeIndex')->name('indeksspbe.index');
 
