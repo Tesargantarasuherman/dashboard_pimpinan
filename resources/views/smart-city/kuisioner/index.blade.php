@@ -17,7 +17,7 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">SKPD</th>
+                            <th scope="col">Skpd</th>
                             <th scope="col">Kuisioner</th>
                             <th scope="col">Iso</th>
                             {{-- <th scope="col">Aksi</th> --}}

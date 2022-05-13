@@ -7,6 +7,9 @@
 </style>
 
 @section('main-content')
+    <div>
+        {!! Toastr::message() !!}
+    </div>
     <div class="container-fluid">
         <h6 class="m-0 font-weight-bold ">Beranda</h6>
         <div class="row my-4">
@@ -92,13 +95,16 @@
                                 <div class="card shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
-                                            <div class="col-auto bg-info  d-none d-md-none d-lg-block p-2 rounded text-light">
+                                            <div
+                                                class="col-auto bg-info  d-none d-md-none d-lg-block p-2 rounded text-light">
                                                 <i class="fa fa-calendar" aria-hidden="true"></i>
                                             </div>
                                             <div class="col-md-6 ml-4">
-                                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Selasa
+                                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                                                    Selasa
                                                 </div>
-                                                <div class="text-sm font-weight-bold text-gray-800 text-uppercase">2 maret</div>
+                                                <div class="text-sm font-weight-bold text-gray-800 text-uppercase">2 maret
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -110,13 +116,16 @@
                                 <div class="card shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
-                                            <div class="col-auto bg-info  d-none d-md-none d-lg-block p-2 rounded text-light">
+                                            <div
+                                                class="col-auto bg-info  d-none d-md-none d-lg-block p-2 rounded text-light">
                                                 <i class="fa fa-mosque"></i>
                                             </div>
                                             <div class="col-md-6 ml-4">
-                                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Dzuhur
+                                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                                                    Dzuhur
                                                 </div>
-                                                <div class="text-sm font-weight-bold text-gray-800 text-uppercase">12:05</div>
+                                                <div class="text-sm font-weight-bold text-gray-800 text-uppercase">12:05
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -129,13 +138,16 @@
                                 <div class="card shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
-                                            <div class="col-auto bg-info  d-none d-md-none d-lg-block p-2 rounded text-light">
+                                            <div
+                                                class="col-auto bg-info  d-none d-md-none d-lg-block p-2 rounded text-light">
                                                 <i class="fas fa-thermometer-half"></i>
                                             </div>
                                             <div class="col-md-6 ml-4">
-                                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Suhu
+                                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                                                    Suhu
                                                 </div>
-                                                <div class="text-sm font-weight-bold text-gray-800 text-uppercase">26.30&#176;</div>
+                                                <div class="text-sm font-weight-bold text-gray-800 text-uppercase">
+                                                    26.30&#176;</div>
                                             </div>
                                         </div>
                                     </div>

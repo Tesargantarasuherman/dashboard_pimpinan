@@ -1,26 +1,29 @@
 @extends('layouts.admin')
 
 @section('main-content')
-    <div>
-        {!! Toastr::message() !!}
-    </div>
     <div class="container-fluid">
+        <div>
+            {!! Toastr::message() !!}
+        </div>
         <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <h6 class="m-0 font-weight-bold text-gray-800">Daftar Nilai Smart City
-                        </h6><button class="btn btn-sm btn-primary"
-                        data-toggle="modal" data-target="#add-modal">Tambah Data</button>
-                        @include('smart-city.nilai.modal-add')
-
+                    </h6>
+                    <form method="GET" action="{{ route('nilai.create') }}">
+                        <button class="btn btn-sm btn-primary" data-toggle="modal">
+                            Tambah Data
+                        </button>
+                    </form>
                 </div>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">SKPD</th>
+                            <th scope="col">Skpd</th>
                             <th scope="col">Kuisioner</th>
-                            <th scope="col">Iso</th>
+                            <th scope="col">Tahun</th>
+                            <th scope="col"></th>
                             {{-- <th scope="col">Aksi</th> --}}
                         </tr>
                     </thead>
@@ -40,7 +43,7 @@
                                     {{ $data->iso }}
                                 </td>
                                 <td>
-                                {{-- <td>
+                                    {{-- <td>
                                     <div class="dropdown no-arrow"><a class="dropdown-toggle" href="#" role="button"
                                             id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false"><i class="fas fa-ellipsis-v fa-fw text-gray-800"></i></a>

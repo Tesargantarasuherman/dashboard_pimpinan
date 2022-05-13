@@ -43,7 +43,7 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         // session()->flash('success', 'You are logged in!');
-        Toastr::info('You are logged in!', 'Info', ["positionClass" => "toast-top-center"]);
+        Toastr::info('You are logged in!', 'Welcome', ["positionClass" => "toast-top-center"]);
         return $this->redirectTo;
     }
 

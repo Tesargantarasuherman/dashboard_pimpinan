@@ -545,4 +545,12 @@ class MasterSmartCityController extends Controller
             ], 409);
         }
     }
+
+    public function nilaiCreate()
+    {
+        $skpd = MasterSkpd::orderBy('id', 'desc')->get();
+        $getKuisioner = MasterKuisionerSmartCity::get();
+
+        return view('smart-city.nilai.page-add', compact(['skpd', 'getKuisioner' ]));
+    }
 }
