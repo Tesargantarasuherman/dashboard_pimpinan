@@ -91,6 +91,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     //Master Skpd
     $router->get('master-skpd', 'MasterSkpdController@getAllMasterSkpd');
     $router->get('master-skpd/{id}', 'MasterSkpdController@getIdMasterSkpd');
+    $router->get('master-skpd/data/cari', 'MasterSkpdController@cariMasterSkpd');
 
 
     //Master Skpd
