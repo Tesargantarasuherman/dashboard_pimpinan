@@ -569,11 +569,7 @@ class IndikatorSpbeController extends Controller
         return $getDomain;
     }
 
-    public function perpuIndex()
-    {
 
-        return view('spbe.perpu');
-    }
     public function indeksSpbeIndex()
     {
 

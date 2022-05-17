@@ -27,7 +27,7 @@
 
                 <div class="form-group"><label for="pilihTahun">Pilih Tahun</label>
                     <div>
-                        <div><input type="tahun" class="form-control" value="" id="datepicker"></div>
+                        <div><input type="tahun" class="form-control" value="" id="datepicker" name="tahun"></div>
                     </div>
                 </div>
 

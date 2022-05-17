@@ -132,7 +132,6 @@ $router->group(['prefix' => 'spbe'], function () use ($router) {
 
     $router->get('domain-indikator', 'IndikatorSpbeController@domainIndikatorIndex')->name('domainindikator.index');
     $router->get('/domain-indikator/api', 'IndikatorSpbeController@domainIndikator');
-    $router->get('/peraturan-perundangan', 'IndikatorSpbeController@perpuIndex')->name('perpu.index');
     $router->get('/indeks-spbe', 'IndikatorSpbeController@indeksSpbeIndex')->name('indeksspbe.index');
 
 });
@@ -187,6 +186,13 @@ $router->group(['prefix' => 'smart-city'], function () use ($router) {
     $router->get('/nilai', 'MasterSmartCityController@nilaiIndex')->name('nilai.index');
     $router->get('/nilai-kuisioner', 'MasterSmartCityController@nilaiCreate')->name('nilai.create');
     $router->post('/nilai', 'MasterSmartCityController@nilaiStore')->name('nilai.store');
+
+
+});
+
+$router->group(['prefix' => 'peraturan-perundangan'], function () use ($router) {
+    $router->get('/perpu', 'PerpuController@perpuIndex')->name('perpu.index');
+    $router->post('/perpu', 'PerpuController@perpuCreate')->name('perpu.create');
 
 
 });
