@@ -25,21 +25,26 @@
 
             <div class="modal-body">
 
+                <div class="form-group"><label for="pilihTahun">Pilih Tahun</label>
+                    <div>
+                        <div><input type="tahun" class="form-control" value="" id="datepicker"></div>
+                    </div>
+                </div>
+
                 <div class="form-group">
-                    <label for="name">Kuisioner</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="id_skpd" required>
+                    <label for="name">Skpd</label>
+                    <select class="form-control" id="skpd" name="id_skpd" required>
                         <option value="">Pilih</option>
-
-                        @foreach ($getKuisioner as $p)
-                            <option value={{ $p->id }}>{{ $p->kuisioner }}</option>
+                        @foreach ($skpd as $p)
+                            <option value={{ $p->id }}>{{ $p->nama }}</option>
                         @endforeach
-
                     </select>
                 </div>
+
                 <div class="form-group">
-                    <label for="name">Tahun</label>
-                    <input type="text" id="datepicker" name="tahun"
-                        placeholder="{{ __('Tahun') }}" value="{{ old('tahun') }}" required autofocus>
+                    <label for="name">Kuisioner</label>
+                    <select class="form-control kuisioner" name="kuisioner" required>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -50,7 +55,23 @@
 
                 <div class="form-group">
                     <label for="name">Ketersediaan Data</label>
-                    <textarea class="form-control" id="kuisioner" rows="5" name="kuisioner" placeholder="{{ __('Contoh: Tersedia') }}"
+                    <textarea class="form-control" id="ketersediaan" rows="5" name="ketersediaan" placeholder="{{ __('Contoh: Tersedia') }}"
+                        value="{{ old('Ketersediaan') }}" required autofocus></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Instansi/Unit Penyedia Data</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="id_skpd" required>
+                        <option value="">Pilih</option>
+                        @foreach ($skpd as $p)
+                            <option value={{ $p->id }}>{{ $p->nama }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Keterangan</label>
+                    <textarea class="form-control" id="keterangan" rows="5" name="keterangan" placeholder="{{ __('Contoh: Data diperoleh dari stasiun PT PAM Lyonnaise Jaya (PALYJA)') }}"
                         value="{{ old('Ketersediaan') }}" required autofocus></textarea>
                 </div>
 

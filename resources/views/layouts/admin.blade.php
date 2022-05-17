@@ -125,14 +125,14 @@
                     <span>SPBE</span>
                 </a>
                 <div id="spbe" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a href="{{ route('perpu.index') }}" class="collapse-item">
+                    <div class="bg-primary py-2 collapse-inner rounded">
+                        <a href="{{ route('perpu.index') }}" class="collapse-item text-light">
                             <span>{{ __('Peraturan Perundangan') }}</span>
                         </a>
-                        <a href="{{ route('indeksspbe.index') }}" class="collapse-item">
+                        <a href="{{ route('indeksspbe.index') }}" class="collapse-item text-light">
                             <span>{{ __('Indeks SPBE') }}</span>
                         </a>
-                        <a href="{{ route('domainindikator.index') }}" class="collapse-item">
+                        <a href="{{ route('domainindikator.index') }}" class="collapse-item text-light">
                             <span>{{ __('Domian Indikator') }}</span>
                         </a>
                     </div>
@@ -147,17 +147,17 @@
                 </a>
                 <div id="persandian" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a href="{{ route('csirt.index') }}" class="collapse-item">
+                    <div class="bg-primary py-2 collapse-inner rounded">
+                        <a href="{{ route('csirt.index') }}" class="collapse-item text-light">
                             <span>{{ __('CSIRT') }}</span>
                         </a>
-                        <a href="{{ route('pentest.index') }}" class="collapse-item">
+                        <a href="{{ route('pentest.index') }}" class="collapse-item text-light">
                             <span>{{ __('Pentes') }}</span>
                         </a>
-                        <a href="{{ route('insiden.index') }}" class="collapse-item">
+                        <a href="{{ route('insiden.index') }}" class="collapse-item text-light">
                             <span>{{ __('Insiden Siber') }}</span>
                         </a>
-                        <a href="{{ route('tte.index') }}" class="collapse-item">
+                        <a href="{{ route('tte.index') }}" class="collapse-item text-light">
                             <span>{{ __('SE/TTE') }}</span>
                         </a>
                     </div>
@@ -171,14 +171,14 @@
                     <span>Infrastruktur TIK</span>
                 </a>
                 <div id="infras" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a href="{{ route('menara.index') }}" class="collapse-item">
+                    <div class="bg-primary py-2 collapse-inner rounded">
+                        <a href="{{ route('menara.index') }}" class="collapse-item text-light">
                             <span>{{ __('Menara Telekomunikasi') }}</span>
                         </a>
-                        <a href="{{ route('wifi.index') }}" class="collapse-item">
+                        <a href="{{ route('wifi.index') }}" class="collapse-item text-light">
                             <span>{{ __('Wifi') }}</span>
                         </a>
-                        <a href="{{ route('cctv.index') }}" class="collapse-item">
+                        <a href="{{ route('cctv.index') }}" class="collapse-item text-light">
                             <span>{{ __('Data CCTV') }}</span>
                         </a>
                     </div>
@@ -192,12 +192,12 @@
                     <span>Smart City</span>
                 </a>
                 <div id="kuisioner" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
+                    <div class="bg-primary py-2 collapse-inner rounded">
                         
-                        <a href="{{ route('kuisioner.index') }}" class="collapse-item">
+                        <a href="{{ route('kuisioner.index') }}" class="collapse-item text-light">
                             <span>{{ __('Kuisioner') }}</span>
                         </a>
-                        <a href="{{ route('nilai.index') }}" class="collapse-item">
+                        <a href="{{ route('nilai.index') }}" class="collapse-item text-light">
                             <span>{{ __('Nilai') }}</span>
                         </a>
                     </div>

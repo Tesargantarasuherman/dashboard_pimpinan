@@ -111,6 +111,8 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('nilai-kuisioner-smart-city/{id_skpd}', 'MasterSmartCityController@getIdNilaiKuisionerSmartCity');
     $router->put('nilai-kuisioner-smart-city/{id}', 'MasterSmartCityController@updateNilaiKuisionerSmartCity');
 
+    
+
     //Master Role
     $router->post('role-app', 'MasterRoleController@addMasterRole');
     $router->get('master-role', 'MasterRoleController@getAllMasterRole');
@@ -184,7 +186,6 @@ $router->group(['prefix' => 'smart-city'], function () use ($router) {
     $router->get('/nilai', 'MasterSmartCityController@nilaiIndex')->name('nilai.index');
     $router->get('/nilai-kuisioner', 'MasterSmartCityController@nilaiCreate')->name('nilai.create');
     $router->post('/nilai', 'MasterSmartCityController@nilaiStore')->name('nilai.store');
-
 
 
 });
