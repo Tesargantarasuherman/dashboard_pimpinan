@@ -333,11 +333,7 @@ class MasterSmartCityController extends Controller
                     'message' => 'Data tidak ada',
                 ], 404);
             } else {
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Master Data Kuisioner Smart City By SKPD',
-                    'data' =>  $dataKuisioner
-                ], 200);
+                return   $dataKuisioner;
             }
         } catch (\Throwable $th) {
             return response()->json([
