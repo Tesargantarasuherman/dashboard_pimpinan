@@ -52,4 +52,16 @@ class MasterSkpdController extends Controller
         }
     }
 
+    public function cariMasterSkpd(Request $request){
+
+        $cari = $request->skpd;
+
+        $dataSkdp = MasterSkpd::where('nama', 'like', "%".$cari."%" )->get();
+
+        // dd($dataSkdp);   
+
+        return $dataSkdp;
+
+    }
+
 }
