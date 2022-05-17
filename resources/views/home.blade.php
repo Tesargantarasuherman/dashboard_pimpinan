@@ -181,7 +181,7 @@
 <script>
     $(document).ready(function() {
             $('#addEventButton').on('click', function() {
-                $('#dialog').css("visibility", "visible");
+                $('#dialog').css("display", "block");
                 $('#dialog').dialog({
                     title: 'Add Agenda',
                     width: 600,
@@ -225,7 +225,7 @@
                 //     })
                 // },
                 eventClick: function(e) {
-                    $('#detail-dialog').css("visibility", "visible");
+                    $('#detail-dialog').css("display", "block");
                     $('#title').val(e.title);
                     $('#location').val(e.location);
                     $('#start').val(e.start);
@@ -235,7 +235,7 @@
                     $('#detail-dialog').dialog({
                         title: 'Detail Agenda',
                         width: 600,
-                        height: 700,
+                        height: 500,
                         modal: true,
                         show: {
                             effect: 'clip',

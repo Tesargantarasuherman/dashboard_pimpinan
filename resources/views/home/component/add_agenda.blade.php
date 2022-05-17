@@ -1,4 +1,4 @@
-<div id="dialog" style="visibility:hidden">
+<div id="dialog" style="display:none">
     <div class="dialog-body">
         <form method="POST" id="dayClick" action="{{route('agenda.tambah')}}">
             @csrf

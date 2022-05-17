@@ -1,4 +1,4 @@
-<div id="detail-dialog" style="visibility:hidden">
+<div id="detail-dialog" style="display:none">
     <div class="row">
         <div class="col-md-12">
     <div class="detail-dialog-body">
