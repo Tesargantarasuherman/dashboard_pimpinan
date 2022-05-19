@@ -134,13 +134,14 @@ $router->group(['prefix' => 'spbe'], function () use ($router) {
     $router->get('/domain-indikator/api', 'IndikatorSpbeController@domainIndikator');
     $router->get('/peraturan-perundangan', 'IndikatorSpbeController@perpuIndex')->name('perpu.index');
     $router->get('/indeks-spbe', 'IndikatorSpbeController@indeksSpbeIndex')->name('indeksspbe.index');
+    $router->get('/add-indeks-spbe', 'IndikatorSpbeController@addSpbeIndex')->name('indeksspbe.add');
+    $router->post('/add-spbe', 'IndikatorSpbeController@addSpbe')->name('add.spbe');
 
 });
 
 $router->group(['prefix' => 'aplikasi'], function () use ($router) {
     $router->get('/', 'AplikasiController@aplikasiIndex')->name('aplikasi.index');
     $router->get('/api', 'AplikasiController@index')->name('index');
-
 });
 
 $router->group(['prefix' => 'infrastruktur-tik'], function () use ($router) {

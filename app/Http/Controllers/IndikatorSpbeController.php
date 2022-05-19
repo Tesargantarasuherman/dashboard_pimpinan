@@ -579,4 +579,35 @@ class IndikatorSpbeController extends Controller
 
         return view('spbe.indeks');
     }
+    public function addSpbeIndex()
+    {
+
+        return view('spbe.indeks.add');
+    }
+    public function addSpbe(Request $request)
+    {
+        $data = $request->skala_nilai;
+        $nilai = 0 ;
+        for($i = 1 ; $i < count($data);$i++){
+            $domain = MasterIndikatorSpbe::where('id', $request->id[$i])->first();
+            $index_spbe = new IndeksSpbe;
+            $index_spbe->tahun = $request->tahun;
+            $index_spbe->id_indikator = $domain->id;
+            $index_spbe->skala_nilai = $request->skala_nilai[$i];
+            $index_spbe->index_nilai = (($request->skala_nilai[$i] / 5) * $domain->bobot);
+            $nilai += (($request->skala_nilai[$i] / 5) * $domain->bobot);
+            // $index_spbe->save();
+            // return $index_spbe;
+        }
+        $indeksPertahun = new IndexSpbePertahun;
+        $indeksPertahun->tahun =$request->tahun;
+        $indeksPertahun->hasil_index = ($nilai/100) * 5;
+        return $indeksPertahun;
+    //     foreach ($request->id as $id) {
+    //         $domain = MasterIndikatorSpbe::where('id', $id)->first();
+    //         $index_spbe = new IndeksSpbe;
+    //         $index_spbe->skala_nilai = $request->input('lokasi');
+    //         // return $getDomain;
+    //     }
+    }
 }
