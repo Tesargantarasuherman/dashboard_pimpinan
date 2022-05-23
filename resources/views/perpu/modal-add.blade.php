@@ -17,7 +17,7 @@
 
                     <div class="form-group">
                         <label for="name">Tahun</label>
-                        <div><input type="tahun" class="form-control" value="" id="datepicker" required name="tahun"></div>
+                        <div><input type="integer" class="form-control" value="" id="datepicker" required name="tahun"></div>
                     </div>
 
                     <div class="form-group">

@@ -10,10 +10,15 @@
                 <div class="d-flex justify-content-between">
                     <h6 class="m-0 font-weight-bold text-gray-800">Daftar Nilai Smart City
                     </h6>
-                    <form method="GET" action="{{ route('nilai.create') }}">
-                        <button class="btn btn-sm btn-primary" data-toggle="modal">
+                    {{-- <form method="GET" action="{{ route('nilai.create') }}">
+                        <button class="btn btn-sm btn-primary">
                             Tambah Data
                         </button>
+                    </form> --}}
+                    <form method="GET" action="{{ route('nilai.creates') }}">
+                        <button class="btn btn-sm btn-primary">
+                            Tambah Data
+                        </button> 
                     </form>
                 </div>
                 <table class="table table-striped">
@@ -34,13 +39,13 @@
                                     {{ $loop->iteration }}
                                 </td>
                                 <td>
-                                    {{ $data->id_skpd }}
+                                    {{ $data->masterSkpd->nama }}
                                 </td>
                                 <td>
-                                    {{ $data->kuisioner }}
+                                    {{ $data->masterKuisioner->kuisioner }}
                                 </td>
                                 <td>
-                                    {{ $data->iso }}
+                                    {{ $data->tahun }}
                                 </td>
                                 <td>
                                     {{-- <td>

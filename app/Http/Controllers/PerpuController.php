@@ -11,9 +11,10 @@ class PerpuController extends Controller
 {
     public function perpuIndex()
     {
+        $getData = Perpu::orderBy('id', 'desc')->get();
         $skpd = MasterSkpd::orderBy('id', 'desc')->get();
 
-        return view('perpu.index', compact('skpd'));
+        return view('perpu.index', compact(['skpd', 'getData']));
     }
 
     public function perpuCreate(Request $request)

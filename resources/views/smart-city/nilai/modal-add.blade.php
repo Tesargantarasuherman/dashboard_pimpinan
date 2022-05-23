@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="addModal" method="POST" action="{{ route('tte.create') }}"
+            <form class="addModal" method="POST" action="{{ route('nilai.store') }}"
                 enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

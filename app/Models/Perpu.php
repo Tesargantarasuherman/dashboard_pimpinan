@@ -10,4 +10,8 @@ class Perpu extends Model
     use HasFactory;
     protected $table = "perpu";
 
-}
+    public function masterSkpd(){
+        return $this->belongsTo('App\Models\MasterSkpd','pemerkasa', 'id');        
+    }
+
+}   

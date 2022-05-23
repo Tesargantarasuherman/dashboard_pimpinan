@@ -549,4 +549,95 @@ class MasterSmartCityController extends Controller
 
         return view('smart-city.nilai.page-add', compact(['skpd', 'getKuisioner' ]));
     }
+    public function nilaiCreates()
+    {
+        $skpd = MasterSkpd::orderBy('id', 'desc')->get();
+        $getKuisioner = MasterKuisionerSmartCity::get();
+
+        return view('smart-city.nilai.nilai', compact(['skpd', 'getKuisioner' ]));
+    }
+
+    public function nilaiStore(Request $request)
+    {
+
+        try {
+
+            //Cek Duplicate data
+            $duplicate = NilaiKuisionerSmartCity::where('tahun', $request->input('tahun'))->first();
+
+            if ($duplicate) {
+                Toastr::warning('Duplicate data', 'Warning');
+                return back();
+            } else {
+
+                $addData = new NilaiKuisionerSmartCity();
+                $addData->tahun = $request->input('tahun');
+                $addData->id_skpd = $request->input('id_skpd');
+                $addData->id_kuisioner = $request->input('id_kuisioner');
+                $addData->keterangan_tahun = $request->input('keterangan_tahun');
+                $addData->ketersediaan = $request->input('ketersediaan');
+                $addData->unit_penyedia_data = $request->input('unit_penyedia_data');
+                $addData->keterangan = $request->input('keterangan');
+                $addData->save();
+
+                Toastr::success('Data added successfully', 'Success');
+                return back();
+            }
+        } catch (\Throwable $th) {
+            //return error message
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+
+
+    public function getNilaiSkpd(Request $request, $id_skpd)
+    {
+        try {
+
+            $getData = NilaiKuisionerSmartCity::where('id_skpd', $id_skpd)->get();
+
+
+            if (!$getData) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data tidak ada',
+                ], 404);
+            } else {
+                return   $getData;
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+
+
+    public function getDataTahun(Request $request, $tahun)
+    {
+        try {
+
+            $getData = NilaiKuisionerSmartCity::where('tahun', $tahun)->get();
+
+
+            if (!$getData) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data tidak ada',
+                ], 404);
+            } else {
+                return   $getData;
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+
 }

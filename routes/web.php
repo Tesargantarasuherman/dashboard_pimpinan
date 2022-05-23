@@ -36,8 +36,11 @@ Route::get('/about', function () {
 
 $router->group(['prefix' => 'api/v1'], function () use ($router) {
 
+    $router->post('login', 'AuthController@login');
+
     $router->get('vaksin/terkini', 'IntegrasiController@vaksinTerkini');
     $router->post('agenda/kegiatan', 'IntegrasiController@agendaKegiatan');
+    $router->get('agenda/kegiatan/sinkron', 'IntegrasiController@sinkronAgendaKegiatan');
     $router->get('cuaca', 'IntegrasiController@cuaca');
     $router->get('users', 'IntegrasiController@users');
     $router->get('covid', 'IntegrasiController@covid');
@@ -112,6 +115,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('nilai-kuisioner-smart-city/{id_skpd}', 'MasterSmartCityController@getIdNilaiKuisionerSmartCity');
     $router->put('nilai-kuisioner-smart-city/{id}', 'MasterSmartCityController@updateNilaiKuisionerSmartCity');
 
+    $router->get('nilai-kuisioner/{tahun}', 'MasterSmartCityController@getDataTahun');
     
 
     //Master Role
@@ -185,7 +189,9 @@ $router->group(['prefix' => 'smart-city'], function () use ($router) {
 
     $router->get('/nilai', 'MasterSmartCityController@nilaiIndex')->name('nilai.index');
     $router->get('/nilai-kuisioner', 'MasterSmartCityController@nilaiCreate')->name('nilai.create');
+    $router->get('/nilai/kuisioner', 'MasterSmartCityController@nilaiCreates')->name('nilai.creates');
     $router->post('/nilai', 'MasterSmartCityController@nilaiStore')->name('nilai.store');
+    $router->get('/nilai/{id_skpd}', 'MasterSmartCityController@getNilaiSkpd')->name('nilai.getnilaiskpd');
 
 
 });

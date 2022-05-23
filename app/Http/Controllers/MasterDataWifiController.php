@@ -77,7 +77,7 @@ class MasterDataWifiController extends Controller
             $dataWifi = MasterDataWifi::where('id', $idWifi)->first();
 
             if (!$dataWifi) {
-                return response()->json([
+                return response()->json([          
                     'success' => false,
                     'message' => 'Data tidak ada',
                 ], 404);
