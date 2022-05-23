@@ -16,7 +16,7 @@ class IndexSpbe extends Model
     ];
 
     public function indikator(){
-        return $this->belongsTo(MasterIndikatorSpbe::class);
+        return $this->belongsTo(MasterIndikatorSpbe::class,'id_indikator');
     }
 
     public function indexSpbePertahun(){

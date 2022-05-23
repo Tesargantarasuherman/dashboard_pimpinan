@@ -16,11 +16,11 @@
         <div class="card-body">
             <h6 class="m-0 font-weight-bold mb-4 ml-3">Indeks SPBE Tahunan</h6>
             <form method="GET" action="{{ route('indeksspbe.add') }}">
-                        <button class="btn btn-sm btn-primary" data-toggle="modal">
-                            Tambah Data
-                        </button>
-                    </form>
-            <div class="col-md-12">
+                <button class="btn btn-sm btn-primary" data-toggle="modal">
+                    Tambah Data
+                </button>
+            </form>
+            <!-- <div class="col-md-12">
                 <div class="card">
                     <div class="form-group my-2 mx-2"><label for="pilihTahun">Pilih Tahun</label>
                         <div>
@@ -48,85 +48,84 @@
                         </table>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
 @section('js')
 <script>
-    function sort() {
-        let tahun = $('#datepicker').val();
-        $.ajax({
-            type: "GET",
-            url: `http://localhost:8000/spbe/domain-indikator/api`,
-            dataType: 'json',
-            async: false,
-            success: function (res) {
-                console.log(res);
-                let no = 1;
-                let data = []
-                res.forEach(res => {
-                    table = `
-                    <tr>
-                        <td>${no++} </td>
-                        <td>${res.nama_indikator}</td>
-                        <td>${tahun}</td>
-                        <td>${res.bobot}</td>
-                        <td><input type="text" class="form-control" value=""></td>
-                        <td><input type="text" class="form-control" value=""></td>
-                        <td><input type="text" class="form-control" value=""></td>
-                    </tr>
-                    `;
-                    data.push(table)
-                });
-                $('#row-table').html(data);
+    // function sort() {
+    //     let tahun = $('#datepicker').val();
+    //     $.ajax({
+    //         type: "GET",
+    //         url: `../spbe/api/indeks-spbe-tahun`,
+    //         dataType: 'json',
+    //         async: false,
+    //         success: function (res) {
+    //             console.log(res);
+    //             let no = 1;
+    //             let data = []
+    //             res.forEach(res => {
+    //                 table = `
+    //                 <tr>
+    //                     <td>${no++} </td>
+    //                     <td>${res.nama_indikator}</td>
+    //                     <td>${tahun}</td>
+    //                     <td>${res.bobot}</td>
+    //                     <td><input type="text" class="form-control" value=""></td>
+    //                     <td><input type="text" class="form-control" value=""></td>
+    //                     <td><input type="text" class="form-control" value=""></td>
+    //                 </tr>
+    //                 `;
+    //                 data.push(table)
+    //             });
+    //             $('#row-table').html(data);
 
-            }
-            // $.ajax({
-            // type: "GET",
-            // url:   `https://api-dashboard-pimpinan.herokuapp.com/api/v1/get-index-spbe/${tahun}`,
-            // dataType: 'json',
-            // async: false,
-            // success: function (res){
-            // console.log(res)
-            // }
-        });
-    }
+    //         }
+    //         // $.ajax({
+    //         // type: "GET",
+    //         // url:   `https://api-dashboard-pimpinan.herokuapp.com/api/v1/get-index-spbe/${tahun}`,
+    //         // dataType: 'json',
+    //         // async: false,
+    //         // success: function (res){
+    //         // console.log(res)
+    //         // }
+    //     });
+    // }
     $(document).ready(function () {
+        let tahun =[];
+        let data = [];
         $("#datepicker").datepicker({
             format: "yyyy",
             viewMode: "years",
             minViewMode: "years",
         });
-        let aplikasi = [{
-                name: "Browsers",
-                colorByPoint: true,
-                data: [{
-                    "y": 229,
-                    "name": "Dinas Komunikasi dan Informatika"
-                }, ]
-            },
-            {
-                name: "Browsers 1",
-                colorByPoint: true,
-                data: [{
-                    "y": 129,
-                    "name": "Dinas Komunikasi dan Informatika"
-                }, ]
+
+        $.ajax({
+            type: "GET",
+            url: `../spbe/api/indeks-spbe-tahun`,
+            dataType: 'json',
+            async: false,
+            success: function (res) {
+                res.forEach(res => {
+                    tahun.push(res.tahun)
+                    data.push(res.nilai)
+                });
             }
-        ]
+        });
+
         Highcharts.chart('container', {
             chart: {
                 type: 'area'
             },
             title: {
-                text: 'Historic and Estimated Worldwide Population Growth by Region'
+                text: 'Grafik Indeks SPBE/Tahun'
             },
             subtitle: {
-                text: 'Source: Wikipedia.org'
+                text: 'Source: Bandung.go.id'
             },
             xAxis: {
-                categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
+                categories: tahun,
                 tickmarkPlacement: 'on',
                 title: {
                     enabled: false
@@ -134,17 +133,17 @@
             },
             yAxis: {
                 title: {
-                    text: 'Billions'
+                    text: 'Indeks'
                 },
                 labels: {
                     formatter: function () {
-                        return this.value / 1000;
+                        return this.value;
                     }
                 }
             },
             tooltip: {
                 split: true,
-                valueSuffix: ' millions'
+                valueSuffix: ''
             },
             plotOptions: {
                 area: {
@@ -158,8 +157,9 @@
                 }
             },
             series: [{
-                name: 'Asia',
-                data: [502, 635, 809, 947, 1402, 3634, 5268]}]
+                name: 'Indek SPBE',
+                data: data
+            }]
         });
     });
 
