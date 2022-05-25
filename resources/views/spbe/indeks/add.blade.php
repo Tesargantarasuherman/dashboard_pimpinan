@@ -81,38 +81,6 @@
                         `;
                             data.push(form)
                         }
-                        // res.forEach(res => {
-                        //     form = `
-                        // <div class="form-group row">
-                        //     <label for="inputPassword" class="col-sm-6 col-form-label font-weight-bold">${res.nama_indikator}</label>
-                        //     <div class="col-sm-6">
-                        //     <input type="hidden" class="form-control" name="id[]" value="${res.id}" required>
-                        //     <input type="hidden" class="form-control" name="id_indikator[]" value="${res.id_indikator}" required>
-                        //     <div class="form-check form-check-inline">
-                        //     <input class="form-check-input" type="radio" name="skala_nilai[]"  value="${res.skala_nilai}" ${res.skala_nilai ==1 ?'checked' : ''} required>
-                        //     <label class="form-check-label">1</label>
-                        //     </div>
-                        //     <div class="form-check form-check-inline">
-                        //     <input class="form-check-input" type="radio" name="skala_nilai[]"  value="${res.skala_nilai}" ${res.skala_nilai ==2 ?'checked' : ''} required>
-                        //     <label class="form-check-label">2</label>
-                        //     </div>
-                        //     <div class="form-check form-check-inline">
-                        //     <input class="form-check-input" type="radio" name="skala_nilai[]"  value="${res.skala_nilai}" ${res.skala_nilai ==3 ?'checked' : ''} required>
-                        //     <label class="form-check-label">3</label>
-                        //     </div>
-                        //     <div class="form-check form-check-inline">
-                        //     <input class="form-check-input" type="radio" name="skala_nilai[]"  value="${res.skala_nilai}" ${res.skala_nilai ==4 ?'checked' : ''} required>
-                        //     <label class="form-check-label">4</label>
-                        //     </div>
-                        //     <div class="form-check form-check-inline">
-                        //     <input class="form-check-input" type="radio" name="skala_nilai[]"  value="${res.skala_nilai}" ${res.skala_nilai ==5 ?'checked' : ''} required>
-                        //     <label class="form-check-label">5</label>
-                        //     </div>
-                        //     </div>
-                        // </div>
-                        // `;
-                        //     data.push(form)
-                        // });
                         $('#form-add').html(data);
                     } else {
                         $('#form-submit').attr('action','../spbe/add-spbe');
