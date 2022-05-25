@@ -34,44 +34,6 @@
 </div>
 @section('js')
 <script>
-    // function sort() {
-    //     let tahun = $('#datepicker').val();
-    //     $.ajax({
-    //         type: "GET",
-    //         url: `../spbe/api/indeks-spbe-tahun`,
-    //         dataType: 'json',
-    //         async: false,
-    //         success: function (res) {
-    //             console.log(res);
-    //             let no = 1;
-    //             let data = []
-    //             res.forEach(res => {
-    //                 table = `
-    //                 <tr>
-    //                     <td>${no++} </td>
-    //                     <td>${res.nama_indikator}</td>
-    //                     <td>${tahun}</td>
-    //                     <td>${res.bobot}</td>
-    //                     <td><input type="text" class="form-control" value=""></td>
-    //                     <td><input type="text" class="form-control" value=""></td>
-    //                     <td><input type="text" class="form-control" value=""></td>
-    //                 </tr>
-    //                 `;
-    //                 data.push(table)
-    //             });
-    //             $('#row-table').html(data);
-
-    //         }
-    //         // $.ajax({
-    //         // type: "GET",
-    //         // url:   `https://api-dashboard-pimpinan.herokuapp.com/api/v1/get-index-spbe/${tahun}`,
-    //         // dataType: 'json',
-    //         // async: false,
-    //         // success: function (res){
-    //         // console.log(res)
-    //         // }
-    //     });
-    // }
     function getChart(param) {
         $.ajax({
             type: "GET",
