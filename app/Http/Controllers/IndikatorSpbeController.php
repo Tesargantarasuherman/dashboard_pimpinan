@@ -586,22 +586,18 @@ class IndikatorSpbeController extends Controller
     }
     public function addSpbe(Request $request)
     {
-        $messages = [
-            'required' => 'Input Ini Wajib Diisi',
-        ];
-        $this->validate($request, [
-            'skala_nilai'  => 'required',
-        ],$messages);
-        $data = $request->skala_nilai;
+        $data = $request->id;
         $nilai = 0 ;
         for($i = 0 ; $i < count($data);$i++){
+            $res =$data[$i] ;
+
             $domain = MasterIndikatorSpbe::where('id', $request->id[$i])->first();
             $index_spbe = new IndexSpbe;
             $index_spbe->tahun = $request->tahun;
             $index_spbe->id_indikator = $domain->id;
-            $index_spbe->skala_nilai = $request->skala_nilai[$i];
-            $index_spbe->index_nilai = (($request->skala_nilai[$i] / 5) * $domain->bobot);
-            $nilai += (($request->skala_nilai[$i] / 5) * $domain->bobot);
+            $index_spbe->skala_nilai = $request->$res;
+            $index_spbe->index_nilai = (($request->$res / 5) * $domain->bobot);
+            $nilai += (($request->$res / 5) * $domain->bobot);
             $index_spbe->save();
             // return $index_spbe;
         }
@@ -620,27 +616,28 @@ class IndikatorSpbeController extends Controller
     }
     public function updateSpbe(Request $request)
     {
-        
-        $data = $request->skala_nilai;
+        $data = $request->id;
+        // dd($data);
         $nilai = 0 ;
         for($i = 0 ; $i < count($data);$i++){
+            $res =$data[$i] ;
+
             $domain = MasterIndikatorSpbe::where('id', $request->id_indikator[$i])->first();
             $index_spbe = IndexSpbe::where('id', $request->id[$i])->first();;
-            $index_spbe->skala_nilai = $request->skala_nilai[$i];
-            $index_spbe->index_nilai = (($request->skala_nilai[$i] / 5) * $domain->bobot);
-            $nilai += (($request->skala_nilai[$i] / 5) * $domain->bobot);
+            $index_spbe->skala_nilai = $request->$res;
+            $index_spbe->index_nilai = (($request->$res / 5) * $domain->bobot);
+            $nilai += (($request->$res / 5) * $domain->bobot);
             $index_spbe->update();
-            // return $index_spbe;
         }
         $indeksPertahun = IndexSpbePertahun::where('tahun',$request->tahun)->first();
         $indeksPertahun->hasil_index = ($nilai/100) * 5;
         $indeksPertahun->update();
-    //     foreach ($request->id as $id) {
-    //         $domain = MasterIndikatorSpbe::where('id', $id)->first();
-    //         $index_spbe = new IndeksSpbe;
-    //         $index_spbe->skala_nilai = $request->input('lokasi');
-    //         // return $getDomain;
-    //     }
+        foreach ($request->id as $id) {
+            $domain = MasterIndikatorSpbe::where('id', $id)->first();
+            $index_spbe = new IndeksSpbe;
+            $index_spbe->skala_nilai = $request->input('lokasi');
+            // return $getDomain;
+        }
     return back();
 
     }
