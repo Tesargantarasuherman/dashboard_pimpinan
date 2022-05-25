@@ -133,6 +133,7 @@ $router->group(['prefix' => 'spbe'], function () use ($router) {
     $router->get('domain-indikator', 'IndikatorSpbeController@domainIndikatorIndex')->name('domainindikator.index');
     $router->get('/domain-indikator/api', 'IndikatorSpbeController@domainIndikator');
     $router->get('/indeks-spbe/api/{tahun}', 'IndikatorSpbeController@detailIndeksSpbe');
+    $router->get('/chart/indeks-spbe/api/{tahun}', 'IndikatorSpbeController@chartDetailIndeksSpbe');
     $router->get('/peraturan-perundangan', 'IndikatorSpbeController@perpuIndex')->name('perpu.index');
     $router->get('/indeks-spbe', 'IndikatorSpbeController@indeksSpbeIndex')->name('indeksspbe.index');
     $router->get('/add-indeks-spbe', 'IndikatorSpbeController@addSpbeIndex')->name('indeksspbe.add');

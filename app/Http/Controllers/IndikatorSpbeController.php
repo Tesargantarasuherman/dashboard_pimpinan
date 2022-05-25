@@ -668,4 +668,16 @@ class IndikatorSpbeController extends Controller
         };
         return $spbePertahun;
     }
+    function chartDetailIndeksSpbe($tahun){
+        $index_spbe = IndexSpbe::where('tahun', $tahun)->get();
+        $detail_spbe = [];
+        $_detail_spbe = [];
+        foreach ($index_spbe as $index) {
+            $_detail_spbe['name'] = $index->indikator->nama_indikator;
+            $_detail_spbe['y'] = $index->skala_nilai;
+            array_push($detail_spbe, $_detail_spbe);
+        };
+
+        return $detail_spbe;
+    }
 }
