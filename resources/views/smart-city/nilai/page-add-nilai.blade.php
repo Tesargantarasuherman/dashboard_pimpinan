@@ -10,7 +10,7 @@
             </ol>
         </nav>
         <div class="row my-4">
-            <div class="col-md-5">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <form class="addModal" method="POST" action="{{ route('nilai.store') }}"
@@ -67,11 +67,11 @@
                         <div class="form-group">
                             <label for="name">Instansi/Unit Penyedia Data</label>
                             <select class="form-control" id="upd" name="unit_penyedia_data"
-                                required>
-                                {{-- <option value="">== Pilih == </option> --}}
-                                {{-- @foreach ($master as $p)
+                                >
+                                <option value="">== Pilih == </option>
+                                @foreach ($master as $p)
                                     <option value= {{ $p->id }}>{{ $p->nama }}</option>
-                                @endforeach --}}
+                                @endforeach
                             </select>
                         </div>
 

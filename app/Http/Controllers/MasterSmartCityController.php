@@ -573,6 +573,8 @@ class MasterSmartCityController extends Controller
                 $addData->ketersediaan = $request->input('ketersediaan');
                 $addData->unit_penyedia_data = $request->input('unit_penyedia_data');
                 $addData->keterangan = $request->input('keterangan');
+                dd($addData);
+
                 $addData->save();
 
                 Toastr::success('Data added successfully', 'Success');
@@ -656,6 +658,10 @@ class MasterSmartCityController extends Controller
                 'message' => $th
             ], 409);
         }
+    }
+    public function getSkpd(){
+        $master = MasterSkpd::orderBy('id', 'desc')->get();
+        return $master;
     }
     
 

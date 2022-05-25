@@ -2,6 +2,8 @@
 
     <script>
         $(document).ready(function() {
+
+
             $("#datepicker").datepicker({
                 format: "yyyy",
                 viewMode: "years",
@@ -55,6 +57,20 @@
                         $("#ketersediaan").val("");
                         $("#keterangan").val("");
 
+                    } else if (data.length == 1) {
+                        $("#kuisioners").html(
+                            '<option selected disabled="true" value="0">=== Pilih === </option>'
+                        );
+                        $.each(data, function(index, value) {
+                            $('#kuisioners').append(
+                                $('<option>').val(value.id).text(value.kuisioner)
+                            )
+                        });
+                        $("#upd").html("");
+                        $("#keterangan_tahun").val("");
+                        $("#ketersediaan").val("");
+                        $("#keterangan").val("");
+
                     } else {
                         $("#kuisioners").html(
                             '<option selected disabled="true" value="0">=== Pilih === </option>'
@@ -64,6 +80,7 @@
                                 $('<option>').val(value.id).text(value.kuisioner)
                             )
                         });
+
                     }
                 },
                 error: function() {}
@@ -91,6 +108,25 @@
                         $("#keterangan_tahun").val("");
                         $("#ketersediaan").val("");
                         $("#keterangan").val("");
+
+                        $.ajax({
+                            type: "GET",
+                            url: '../../skpd',
+
+                            success: function(data) {
+                                console.log(data);
+                                $("#upd").html(
+                                    '<option selected disabled="true" value="0">=== Pilih === </option>'
+                                );
+                                $.each(data, function(index, value) {
+                                    $("#upd").append("<option value=' " + value.id +
+                                        " '> " + value
+                                        .nama + "</option>");
+                                });
+                            },
+                            error: function() {}
+                        });
+
                     } else {
                         $("#keterangan_tahun").val(data[0][0].keterangan_tahun);
                         $("#ketersediaan").val(data[0][0].ketersediaan);
@@ -103,8 +139,9 @@
 
                         $.each(data[1], function(index, object) {
                             $('#upd').append(
-                                    '<option ' +((  object.id == data[0][0].unit_penyedia_data) ? 'selected' : '' ) +'>' +object.nama +'</option>'
-                                );
+                                '<option ' + ((object.id == data[0][0].unit_penyedia_data) ?
+                                    'selected' : '') + '>' + object.nama + '</option>'
+                            );
                         });
 
 

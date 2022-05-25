@@ -43,7 +43,7 @@
             dataType: 'json',
             async: false,
             success: function (){
-            alert('Thanks for your comment!');
+            // alert('Thanks for your comment!');
             }
         });
         let aplikasi =  [

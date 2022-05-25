@@ -198,9 +198,10 @@ $router->group(['prefix' => 'smart-city'], function () use ($router) {
     $router->get('/nilai/kuisioner', 'MasterSmartCityController@nilaiCreate')->name('nilai.create');
     $router->post('/nilai', 'MasterSmartCityController@nilaiStore')->name('nilai.store');
     $router->get('/nilai/{id_skpd}', 'MasterSmartCityController@getNilaiSkpd')->name('nilai.getnilaiskpd');
-
-
+    
+    
 });
+$router->get('/skpd', 'MasterSmartCityController@getSkpd');
 
 $router->group(['prefix' => 'peraturan-perundangan'], function () use ($router) {
     $router->get('/perpu', 'PerpuController@perpuIndex')->name('perpu.index');
