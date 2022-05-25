@@ -10,12 +10,7 @@
                 <div class="d-flex justify-content-between">
                     <h6 class="m-0 font-weight-bold text-gray-800">Daftar Nilai Smart City
                     </h6>
-                    {{-- <form method="GET" action="{{ route('nilai.create') }}">
-                        <button class="btn btn-sm btn-primary">
-                            Tambah Data
-                        </button>
-                    </form> --}}
-                    <form method="GET" action="{{ route('nilai.creates') }}">
+                    <form method="GET" action="{{ route('nilai.create') }}">
                         <button class="btn btn-sm btn-primary">
                             Tambah Data
                         </button> 
