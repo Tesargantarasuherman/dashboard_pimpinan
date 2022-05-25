@@ -49,19 +49,70 @@
                     if (res.length > 0) {
                         $('#form-submit').attr('action', '../spbe/update-spbe');
                         $('#btn-submit').text('Update');
-                        res.forEach(res => {
+                        for(let i = 0 ;i < res.length ;i++){
                             form = `
                         <div class="form-group row">
-                            <label for="inputPassword" class="col-sm-6 col-form-label font-weight-bold">${res.nama_indikator}</label>
+                            <label for="inputPassword" class="col-sm-6 col-form-label font-weight-bold">${res[i].nama_indikator}</label>
                             <div class="col-sm-6">
-                            <input type="hidden" class="form-control" name="id[]" value="${res.id}" required>
-                            <input type="hidden" class="form-control" name="id_indikator[]" value="${res.id_indikator}" required>
-                            <input type="number" class="form-control" min=1 max=5 name="skala_nilai[]" placeholder="${res.nama_indikator}" value="${res.skala_nilai}" required id="skala_nilai">
+                            <input type="hidden" class="form-control" name="id[]" value="${res[i].id}" required>
+                            <input type="hidden" class="form-control" name="id_indikator[]" value="${res[i].id_indikator}" required>
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input form-control-lg" type="radio" name="${res[i].id}" value=1  ${res[i].skala_nilai ==1 ?'checked' : '' } required>
+                            <label class="form-check-label">1</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input form-control-lg" type="radio" name="${res[i].id}" value=2   ${res[i].skala_nilai ==2 ?'checked' : '' } required>
+                            <label class="form-check-label">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input form-control-lg" type="radio" name="${res[i].id}" value=3  ${res[i].skala_nilai ==3 ?'checked' : '' } required>
+                            <label class="form-check-label">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input form-control-lg" type="radio" name="${res[i].id}"  value=4  ${res[i].skala_nilai ==4 ?'checked' : '' } required>
+                            <label class="form-check-label">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                            <input class="form-check-input form-control-lg" type="radio" name="${res[i].id}" value=5   ${res[i].skala_nilai ==5 ?'checked' : '' } required>
+                            <label class="form-check-label">5</label>
+                            </div>
                             </div>
                         </div>
                         `;
                             data.push(form)
-                        });
+                        }
+                        // res.forEach(res => {
+                        //     form = `
+                        // <div class="form-group row">
+                        //     <label for="inputPassword" class="col-sm-6 col-form-label font-weight-bold">${res.nama_indikator}</label>
+                        //     <div class="col-sm-6">
+                        //     <input type="hidden" class="form-control" name="id[]" value="${res.id}" required>
+                        //     <input type="hidden" class="form-control" name="id_indikator[]" value="${res.id_indikator}" required>
+                        //     <div class="form-check form-check-inline">
+                        //     <input class="form-check-input" type="radio" name="skala_nilai[]"  value="${res.skala_nilai}" ${res.skala_nilai ==1 ?'checked' : ''} required>
+                        //     <label class="form-check-label">1</label>
+                        //     </div>
+                        //     <div class="form-check form-check-inline">
+                        //     <input class="form-check-input" type="radio" name="skala_nilai[]"  value="${res.skala_nilai}" ${res.skala_nilai ==2 ?'checked' : ''} required>
+                        //     <label class="form-check-label">2</label>
+                        //     </div>
+                        //     <div class="form-check form-check-inline">
+                        //     <input class="form-check-input" type="radio" name="skala_nilai[]"  value="${res.skala_nilai}" ${res.skala_nilai ==3 ?'checked' : ''} required>
+                        //     <label class="form-check-label">3</label>
+                        //     </div>
+                        //     <div class="form-check form-check-inline">
+                        //     <input class="form-check-input" type="radio" name="skala_nilai[]"  value="${res.skala_nilai}" ${res.skala_nilai ==4 ?'checked' : ''} required>
+                        //     <label class="form-check-label">4</label>
+                        //     </div>
+                        //     <div class="form-check form-check-inline">
+                        //     <input class="form-check-input" type="radio" name="skala_nilai[]"  value="${res.skala_nilai}" ${res.skala_nilai ==5 ?'checked' : ''} required>
+                        //     <label class="form-check-label">5</label>
+                        //     </div>
+                        //     </div>
+                        // </div>
+                        // `;
+                        //     data.push(form)
+                        // });
                         $('#form-add').html(data);
                     } else {
                         $('#form-submit').attr('action','../spbe/add-spbe');
@@ -78,8 +129,27 @@
                                         <label for="inputPassword" class="col-sm-6 col-form-label font-weight-bold">${res.nama_indikator}</label>
                                         <div class="col-sm-6">
                                         <input type="hidden" class="form-control" name="id[]" value="${res.id}" required>
-                                        <input type="number" class="form-control" min=1 max=5 name="skala_nilai[]" placeholder="${res.nama_indikator}" required id="skala_nilai">
+                                        <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="${res.id}" value=1 required>
+                                        <label class="form-check-label">1</label>
                                         </div>
+                                        <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="${res.id}" value=2 required>
+                                        <label class="form-check-label">2</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="${res.id}" value=3 required>
+                                        <label class="form-check-label">3</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="${res.id}"  value=4 required>
+                                        <label class="form-check-label">4</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="${res.id}" value=5  required>
+                                        <label class="form-check-label">5</label>
+                                        </div>
+                                    </div>
                                     </div>
                                     `;
                                     data.push(form)

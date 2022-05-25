@@ -16,39 +16,19 @@
         <div class="card-body">
             <h6 class="m-0 font-weight-bold mb-4 ml-3">Indeks SPBE Tahunan</h6>
             <form method="GET" action="{{ route('indeksspbe.add') }}">
-                <button class="btn btn-sm btn-primary" data-toggle="modal">
-                    Tambah Data
-                </button>
-            </form>
-            <!-- <div class="col-md-12">
-                <div class="card">
-                    <div class="form-group my-2 mx-2"><label for="pilihTahun">Pilih Tahun</label>
-                        <div>
-                            <div><input type="year" class="form-control" value="" id="datepicker" onChange="sort()">
-                            </div>
+                <div class="d-flex justify-content-between align-items-center mx-4">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Pilih Tahun</label>
+                        <div class="col-sm-8">
+                            <input type="year" class="form-control" name="tahun" value="" id="datepicker" required>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-end mr-4"></div>
-                    <div class="card-body">
-                        <h6 class="m-0 font-weight-bold mb-4">Tabel Index SPBE</h6>
-                        <table class="table table-striped" id="data-table">
-                            <thead>
-                                <tr style="font-size: 12px; font-weight: bold;">
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nama Indikator</th>
-                                    <th scope="col">Tahun</th>
-                                    <th scope="col">Bobot</th>
-                                    <th scope="col">Skala Nilai</th>
-                                    <th scope="col">Index</th>
-                                    <th scope="col">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody id="row-table">
-                            </tbody>
-                        </table>
-                    </div>
+                    <button class="btn btn-sm btn-primary">
+                        Tambah Data
+                    </button>
                 </div>
-            </div> -->
+            </form>
+            <div id="chartDetail" style="height:90vh"></div>
         </div>
     </div>
 </div>
@@ -92,13 +72,84 @@
     //         // }
     //     });
     // }
+    function getChart(param) {
+        $.ajax({
+            type: "GET",
+            url: `../spbe/chart/indeks-spbe/api/${param}`,
+            dataType: 'json',
+            async: false,
+            success: function (res) {
+                setChart(res)
+            }
+        });
+    }
+
+    function setChart(params) {
+        Highcharts.chart('chartDetail', {
+            chart: {
+                type: 'bar',
+                marginLeft: 300
+            },
+            title: {
+                text: 'Detail Pertahun'
+            },
+            subtitle: {
+                text: `Indeks`
+            },
+            xAxis: {
+                type: 'category',
+                title: {
+                    text: null
+                },
+                min: 0,
+                max: 15,
+                scrollbar: {
+                    enabled: true
+                },
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Indeks',
+                    align: 'high'
+                }
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                dataSorting: {
+                    enabled: true,
+                },
+                name: 'Indeks',
+                data: params
+            }]
+        });
+    }
     $(document).ready(function () {
-        let tahun =[];
+        let year_now = new Date().getFullYear();
+        $("#datepicker").val(year_now);
+        getChart(year_now);
+        let tahun = [];
         let data = [];
+
         $("#datepicker").datepicker({
             format: "yyyy",
             viewMode: "years",
             minViewMode: "years",
+        }).on('change', function () {
+            let tahun = $("#datepicker").val();
+            getChart(tahun);
         });
 
         $.ajax({
@@ -161,6 +212,7 @@
                 data: data
             }]
         });
+        // 
     });
 
 </script>
