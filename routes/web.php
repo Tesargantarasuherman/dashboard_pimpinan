@@ -116,6 +116,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->put('nilai-kuisioner-smart-city/{id}', 'MasterSmartCityController@updateNilaiKuisionerSmartCity');
 
     $router->get('nilai-kuisioner/{tahun}', 'MasterSmartCityController@getDataTahun');
+    $router->get('nilai/kuisioner/{id_kuisioner}/{tahun}', 'MasterSmartCityController@getDataNilai');
     
 
     //Master Role

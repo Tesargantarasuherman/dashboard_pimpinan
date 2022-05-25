@@ -14,6 +14,7 @@
             // var id_skpd = $(this).val();
             var id_skpd = $('#skpd').val();
 
+
             $.ajax({
                 type: "GET",
                 url: '../api/v1/kuisioner-smart-city/' + id_skpd,
@@ -21,7 +22,7 @@
                 success: function(data) {
                     console.log(data);
                     $("#id_kuisioner").html(
-                        '<option selected disabled="true" value="0">=== Silahkan Pilih === </option>'
+                        '<option selected disabled="true" value="0">=== Pilih === </option>'
                     );
                     $.each(data, function(index, value) {
                         $("#id_kuisioner").append("<option value=' " + value.id + " '> " + value
@@ -37,45 +38,78 @@
             // var id_skpd = $(this).val();
             var id_skpd = $('#skpd').val();
 
+
             $.ajax({
                 type: "GET",
                 url: '../../api/v1/kuisioner-smart-city/' + id_skpd,
 
                 success: function(data) {
                     console.log(data);
-                    $("#kuisioners").html(
-                        '<option selected disabled="true" value="0">=== Silahkan Pilih === </option>'
-                    );
-                    $.each(data, function(index, value) {
-                        $("#kuisioners").append("<option value=' " + value.id + " '> " + value
-                            .kuisioner + "</option>");
-                    });
+
+                    if (data.length == 0) {
+                        $("#kuisioners").html(
+                            '<option selected disabled="true" value="0">=== Data belum ada === </option>'
+                        );
+                        $("#upd").html("");
+                        $("#keterangan_tahun").val("");
+                        $("#ketersediaan").val("");
+                        $("#keterangan").val("");
+
+                    } else {
+                        $("#kuisioners").html(
+                            '<option selected disabled="true" value="0">=== Pilih === </option>'
+                        );
+                        $.each(data, function(index, value) {
+                            $('#kuisioners').append(
+                                $('<option>').val(value.id).text(value.kuisioner)
+                            )
+                        });
+                    }
                 },
                 error: function() {}
             });
 
         };
 
-        function dataNilai() {
+        function getDataNilai() {
             var tahun = $('#datepicker').val();
+            var id_kuisioner = $('#kuisioners').val();
 
             $.ajax({
                 type: "GET",
-                url: '../../api/v1/nilai-kuisioner/' + tahun,
-
+                url: "../../api/v1/nilai/kuisioner/" + id_kuisioner + "/" + tahun,
 
                 success: function(data) {
                     console.log(data);
 
                     var keterangan_tahun = document.getElementById('keterangan_tahun');
+                    var ketersediaan = document.getElementById('ketersediaan');
+                    var keterangan = document.getElementById('keterangan');
+                    var upd = document.getElementById('upd');
 
-                    if (data.length == 0 ) {
+                    if (data.length == 0) {
                         $("#keterangan_tahun").val("");
-
+                        $("#ketersediaan").val("");
+                        $("#keterangan").val("");
                     } else {
-                        $("#keterangan_tahun").val(data[0].keterangan_tahun);
-                    }
+                        $("#keterangan_tahun").val(data[0][0].keterangan_tahun);
+                        $("#ketersediaan").val(data[0][0].ketersediaan);
+                        $("#keterangan").val(data[0][0].keterangan);
 
+
+                        $("#upd").html(
+                            '<option selected disabled="true" value="0">=== Pilih === </option>'
+                        );
+
+                        $.each(data[1], function(index, object) {
+                            $('#upd').append(
+                                    '<option ' +((  object.id == data[0][0].unit_penyedia_data) ? 'selected' : '' ) +'>' +object.nama +'</option>'
+                                );
+                        });
+
+
+
+                    }
 
                 },
                 error: function() {}

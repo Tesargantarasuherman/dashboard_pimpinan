@@ -506,6 +506,7 @@ class MasterSmartCityController extends Controller
     public function nilaiIndex()
     {
         $getData = NilaiKuisionerSmartCity::orderBy('id', 'desc')->get();
+        
 
         return view('smart-city.nilai.index', compact('getData'));
     }
@@ -542,19 +543,21 @@ class MasterSmartCityController extends Controller
         }
     }
 
-    public function nilaiCreate()
-    {
-        $skpd = MasterSkpd::orderBy('id', 'desc')->get();
-        $getKuisioner = MasterKuisionerSmartCity::get();
+    // public function nilaiCreate()
+    // {
+    //     $skpd = MasterSkpd::orderBy('id', 'desc')->get();
+    //     $getKuisioner = MasterKuisionerSmartCity::get();
 
-        return view('smart-city.nilai.page-add', compact(['skpd', 'getKuisioner' ]));
-    }
+    //     return view('smart-city.nilai.page-add', compact(['skpd', 'getKuisioner' ]));
+    // }
+
     public function nilaiCreates()
     {
         $skpd = MasterSkpd::orderBy('id', 'desc')->get();
+        $master = MasterSkpd::orderBy('id', 'desc')->get();
         $getKuisioner = MasterKuisionerSmartCity::get();
 
-        return view('smart-city.nilai.nilai', compact(['skpd', 'getKuisioner' ]));
+        return view('smart-city.nilai.nilai', compact(['skpd', 'getKuisioner', 'master' ]));
     }
 
     public function nilaiStore(Request $request)
@@ -639,5 +642,29 @@ class MasterSmartCityController extends Controller
             ], 409);
         }
     }
+
+    public function getDataNilai(Request $request, $id_kuisioner, $tahun)
+    {
+        try {
+
+            $getData = NilaiKuisionerSmartCity::where('id_kuisioner', $id_kuisioner)->where('tahun', $tahun)->get();
+            $master = MasterSkpd::orderBy('id', 'desc')->get();
+
+            if (!$getData) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data tidak ada',
+                ], 404);
+            } else {
+                return   [ $getData, $master];
+            }
+        } catch (\Throwable $th) {
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+    
 
 }

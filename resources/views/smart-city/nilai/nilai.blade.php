@@ -21,8 +21,7 @@
 
                                 <div class="form-group"><label for="pilihTahun">Pilih Tahun</label>
                                     <div>
-                                        <input type="tahun" class="form-control" value="" id="datepicker" name="tahun"
-                                            onchange="dataNilai()">
+                                        <input type="tahun" class="form-control" value="" id="datepicker" name="tahun">
                                     </div>
                                 </div>
 
@@ -36,14 +35,6 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="name">Kuisioner</label>
-                                    <select class="form-control" id="kuisioners" name="id_kuisioner" required>
-                                    </select>
-                                </div>
-
-
-
                             </div>
                     </div>
                 </div>
@@ -51,6 +42,13 @@
             <div class="col-md-7">
                 <div class="card">
                     <div class="card-body">
+
+
+                        <div class="form-group">
+                            <label for="name">Kuisioner</label>
+                            <select class="form-control" id="kuisioners" name="id_kuisioner" required onchange="getDataNilai()">
+                            </select>
+                        </div>
 
                         <div class="form-group">
                             <label for="name">Keterangan Tahun</label>
@@ -70,10 +68,10 @@
                             <label for="name">Instansi/Unit Penyedia Data</label>
                             <select class="form-control" id="upd" name="unit_penyedia_data"
                                 required>
-                                <option value="">Pilih</option>
-                                @foreach ($skpd as $p)
-                                    <option value={{ $p->id }}>{{ $p->nama }}</option>
-                                @endforeach
+                                {{-- <option value="">== Pilih == </option> --}}
+                                {{-- @foreach ($master as $p)
+                                    <option value= {{ $p->id }}>{{ $p->nama }}</option>
+                                @endforeach --}}
                             </select>
                         </div>
 
