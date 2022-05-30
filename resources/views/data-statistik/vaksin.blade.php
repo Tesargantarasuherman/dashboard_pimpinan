@@ -910,7 +910,9 @@
             dataType: 'json',
             async: false,
             success: function (res) {
-                console.log(res)
+                return(
+                    
+                )
             }
         });
     }

@@ -198,7 +198,7 @@ $router->group(['prefix' => 'smart-city'], function () use ($router) {
     $router->get('/nilai/kuisioner', 'MasterSmartCityController@nilaiCreate')->name('nilai.create');
     $router->post('/nilai', 'MasterSmartCityController@nilaiStore')->name('nilai.store');
     $router->get('/nilai/{id_skpd}', 'MasterSmartCityController@getNilaiSkpd')->name('nilai.getnilaiskpd');
-
+    $router->get('/kuisioner/{skpd}', 'MasterSmartCityController@getKuisionerBySkpd');
 
 });
 
