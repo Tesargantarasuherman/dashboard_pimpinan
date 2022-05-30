@@ -901,5 +901,25 @@
             </div>
         </div>
     </div>
-    @include('data-statistik.js')
-@endsection
+</div>
+@section('js')
+<script>
+    function getVaksin() {
+        $.ajax({
+            type: "GET",
+            url: `../api/v1/vaksin/terkini`,
+            dataType: 'json',
+            async: false,
+            success: function (res) {
+                return(
+                    
+                )
+            }
+        });
+    }
+    $(document).ready(function () {
+        getVaksin()
+    })
+</script>
+@stop
+    @endsection

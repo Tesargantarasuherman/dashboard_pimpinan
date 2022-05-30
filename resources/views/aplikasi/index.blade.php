@@ -39,11 +39,14 @@
     $(document).ready(function() {
         $.ajax({
             type: "GET",
-            url:   "http://localhost:8000/aplikasi/api",
+            url:   "https://aplikasi.bandung.go.id/wp-json/api/v1/aplikasi?page=1&per_page=300",
             dataType: 'json',
+            headers: {
+                    "Authorization": "261b3b04f89120d8515b57cd1011610b8fd2272a",
+                },
             async: false,
-            success: function (){
-            // alert('Thanks for your comment!');
+            success: function (res){
+                console.log(res)
             }
         });
         let aplikasi =  [

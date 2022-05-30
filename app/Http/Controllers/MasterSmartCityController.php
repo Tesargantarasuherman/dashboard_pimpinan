@@ -83,6 +83,11 @@ class MasterSmartCityController extends Controller
         }
     }
 
+    public function getKuisionerBySkpd($skpd){
+        $kuisioner = MasterKuisionerSmartCity::where('id_skpd', $skpd)->get();
+        return $kuisioner;
+    }
+
     public function getByIdKebutuhanDataPendukung(Request $request, $id)
     {
         try {
