@@ -40,9 +40,9 @@
                                             <label>Unit Penyedia Data</label>
                                             <select class="form-control" name="penyedia[]" id="penyedia-${res.id}">
                                             <option value="">Pilih</option>
-                                            @foreach($skpd as $p)
+                                                @foreach($skpd as $p)
                                                 <option value={{ $p->id }}   ${res.unit_penyedia_data  == {{ $p->id }} ? 'selected' : ''} >{{ $p->nama }}</option>
-                                            @endforeach
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group col-sm-3">
@@ -57,12 +57,56 @@
                     });
                     $('#form-kuisioner').html(data);
                 }
-                else{
-                    $('#form-kuisioner').html('');
-                }
-            },
-            error: function () {}
-        });
+                else {
+                    $.ajax({
+                            type: "GET",
+                            url: `../kuisioner/${skpd}`,
+                            success: function (res) {
+                                res.forEach(res => {
+                        form = `
+                                    <div class="form-group row">
+                                        <input type="hidden" class="form-control" name="id_kuisioner[]" value="${res.id}">
+                                        <label class="col-sm-3 mt-2 col-form-label font-weight-bold">${res.kuisioner}</label>
+                                        <div class="form-group col-sm-2">
+                                        <label >Ketersediaan Data</label>
+                                            <select class="form-control" onchange="tersedia(${res.id})" name="ketersediaan[]" id="ketersediaan-${res.id}">
+                                            <option value="tersedia" >Tersedia</option>
+                                            <option value="tidak tersedia">Tidak Tersedia</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-sm-2">
+                                            <label >Nilai</label>
+                                            <input type="text" class="form-control"  placeholder="Masukkan Nilai" name="nilai[]" id="nilai-${res.id}">
+                                        </div>
+                                        <div class="form-group col-sm-2">
+                                            <label>Unit Penyedia Data</label>
+                                            <select class="form-control" name="penyedia[]" id="penyedia-${res.id}">
+                                            <option value="">Pilih</option>
+                                                @foreach($skpd as $p)
+                                                <option value={{ $p->id }}>{{ $p->nama }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-sm-3">
+                                        <div class="form-group">
+                                            <label>Keterangan</label>
+                                            <textarea class="form-control" rows="2" name="keterangan[]" id="keterangan-${res.id}"></textarea>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    `;
+                        data.push(form)
+                    });
+                    $('#form-kuisioner').html(data);
+                            },
+                            error: function () {}
+                        })
+                    }
+
+            },error: function () {
+
+            }
+        })
     }
 
     function tersedia(id) {
@@ -97,7 +141,8 @@
                     '<option selected disabled="true" value="0">=== Pilih === </option>'
                 );
                 $.each(data, function (index, value) {
-                    $("#id_kuisioner").append("<option value=' " + value.id + " '> " + value
+                    $("#id_kuisioner").append("<option value=' " + value.id + " '> " +
+                        value
                         .kuisioner + "</option>");
                 });
             },
@@ -175,7 +220,8 @@
 
                     $.each(data[1], function (index, object) {
                         $('#upd').append(
-                            '<option ' + ((object.id == data[0][0].unit_penyedia_data) ?
+                            '<option ' + ((object.id == data[0][0]
+                                    .unit_penyedia_data) ?
                                 'selected' : '') + '>' + object.nama + '</option>'
                         );
                     });
