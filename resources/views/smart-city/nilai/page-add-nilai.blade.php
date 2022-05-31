@@ -13,7 +13,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('nilai.store') }}" enctype="multipart/form-data">
+                    <form action="{{ route('nilai.store') }}" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group"><label for="pilihTahun">Pilih Tahun</label>
                             <div>
@@ -32,6 +32,7 @@
                         <div id="form-kuisioner">
 
                         </div>
+                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
                     </form>
                 </div>
             </div>

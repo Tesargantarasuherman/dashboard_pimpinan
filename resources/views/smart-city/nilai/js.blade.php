@@ -17,54 +17,70 @@
 
         $.ajax({
             type: "GET",
-            url: '../kuisioner/' + skpd,
+            url: `../get-kuisioner/${skpd}/${tahun}`,
             success: function (res) {
-                res.forEach(res => {
-                    form = `
+                if (res.length > 0) {
+                    res.forEach(res => {
+                        form = `
                                     <div class="form-group row">
+                                        <input type="hidden" class="form-control" name="id_kuisioner[]" value="${res.id}">
                                         <label class="col-sm-3 mt-2 col-form-label font-weight-bold">${res.kuisioner}</label>
                                         <div class="form-group col-sm-2">
                                         <label >Ketersediaan Data</label>
-                                            <select class="form-control" onchange="tersedia(${res.id})" id="${res.id}">
-                                            <option value="">Pilih</option>
-                                            <option value="tersedia">Tersedia</option>
-                                            <option value="tidak tersedia">Tidak Tersedia</option>
+                                            <select class="form-control" onchange="tersedia(${res.id})" name="ketersediaan[]" id="ketersediaan-${res.id}">
+                                            <option value="tersedia" ${res.ketersediaan == 'tersedia' ? 'selected' :''}>Tersedia</option>
+                                            <option value="tidak tersedia" ${res.ketersediaan == 'tidak tersedia' ? 'selected' :''}>Tidak Tersedia</option>
                                             </select>
                                         </div>
-                                        <div id="${res.id}-ketersediaan">
-                                        </div>
-                                        </div>
-                                    `;
-                    data.push(form)
-                });
-                $('#form-kuisioner').html(data);
-            },
-            error: function () {}
-        });
-    }
-
-    function tersedia(id) {
-        console.log(id)
-        let html = `<div class="form-group col-sm-2">
+                                        <div class="form-group col-sm-2">
                                             <label >Nilai</label>
-                                            <input type="text" class="form-control" placeholder="Masukkan Nilai">
+                                            <input type="text" class="form-control"  placeholder="Masukkan Nilai" value=${res.keterangan_tahun} name="nilai[]" id="nilai-${res.id}">
                                         </div>
                                         <div class="form-group col-sm-2">
                                             <label>Unit Penyedia Data</label>
-                                            <select class="form-control" >
+                                            <select class="form-control" name="penyedia[]" id="penyedia-${res.id}">
                                             <option value="">Pilih</option>
                                             @foreach($skpd as $p)
-                                                <option value={{ $p->id }}>{{ $p->nama }}</option>
+                                                <option value={{ $p->id }}   ${res.unit_penyedia_data  == {{ $p->id }} ? 'selected' : ''} >{{ $p->nama }}</option>
                                             @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group col-sm-3">
                                         <div class="form-group">
                                             <label>Keterangan</label>
-                                            <textarea class="form-control" rows="3"></textarea>
+                                            <textarea class="form-control" rows="2" name="keterangan[]" id="keterangan-${res.id}">${res.keterangan}</textarea>
                                         </div>
-                                        </div>`
-        $(`#${id}-ketersediaan`).html(html);
+                                        </div>
+                                    </div>
+                                    `;
+                        data.push(form)
+                    });
+                    $('#form-kuisioner').html(data);
+                }
+                else{
+                    $('#form-kuisioner').html('');
+                }
+            },
+            error: function () {}
+        });
+    }
+
+    function tersedia(id) {
+        let status = $(`#ketersediaan-${id}`).val();
+        console.log(status);
+        if (status == 'tersedia') {
+            $(`input[id=nilai-${id}`).prop('disabled', false);
+            $(`select[id=penyedia-${id}]`).prop('disabled', false);
+            $(`textarea[id=keterangan-${id}]`).prop('disabled', false);
+        } else {
+            $(`input[id=nilai-${id}`).prop('disabled', true);
+            $(`input[id=nilai-${id}`).val('');
+            $(`select[id=penyedia-${id}]`).prop('disabled', true);
+            $(`select[id=penyedia-${id}]`).val('');
+            $(`textarea[id=keterangan-${id}]`).prop('disabled', true);
+            $(`textarea[id=keterangan-${id}]`).val('');
+        }
+
     }
 
     function getDataSkpd() {

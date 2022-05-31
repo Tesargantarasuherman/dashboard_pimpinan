@@ -559,37 +559,48 @@ class MasterSmartCityController extends Controller
 
     public function nilaiStore(Request $request)
     {
-
-        try {
-
-            //Cek Duplicate data
-            $duplicate = NilaiKuisionerSmartCity::where('tahun', $request->input('tahun'))->first();
-
-            if ($duplicate) {
-                Toastr::warning('Duplicate data', 'Warning');
-                return back();
-            } else {
-
-                $addData = new NilaiKuisionerSmartCity();
-                $addData->tahun = $request->input('tahun');
-                $addData->id_skpd = $request->input('id_skpd');
-                $addData->id_kuisioner = $request->input('id_kuisioner');
-                $addData->keterangan_tahun = $request->input('keterangan_tahun');
-                $addData->ketersediaan = $request->input('ketersediaan');
-                $addData->unit_penyedia_data = $request->input('unit_penyedia_data');
-                $addData->keterangan = $request->input('keterangan');
-                $addData->save();
-
-                Toastr::success('Data added successfully', 'Success');
-                return back();
-            }
-        } catch (\Throwable $th) {
-            //return error message
-            return response()->json([
-                'success' => false,
-                'message' => $th
-            ], 409);
+        $data = $request->ketersediaan;
+        for($i = 0 ; $i < count($data);$i++){
+            $addData = new NilaiKuisionerSmartCity();
+            $addData->tahun = $request->input('tahun');
+            $addData->id_skpd = $request->input('id_skpd');
+            $addData->id_kuisioner = $request->input('id_kuisioner')[$i];
+            $addData->keterangan_tahun = $request->input('nilai')[$i];
+            $addData->ketersediaan = $request->input('ketersediaan')[$i];
+            $addData->unit_penyedia_data = $request->input('penyedia')[$i];
+            $addData->keterangan = $request->input('keterangan')[$i];
+            $addData->save();
         }
+        // try {
+
+        //     //Cek Duplicate data
+        //     $duplicate = NilaiKuisionerSmartCity::where('tahun', $request->input('tahun'))->first();
+
+        //     if ($duplicate) {
+        //         Toastr::warning('Duplicate data', 'Warning');
+        //         return back();
+        //     } else {
+
+        //         $addData = new NilaiKuisionerSmartCity();
+        //         $addData->tahun = $request->input('tahun');
+        //         $addData->id_skpd = $request->input('id_skpd');
+        //         $addData->id_kuisioner = $request->input('id_kuisioner');
+        //         $addData->keterangan_tahun = $request->input('keterangan_tahun');
+        //         $addData->ketersediaan = $request->input('ketersediaan');
+        //         $addData->unit_penyedia_data = $request->input('unit_penyedia_data');
+        //         $addData->keterangan = $request->input('keterangan');
+        //         $addData->save();
+
+        //         Toastr::success('Data added successfully', 'Success');
+        //         return back();
+        //     }
+        // } catch (\Throwable $th) {
+        //     //return error message
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => $th
+        //     ], 409);
+        // }
     }
 
 
@@ -616,6 +627,10 @@ class MasterSmartCityController extends Controller
         }
     }
 
+    public function getKuisionerBySkpdPertahun($skpd,$tahun){
+        $getData = NilaiKuisionerSmartCity::where('id_skpd',$skpd)->where('tahun', $tahun)->get();
+        return $getData;
+    }
 
     public function getDataTahun(Request $request, $tahun)
     {
