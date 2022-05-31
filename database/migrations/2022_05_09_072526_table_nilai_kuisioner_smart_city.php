@@ -18,10 +18,10 @@ class TableNilaiKuisionerSmartCity extends Migration
             $table->integer('id_skpd');
             $table->unsignedBigInteger('id_kuisioner')->nullable();
             $table->integer('tahun');
-            $table->string('keterangan_tahun');
+            $table->string('nilai_tahun')->nullable();
             $table->string('ketersediaan');
-            $table->integer('unit_penyedia_data');
-            $table->string('keterangan');
+            $table->integer('unit_penyedia_data')->nullable();
+            $table->string('deskripsi')->nullable();
             $table->timestamps();
         });
 

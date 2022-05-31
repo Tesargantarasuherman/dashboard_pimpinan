@@ -201,6 +201,7 @@ $router->group(['prefix' => 'smart-city'], function () use ($router) {
     $router->get('/nilai/{id_skpd}', 'MasterSmartCityController@getNilaiSkpd')->name('nilai.getnilaiskpd');
     $router->get('/kuisioner/{skpd}', 'MasterSmartCityController@getKuisionerBySkpd');
     $router->get('/get-kuisioner/{skpd}/{tahun}', 'MasterSmartCityController@getKuisionerBySkpdPertahun');
+    $router->post('/nilai/update', 'MasterSmartCityController@nilaiUpdate')->name('nilai.update');
 
 });
 
