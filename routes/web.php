@@ -193,12 +193,15 @@ $router->group(['prefix' => 'smart-city'], function () use ($router) {
     $router->get('/kuisioner', 'MasterSmartCityController@kuisionerIndex')->name('kuisioner.index');
     $router->post('/kuisioner', 'MasterSmartCityController@kuisionerCreate')->name('kuisioner.create');
 
+    $router->get('/master-skpd', 'MasterSkpdController@getAllMasterSkpd');
 
     $router->get('/nilai', 'MasterSmartCityController@nilaiIndex')->name('nilai.index');
     $router->get('/nilai/kuisioner', 'MasterSmartCityController@nilaiCreate')->name('nilai.create');
     $router->post('/nilai', 'MasterSmartCityController@nilaiStore')->name('nilai.store');
     $router->get('/nilai/{id_skpd}', 'MasterSmartCityController@getNilaiSkpd')->name('nilai.getnilaiskpd');
     $router->get('/kuisioner/{skpd}', 'MasterSmartCityController@getKuisionerBySkpd');
+    $router->get('/get-kuisioner/{skpd}/{tahun}', 'MasterSmartCityController@getKuisionerBySkpdPertahun');
+    $router->post('/nilai/update', 'MasterSmartCityController@nilaiUpdate')->name('nilai.update');
 
 });
 $router->get('/skpd', 'MasterSmartCityController@getSkpd');

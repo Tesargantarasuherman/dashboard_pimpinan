@@ -559,39 +559,39 @@ class MasterSmartCityController extends Controller
 
     public function nilaiStore(Request $request)
     {
-
-        try {
-
-            //Cek Duplicate data
-            $duplicate = NilaiKuisionerSmartCity::where('tahun', $request->input('tahun'))->first();
-
-            if ($duplicate) {
-                Toastr::warning('Duplicate data', 'Warning');
-                return back();
-            } else {
-
-                $addData = new NilaiKuisionerSmartCity();
-                $addData->tahun = $request->input('tahun');
-                $addData->id_skpd = $request->input('id_skpd');
-                $addData->id_kuisioner = $request->input('id_kuisioner');
-                $addData->keterangan_tahun = $request->input('keterangan_tahun');
-                $addData->ketersediaan = $request->input('ketersediaan');
-                $addData->unit_penyedia_data = $request->input('unit_penyedia_data');
-                $addData->keterangan = $request->input('keterangan');
-                dd($addData);
-
-                $addData->save();
-
-                Toastr::success('Data added successfully', 'Success');
-                return back();
-            }
-        } catch (\Throwable $th) {
-            //return error message
-            return response()->json([
-                'success' => false,
-                'message' => $th
-            ], 409);
+        // dd($request->input('tahun'));
+        $data = $request->ketersediaan;
+        for($i = 0 ; $i < count($data);$i++){
+            $addData = new NilaiKuisionerSmartCity();
+            $addData->tahun = $request->input('tahun');
+            $addData->id_skpd = $request->input('id_skpd');
+            $addData->id_kuisioner = $request->input('id_kuisioner')[$i];
+            $addData->nilai_tahun = $request->input('nilai')[$i];
+            $addData->ketersediaan = $request->input('ketersediaan')[$i];
+            $addData->unit_penyedia_data = $request->input('penyedia')[$i];
+            $addData->deskripsi = $request->input('keterangan')[$i];
+            $addData->save();
+            // return $addData;
         }
+        return back();
+    }
+    public function nilaiUpdate(Request $request)
+    {        
+        // dd($request);
+        $data = $request->ketersediaan;
+        for($i = 0 ; $i < count($data);$i++){
+            $addData = NilaiKuisionerSmartCity::where('id',$request->input('id')[$i])->first();
+            $addData->tahun = $request->input('tahun');
+            $addData->id_skpd = $request->input('id_skpd');
+            $addData->id_kuisioner = $request->input('id_kuisioner')[$i];
+            $addData->nilai_tahun = $request->input('nilai')[$i];
+            $addData->ketersediaan = $request->input('ketersediaan')[$i];
+            $addData->unit_penyedia_data = $request->input('penyedia')[$i];
+            $addData->deskripsi = $request->input('keterangan')[$i];
+            $addData->update();
+            // return $addData;
+        }
+        return back();
     }
 
 
@@ -618,6 +618,27 @@ class MasterSmartCityController extends Controller
         }
     }
 
+    public function getKuisionerBySkpdPertahun($skpd,$tahun){
+        $getData = NilaiKuisionerSmartCity::where('id_skpd',$skpd)->where('tahun', $tahun)->get();
+            $newArr = [];
+            $saveData = [];
+            $no = 1;
+            foreach ($getData as $key) {
+                $newArr['no'] = $no++;
+                $newArr['id'] = $key->id;
+                $newArr['id_skpd'] = $key->id_skpd;
+                $newArr['id_kuisioner'] = $key->id_kuisioner;
+                $newArr['kuisioner'] = $key->masterKuisioner->kuisioner;
+                $newArr['tahun'] = $key->tahun;
+                $newArr['nilai_tahun'] = $key->nilai_tahun == null ? '' : $key->nilai_tahun;
+                $newArr['ketersediaan'] = $key->ketersediaan ;
+                $newArr['unit_penyedia_data'] = $key->unit_penyedia_data == null ?'':$key->unit_penyedia_data;
+                $newArr['deskripsi'] = $key->deskripsi == null ? '': $key->deskripsi;
+
+                array_push($saveData, $newArr);
+            };
+        return $saveData;
+    }
 
     public function getDataTahun(Request $request, $tahun)
     {

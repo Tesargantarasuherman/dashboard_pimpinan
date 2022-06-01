@@ -13,10 +13,10 @@ class NilaiKuisionerSmartCity extends Model
         'id_skpd',
         'id_kuisioner',
         'tahun',
-        'deskripsi_tahun',
+        'nilai_tahun',
         'ketersediaan',
         'unit_penyedia_data',
-        'keterangan',
+        'deskripsi',
     ];
 
     public function kebutuhanDataPendukung()
