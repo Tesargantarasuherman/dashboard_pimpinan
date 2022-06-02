@@ -167,8 +167,32 @@ class IntegrasiController extends Controller
 
         $response = curl_exec($curl);
 
-        curl_close($curl);
-        echo $response;
+        $arr =[
+            'data'=> json_decode($response)
+        ];
+        return $response;
+    }
+    public function shalat(Request $request)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.myquran.com/v1/sholat/jadwal/1219/2022/02/06',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+        ));
+
+        $response = curl_exec($curl);
+
+        $arr =[
+            'data'=> json_decode($response)
+        ];
+        return $arr;
     }
 
     public function covid(){
