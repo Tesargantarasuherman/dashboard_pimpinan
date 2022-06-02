@@ -573,6 +573,7 @@ class MasterSmartCityController extends Controller
             $addData->save();
             // return $addData;
         }
+        Toastr::success('Data added successfully', 'Success');
         return back();
     }
     public function nilaiUpdate(Request $request)
@@ -591,6 +592,7 @@ class MasterSmartCityController extends Controller
             $addData->update();
             // return $addData;
         }
+        Toastr::success('Data added successfully', 'Success');
         return back();
     }
 

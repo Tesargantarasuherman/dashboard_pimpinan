@@ -44,6 +44,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('cuaca', 'IntegrasiController@cuaca');
     $router->get('users', 'IntegrasiController@users');
     $router->get('covid', 'IntegrasiController@covid');
+    $router->get('shalat', 'IntegrasiController@shalat');
 
 
     //tambah Skala Nilai
