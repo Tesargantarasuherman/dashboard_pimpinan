@@ -1,7 +1,11 @@
 @extends('layouts.admin')
 
 @section('main-content')
-<div class="container-fluid">
+<style>
+
+</style>
+
+<div class="container-fluid" >
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('nilai.index') }}">Nilai</a></li>

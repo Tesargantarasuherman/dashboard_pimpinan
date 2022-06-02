@@ -2,13 +2,15 @@
 
 <script>
     $(document).ready(function () {
+        let year_now = new Date().getFullYear();
+        $("#datepicker").val(year_now);
         $("#datepicker").datepicker({
             format: "yyyy",
             viewMode: "years",
             minViewMode: "years",
         });
+       
     });
-
     function getKuisioner() {
         let data = [];
         let tahun = $("#datepicker").val();
@@ -17,6 +19,9 @@
         $.ajax({
             type: "GET",
             url: `../get-kuisioner/${skpd}/${tahun}`,
+            beforeSend: function (data) {
+                showLoading();
+            },
             success: function (res) {
                 if (res.length > 0) {
                     $('#form-submit').attr('action', '../nilai/update');
@@ -67,6 +72,9 @@
                     $.ajax({
                         type: "GET",
                         url: `../kuisioner/${skpd}`,
+                        beforeSend: function (data) {
+                            showLoading();
+                        },
                         success: function (res) {
                             if (res.length > 0) {
                                 $('#form-submit').attr('action', '../nilai');
@@ -114,19 +122,25 @@
                             } else {
                                 $('#submit-data').css('visibility', 'hidden');
                                 $('#alert').html(`<div class="alert alert-warning" role="alert">
-                                                Belum Ada
+                                                Data Kuisioner Belum Ada
                                 </div>`);
                                 $('#form-kuisioner').html('');
                             }
                         },
-                        error: function () {}
+                        error: function () {},
+                        complete: function (data) {
+                            hideLoading();
+                        },
                     })
                 }
 
             },
             error: function () {
 
-            }
+            },
+            complete: function (data) {
+                hideLoading();
+            },
         })
     }
 

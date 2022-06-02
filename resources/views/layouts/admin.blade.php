@@ -50,8 +50,58 @@
         .nav-item.active>a {
             color: white !important;
         }
-
+        .lds-facebook {
+        display: inline-block;
+        position: absolute;
+        top:50%;
+        width: 80px;
+        height: 80px;
+        z-index:999999;
+        }
+        .lds-facebook div {
+        display: inline-block;
+        position: absolute;
+        left: 8px;
+        width: 16px;
+        background: #4E73DF;
+        animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+        }
+        .lds-facebook div:nth-child(1) {
+        left: 8px;
+        animation-delay: -0.24s;
+        }
+        .lds-facebook div:nth-child(2) {
+        left: 32px;
+        animation-delay: -0.12s;
+        }
+        .lds-facebook div:nth-child(3) {
+        left: 56px;
+        animation-delay: 0;
+        }
+        @keyframes lds-facebook {
+        0% {
+            top: 8px;
+            height: 64px;
+        }
+        50%, 100% {
+            top: 24px;
+            height: 32px;
+        }
+        }
+        .overlay{
+            z-index:99999;
+            position:fixed;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            background-color:rgba(130,130,130,0.8);
+            text-align:center;
+        }
     </style>
+    <div class="loading overlay">
+        <div class="lds-facebook"><div></div><div></div><div></div></div>
+    </div>
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
@@ -507,6 +557,20 @@
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
    
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <script>
+    function showLoading() {
+        $(".loading").css("display", "block")
+    }
+
+    function hideLoading() {
+        $(".loading").css("display", "none")
+    }
+    $(document).ready(function () {
+        setTimeout(() => {
+            hideLoading();
+        }, 2000);
+    });
+    </script>
     @yield('js')
 </body>
 
