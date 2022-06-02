@@ -80,6 +80,7 @@
 
                     $.each(res.data.labels, function(index, value) {
                         tanggal.push((res.data.labels[index]));
+                        
                     });
 
                 }
