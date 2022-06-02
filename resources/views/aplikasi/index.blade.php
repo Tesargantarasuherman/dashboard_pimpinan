@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-md-5">
                         <div id="container"></div>
-                        <div id="containers"></div>
+                        {{-- <div id="containers"></div> --}}
                     </div>
                     <div class="col-md-7">
                         <div class="row">

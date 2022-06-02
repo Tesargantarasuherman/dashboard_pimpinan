@@ -901,5 +901,5 @@
             </div>
         </div>
     </div>
-    @include('data-statistik.js')
+    @include('data-statistik.js-vaksin')
 @endsection

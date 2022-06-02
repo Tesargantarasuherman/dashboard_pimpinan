@@ -43,7 +43,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('agenda/kegiatan/sinkron', 'IntegrasiController@sinkronAgendaKegiatan');
     $router->get('cuaca', 'IntegrasiController@cuaca');
     $router->get('users', 'IntegrasiController@users');
-    $router->get('covid', 'IntegrasiController@covid');
+    $router->get('/covid', 'IntegrasiController@covid');
 
 
     //tambah Skala Nilai

@@ -189,7 +189,17 @@ class IntegrasiController extends Controller
 
         $response = curl_exec($curl);
 
-        curl_close($curl);
-        echo $response;
+        // curl_close($curl);
+        // echo $response;
+
+        $jsonData = ["data"=>json_decode($response)];
+
+        return $jsonData;
+
+
+
+
     }
+
+    
 }
