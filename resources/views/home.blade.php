@@ -80,7 +80,7 @@
                     <div class="col-md-9">
                         <div class="card shadow">
                             <div class="card-body">
-                                <h6 class="m-0 font-weight-bold">Statistik</h6>
+                                <h6 class="m-0 font-weight-bold">Statistik Rekapitulasi</h6>
                                 <div type="bar" height="300" width="100%" style="min-height: 315px;" id="chart">
 
                                 </div>
@@ -178,6 +178,7 @@
 <script>
     let aplikasiLength = 0;
     let cctvLength = 0;
+    let wifiLength=0;
     function getCuaca() {
         $.ajax({
         type: "GET",
@@ -280,7 +281,7 @@ Highcharts.chart('chart', {
     },
     title: {
         align: 'left',
-        text: 'Data'
+        text: 'Data Rekapitulasi Rescource'
     },
     subtitle: {
         align: 'left',
@@ -335,7 +336,7 @@ Highcharts.chart('chart', {
                 },
                 {
                     name: "Wifi",
-                    y: 72,
+                    y: wifiLength,
                     drilldown: "Wifi"
                 }
             ]
@@ -354,6 +355,7 @@ Highcharts.chart('chart', {
             async: false,
             success: function (res){
                 aplikasiLength = res.data.length;
+                setChart();
             }
         });
     }
@@ -362,18 +364,34 @@ Highcharts.chart('chart', {
         type: "GET",
         url: `../infrastruktur-tik/api/cctv`,
         success: function (res) {
+            console.log(res.length)
             cctvLength = res.length;
+            setChart();
+        }
+    })
+    }
+    function getWifi(){
+        $.ajax({
+        type: "GET",
+        url: `../api/v1/master-data-wifi`,
+        success: function (res) {
+            console.log(res)
+            wifiLength = res.length;
+            setChart();
         }
     })
     }
     $(document).ready(function() {
-        dateNow();
+        setTimeout(() => {
+            dateNow();
+        }, 1000);
         getAplikasi();
         getShalat();
         getCuaca();
         setCalendar();
         setChart();
         getCCTV();
+        getWifi();
     })
     function displayMessage(message) {
         toastr.success(message, 'Event');

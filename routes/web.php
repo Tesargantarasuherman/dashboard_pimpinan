@@ -81,7 +81,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('master-data-wifi/{idWifi}', 'MasterDataWifiController@getMasterDataWifiById');
     $router->put('master-data-wifi/{idWifi}', 'MasterDataWifiController@updateMasterDataWifiById');
     $router->delete('master-data-wifi/{idWifi}', 'MasterDataWifiController@deleteMasterDataWifiById');
-    $router->get('master-data-wifi/', 'MasterDataWifiController@cariMasterDataWifi');
+    // $router->get('master-data-wifi/', 'MasterDataWifiController@cariMasterDataWifi');
 
     //Master Data Menara
     $router->post('master-data-menara-telekomunikasi', 'MasterDataMenaraTelekomunikasiController@addMasterDataMenara');

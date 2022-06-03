@@ -55,20 +55,8 @@ class MasterDataWifiController extends Controller
 
     public function getAllMasterDataWifi(Request $request)
     {
-        try {
-            $dataWifi = MasterDataWifi::orderBy('id', 'DESC')->get();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Master Data Wifi',
-                'data' =>  $dataWifi,
-            ], 200);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'success' => false,
-                'message' => $th
-            ], 409);
-        }
+        $dataWifi = MasterDataWifi::orderBy('id', 'DESC')->get();
+        return $dataWifi;
     }
 
     public function getMasterDataWifiById(Request $request, $idWifi)

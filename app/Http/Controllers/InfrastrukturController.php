@@ -80,6 +80,12 @@ class InfrastrukturController extends Controller
         ];
         return view('infrastruktur.wifi.index', compact(['dataCount', 'getWifi']));
     }
+    public function wifi()
+    {
+        $getWifi = MasterDataWifi::orderBy('id', 'desc')->get();
+        
+        return $getWifi;
+    }
 
     public function wifiCreate(Request $request)
     {
