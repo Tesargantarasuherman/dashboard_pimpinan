@@ -170,7 +170,7 @@ class IntegrasiController extends Controller
         $arr =[
             'data'=> json_decode($response)
         ];
-        return $response;
+        return $arr;
     }
     public function shalat(Request $request)
     {

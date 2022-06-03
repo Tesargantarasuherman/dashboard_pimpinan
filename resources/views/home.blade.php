@@ -183,8 +183,8 @@
         type: "GET",
         url: `../api/v1/cuaca`,
         success: function (res) {
-            console.log(res.data.response.data.main.temp)
-            $('#suhu').text(res.data.response.data.main.temp)
+            console.log(res)
+            $('#suhu').text(res?.data?.response?.data?.main?.temp)
         }
     }) 
     }
@@ -335,7 +335,7 @@ Highcharts.chart('chart', {
                 },
                 {
                     name: "Wifi",
-                    y: 7.23,
+                    y: 72,
                     drilldown: "Wifi"
                 }
             ]
@@ -370,7 +370,7 @@ Highcharts.chart('chart', {
         dateNow();
         getAplikasi();
         getShalat();
-        // getCuaca();
+        getCuaca();
         setCalendar();
         setChart();
         getCCTV();
