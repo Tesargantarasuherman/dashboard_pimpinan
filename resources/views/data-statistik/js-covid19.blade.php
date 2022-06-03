@@ -1,5 +1,6 @@
 @section('js')
     <script>
+        let covid = null;
         $(document).ready(function() {
 
             $.ajax({
@@ -69,86 +70,75 @@
 
 
             // Grafik
-            let tanggal = [];
-            console.log(tanggal);
             $.ajax({
                 type: "GET",
                 url: "../api/v1/covid",
                 async: false,
                 success: function(res) {
-                    console.log(res);
-
-                    $.each(res.data.labels, function(index, value) {
-                        tanggal.push((res.data.labels[index]));
-                        
-                    });
-
+                    console.log('re',res.data);
+                    covid = res.data;
                 }
 
             })
 
             Highcharts.chart('container', {
-
-                title: {
-                    text: 'Grafik Perkembangan Covid-19 di Kota Bandung'
+                chart: {
+                    type: 'area'
                 },
-
-                // tooltip: {
-                //     pointFormat: "Value: {point.y:,.1f} mm"
-                // },
-
+                title: {
+                    text: 'Data Covid 19 Kota Bandung'
+                },
+                subtitle: {
+                    text: 'Source: bandung.go.id'
+                },
+                xAxis: {
+                    categories: covid.labels,
+                    tickmarkPlacement: 'on',
+                    title: {
+                        enabled: false
+                    }
+                },
                 yAxis: {
                     title: {
-                        text: ''
-                    }
-                },
-
-                xAxis: {
-                    gridLineWidth: 1,
-                    type: 'datetime',
+                        text: 'Jumlah'
+                    },
                     labels: {
-                        format: '{value:%Y-%m-%d}',
-                        rotation: -45,
-                        align: 'right'
+                        formatter: function () {
+                            return this.value;
+                        }
                     }
                 },
-
-                legend: {
-                    align: 'left',
-                    verticalAlign: 'top',
-                    borderWidth: 0
+                tooltip: {
+                    split: true,
+                    valueSuffix: ' Orang'
                 },
-
-                series: [
-                {
-                    name: 'Terkonfirmas',
-                    data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175],
-                    pointStart: Date.UTC(2021),
-                    pointInterval: 24 * 36e5
+                plotOptions: {
+                    area: {
+                        stacking: 'normal',
+                        lineColor: '#666666',
+                        lineWidth: 1,
+                        marker: {
+                            lineWidth: 1,
+                            lineColor: '#666666'
+                        }
+                    }
+                },
+                series: [{
+                    name: 'Suspek',
+                    data: covid.data.total_suspek
                 }, {
-                    name: 'Manufacturing',
-                    data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434],
-                    pointStart: Date.UTC(2021),
-                    pointInterval: 24 * 36e5
+                    name: 'Terkonfirmasi',
+                    data: covid.data.total_terkonfirmasi
                 }, {
-                    name: 'Sales & Distribution',
-                    data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387],
-                    pointStart: Date.UTC(2021),
-                    pointInterval: 24 * 36e5
+                    name: 'Konfirmasi Meninggal',
+                    data:covid.data.terkonfirmasi_meninggal
                 }, {
-                    name: 'Project Development',
-                    data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227],
-                    pointStart: Date.UTC(2021),
-                    pointInterval: 24 * 36e5
+                    name: 'Konfirmasi Sembuh',
+                    data: covid.data.terkonfirmasi_sembuh
                 }, {
-                    name: 'Other',
-                    data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111],
-                    pointStart: Date.UTC(2021),
-                    pointInterval: 24 * 36e5
-                }],
-
-
-
+                    name: 'Konfirmasi Aktif',
+                    data: covid.data.terkonfirmasi_aktif
+                }]
             });
 
 
