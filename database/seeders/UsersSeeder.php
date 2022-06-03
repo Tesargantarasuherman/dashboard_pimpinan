@@ -20,15 +20,15 @@ class UsersSeeder extends Seeder
         User::insert([
             [
                 'nama' => 'Administrator Diskominfo Demo',
-                'email' => 'admindiskominfo.demo@bandung.go.id',
+                'email' => 'admindiskominfo@bandung.go.id',
                 'id_role' => '1',
-                'password' => Hash::make('12345678'),
+                'password' => Hash::make('123456'),
             ],
             [
                 'nama' => 'Kepala Dinas Demo',
-                'email' => 'kepaladinas.demo@bandung.go.id',
+                'email' => 'kepaladinas@bandung.go.id',
                 'id_role' => '2',
-                'password' => Hash::make('12345678'),
+                'password' => Hash::make('123456'),
             ]
         ]);
     }
