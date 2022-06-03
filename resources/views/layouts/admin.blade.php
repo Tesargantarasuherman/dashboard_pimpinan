@@ -138,12 +138,12 @@
             </li>
 
             <!-- Nav Item - Profile -->
-            <li class="nav-item {{ Nav::isRoute('profile') }}">
+            {{-- <li class="nav-item {{ Nav::isRoute('profile') }}">
                 <a class="nav-link text-dark" href="{{ route('profile') }}">
                     <i class="fas fa-fw text-gray-500 fa-user"></i>
                     <span>{{ __('Profile') }}</span>
                 </a>
-            </li>
+            </li> --}}
 
             <!-- Nav Item - Aplikasi -->
             <li class="nav-item {{ Nav::isRoute('aplikasi.index') }}">
@@ -259,12 +259,12 @@
                 </div>
             </li>
             <!-- Nav Item - About -->
-            <li class="nav-item {{ Nav::isRoute('about') }}">
+            {{-- <li class="nav-item {{ Nav::isRoute('about') }}">
                 <a class="nav-link text-dark" href="{{ route('about') }}">
                     <i class="fas fa-fw text-gray-500 fa-hands-helping"></i>
                     <span>{{ __('About') }}</span>
                 </a>
-            </li>
+            </li> --}}
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -504,7 +504,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Dashboard Pimpinan RH {{ now()->year }}</span>
+                        <span>Copyright &copy; Dashboard Pimpinan {{ now()->year }}</span>
                     </div>
                 </div>
             </footer>
