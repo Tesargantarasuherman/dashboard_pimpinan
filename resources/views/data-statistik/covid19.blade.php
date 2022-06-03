@@ -150,14 +150,15 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="m-0 font-weight-bold ">Grafik PerKecamatan</h6>
-                        <div class="form-group"><label>Pilih Kecamatan</label><select class="form-control"></select>
-                        </div>
+                        <h6 class="m-0 font-weight-bold ">Grafik Detail PerKecamatan</h6>
+                        {{-- <div class="form-group"><label>Pilih Kecamatan</label><select class="form-control"></select>
+                        </div> --}}
                         <div class="row">
                             <div class="col-md-12">
                                 <div class=" d-flex justify-content-center my-4">
-                                    <div class="spinner-border" role="status"><span class="sr-only">Loading...</span>
-                                    </div>
+                                    {{-- <div class="spinner-border" role="status"><span class="sr-only">Loading...</span>
+                                    </div> --}}
+                                    <div id="kecamatan"></div>
                                 </div>
                             </div>
                         </div>
