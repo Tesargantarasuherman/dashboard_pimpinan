@@ -1,7 +1,6 @@
 @section('js')
-<script>
-
-    var map = L.map('map').setView([-6.914744, 107.609810], 13);
+    <script>
+        var map = L.map('map').setView([-6.914744, 107.609810], 13);
         var tiles = L.tileLayer(
             'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                 maxZoom: 18,
@@ -13,14 +12,18 @@
             }).addTo(map);
 
         $.getJSON('api/wifi', function(data) {
+            console.log(data);
             $.each(data, function(i) {
                 L.marker([data[i].latitude, data[i].longitude]).addTo(map).on('click', (e) => {
-                    L.marker([data[i].latitude, data[i].longitude]).addTo(map)
+                    L.marker([data[i].latitude, data[i].longitude]).addTo(map).bindPopup(function() {
+                        return ('<div class="my-2"><strong>Lokasi</strong> : ' + data[i]
+                            .lokasi + '</div>');
+                    });
                 });
             });
         });
         $(document).ready(function() {
 
         })
-</script>
+    </script>
 @stop

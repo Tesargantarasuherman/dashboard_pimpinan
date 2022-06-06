@@ -15,7 +15,10 @@
         $.getJSON('api/menara', function(data) {
             $.each(data, function(i) {
                 L.marker([data[i].latitude, data[i].longitude]).addTo(map).on('click', (e) => {
-                    L.marker([data[i].latitude, data[i].longitude]).addTo(map)
+                    L.marker([data[i].latitude, data[i].longitude]).addTo(map).bindPopup(function() {
+                        return ('<div class="my-2"><strong>Lokasi</strong> : ' + data[i]
+                            .lokasi + '</div>');
+                    });
                 });
             });
         });
