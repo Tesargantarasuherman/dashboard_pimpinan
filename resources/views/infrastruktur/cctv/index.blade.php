@@ -14,9 +14,11 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h6 class="m-0 font-weight-bold text-gray-800">Tabel CCTV di Kota Bandung
-                                ({{ $dataCount['dataCctv'] }})</h6><button class="btn btn-sm btn-primary"
-                                data-toggle="modal" data-target="#add-modal">Tambah Data CCTV</button>
-                            @include('infrastruktur.cctv.modal-add')
+                                ({{ $dataCount['dataCctv'] }})</h6>
+                            <button class="btn btn-sm btn-primary"
+                                data-toggle="modal" data-target="#add-modal">Tambah Data CCTV
+                            </button>
+                                @include('infrastruktur.cctv.modal-add')
                         </div>
                         <div>
                             {!! Toastr::message() !!}

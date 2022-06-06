@@ -659,7 +659,7 @@ class IndikatorSpbeController extends Controller
         foreach ($indeksPertahun as $index) {
             $spbe_pertahun['id'] = $index->id;
             $spbe_pertahun['tahun'] = $index->tahun;
-            $spbe_pertahun['nilai'] = $index->hasil_index;
+            $spbe_pertahun['nilai'] = (float)$index->hasil_index;
             array_push($spbePertahun, $spbe_pertahun);
         };
         return $spbePertahun;

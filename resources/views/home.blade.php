@@ -117,12 +117,33 @@
                                                 class="col-auto bg-info  d-none d-md-none d-lg-block p-2 rounded text-light">
                                                 <i class="fa fa-mosque"></i>
                                             </div>
-                                            <div class="col-md-6 ml-4">
-                                                <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                                    Dzuhur
+                                            <div class="col-md-10">
+                                                <!-- <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1" id="shalat">
+                                                    
                                                 </div>
-                                                <div class="text-sm font-weight-bold text-gray-800 text-uppercase">12:05
-                                                </div>
+                                                <div class="text-sm font-weight-bold text-gray-800 text-uppercase"  id="waktu-shalat">
+
+                                                </div> -->
+                                                <table class="table table-responsive" style="margin:-10px 40px -10px 0 !important;overflow-x:scroll !important">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                    <th scope="col" style="font-size:12px">Subuh</th>
+                                                    <th scope="col" style="font-size:12px">Dzuhur</th>
+                                                    <th scope="col" style="font-size:12px">Ashar</th>
+                                                    <th scope="col" style="font-size:12px">Maghrib</th>
+                                                    <th scope="col" style="font-size:12px">isya</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                    <th style="font-size:12px" id="waktu-subuh">-</th>
+                                                    <td style="font-size:12px" id="waktu-dzuhur">-</td>
+                                                    <td style="font-size:12px" id="waktu-ashar">-</td>
+                                                    <td style="font-size:12px" id="waktu-maghrib">-</td>
+                                                    <td style="font-size:12px" id="waktu-isya">-</td>
+                                                    </tr>
+                                                </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -190,9 +211,15 @@
     }) 
     }
     function dateNow(){
-        let date_now = moment(new Date()).lang("id").format('LLLL');
+        let date_now = moment(new Date()).lang("id").format('MMMM Do YYYY, h:mm:ss a');
+        let bulan = moment(new Date()).lang("id").format('LL');
+        let hari = moment(new Date()).lang("id").format('dddd');
         let date = date_now.split(",")
-        $('#hari').text(date[0])
+        setTimeout(() => {
+            dateNow();
+        }, 1000);
+        console.log(date)
+        $('#hari').text(hari+', '+bulan)
         $('#tanggal').text(date[1])
     }
     function getShalat() {
@@ -200,9 +227,45 @@
         type: "GET",
         url: `../api/v1/shalat`,
         success: function (res) {
-            console.log(res.data.data.jadwal.imsak);
+            const now = new Date();
+            const current = now.getHours() + ':' + now.getMinutes();
+            // const current = '19:19'
+            let data = null;
+            $('#waktu-subuh').text(res.data.data.jadwal.subuh);
+            $('#waktu-dzuhur').text(res.data.data.jadwal.dzuhur);
+            $('#waktu-ashar').text(res.data.data.jadwal.ashar);
+            $('#waktu-maghrib').text(res.data.data.jadwal.maghrib);
+            $('#waktu-isya').text(res.data.data.jadwal.isya);
+
+            // if((current >= res.data.data.jadwal.ashar) &&  (current < res.data.data.jadwal.maghrib )){
+            //     $('#shalat').text('Ashar')
+            //     $('#waktu-shalat').text(res.data.data.jadwal.ashar)
+            // }
+            // else if((current >= res.data.data.jadwal.maghrib ) && (current < res.data.data.jadwal.isya )){
+            //     $('#shalat').text('Maghrib')
+            //     $('#waktu-shalat').text(res.data.data.jadwal.maghrib)            
+            // }
+            // else if((current >= res.data.data.jadwal.isya ) && (current < '24:00')){
+            //     $('#shalat').text('Isya')
+            //     $('#waktu-shalat').text(res.data.data.jadwal.isya) 
+            // }
+            // else if((current >= res.data.data.jadwal.subuh )&& (current < res.data.data.jadwal.terbit )){
+            //     $('#shalat').text('Subuh')
+            //     $('#waktu-shalat').text(res.data.data.jadwal.subuh)
+            // }
+            // else if((current >= res.data.data.jadwal.dzuhur ) && (current < res.data.data.jadwal.ashar)){
+            //     $('#shalat').text('Dzuhur')
+            //     $('#waktu-shalat').text(res.data.data.jadwal.dzuhur)
+            // }
+            // else{
+            //     console.log('kesini');
+            // }
+            // console.log(current,res.data.data.jadwal);
         }
     })
+    setTimeout(() => {
+        getShalat();
+    }, 1000);
     }
     function setCalendar(){
         var calendar = $('#calendar').fullCalendar({
@@ -384,9 +447,9 @@ Highcharts.chart('chart', {
     $(document).ready(function() {
         setTimeout(() => {
             dateNow();
+            getShalat();
         }, 1000);
         getAplikasi();
-        getShalat();
         getCuaca();
         setCalendar();
         setChart();
