@@ -1,5 +1,10 @@
 @extends('layouts.admin')
+<style>
+    #map {
+        height: 900px;
+    }
 
+</style>
 @section('main-content')
     <div class="container-fluid">
         <h6 class="m-0 font-weight-bold text-gray-800">Data Wifi</h6>
@@ -13,9 +18,7 @@
                                 data-toggle="modal" data-target="#add-modal">Tambah Data Wifi</button>
                             @include('infrastruktur.wifi.modal-add')
                         </div>
-                        <div>
-                            {!! Toastr::message() !!}
-                        </div>
+                        
                         <div class="d-flex justify-content-between">
                             <div class="row">
                                 <div class="col-md-12"></div>
@@ -66,10 +69,14 @@
             <div class="col-md-7">
                 <div class="card">
                     <div class="card-body">
+                        <div id="map"></div>
 
                     </div>
                 </div>
             </div>
         </div>
+        @include('infrastruktur.wifi.js')
+
     </div>
+
 @endsection

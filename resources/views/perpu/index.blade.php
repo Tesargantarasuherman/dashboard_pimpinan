@@ -1,9 +1,6 @@
 @extends('layouts.admin')
 
 @section('main-content')
-    <div>
-        {!! Toastr::message() !!}
-    </div>
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">

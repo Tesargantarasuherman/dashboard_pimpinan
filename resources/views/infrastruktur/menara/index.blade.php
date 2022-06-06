@@ -1,8 +1,13 @@
 @extends('layouts.admin')
+<style>
+    #map {
+        height: 900px;
+    }
 
+</style>
 @section('main-content')
     <div class="container-fluid">
-        <h6 class="m-0 font-weight-bold text-gray-800">Data CCTV</h6>
+        <h6 class="m-0 font-weight-bold text-gray-800">Data Menara</h6>
         <div class="row my-4">
             <div class="col-md-5">
                 <div class="card">
@@ -13,9 +18,6 @@
                                 </h6><button class="btn btn-sm btn-primary"
                                 data-toggle="modal" data-target="#add-modal">Tambah Data</button>
                             @include('infrastruktur.menara.modal-add')
-                        </div>
-                        <div>
-                            {!! Toastr::message() !!}
                         </div>
                         <div class="d-flex justify-content-between">
                             <div class="row">
@@ -68,9 +70,11 @@
                 <div class="card">
                     <div class="card-body">
 
+                    <div id="map"></div>
                     </div>
                 </div>
             </div>
         </div>
+        @include('infrastruktur.menara.js')
     </div>
 @endsection

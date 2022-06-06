@@ -20,9 +20,6 @@
                             </button>
                                 @include('infrastruktur.cctv.modal-add')
                         </div>
-                        <div>
-                            {!! Toastr::message() !!}
-                        </div>
                         <div class="d-flex justify-content-between">
                             <div class="row">
                                 <div class="col-md-12"></div>

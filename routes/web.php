@@ -183,6 +183,8 @@ $router->group(['prefix' => 'persandian'], function () use ($router) {
 });
 
 $router->get('infrastruktur-tik/api/cctv', 'InfrastrukturController@index')->name('cctv');
+$router->get('infrastruktur-tik/api/menara', 'InfrastrukturController@getMenara')->name('menara');
+$router->get('infrastruktur-tik/api/wifi', 'InfrastrukturController@getWifi')->name('wifi');
 
 $router->group(['prefix' => 'data-statistik'], function () use ($router) {
     $router->get('/covid19', 'DataStatistikController@covidIndex')->name('covid.index');

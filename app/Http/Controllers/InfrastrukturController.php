@@ -183,5 +183,12 @@ class InfrastrukturController extends Controller
         }
     }
 
-    
+    public function getMenara(){
+        $getMenara = MasterDataMenaraTelekomunikasi::orderBy('id', 'desc')->get();
+        return $getMenara;
+    }
+    public function getWifi(){
+        $getMenara = MasterDataWifi::orderBy('id', 'desc')->get();
+        return $getMenara;
+    }
 }
