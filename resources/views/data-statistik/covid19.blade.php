@@ -155,7 +155,7 @@
                         </div> --}}
                         <div class="row">
                             <div class="col-md-12">
-                                <div class=" d-flex justify-content-center my-4">
+                                <div class="my-4">
                                     {{-- <div class="spinner-border" role="status"><span class="sr-only">Loading...</span>
                                     </div> --}}
                                     <div id="kecamatan"></div>
