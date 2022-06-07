@@ -20,6 +20,14 @@ class User extends Authenticatable
         'name', 'last_name', 'email', 'password',
     ];
 
+    public function masterRole(){
+        return $this->belongsTo('App\Models\MasterRole','id_role', 'id');        
+    }
+
+    public function masterSkpd(){
+        return $this->belongsTo('App\Models\MasterSkpd','id_skpd', 'id');        
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

@@ -215,3 +215,16 @@ $router->group(['prefix' => 'peraturan-perundangan'], function () use ($router) 
 
 
 });
+
+$router->group(['prefix' => 'user-management'], function () use ($router) {
+    $router->get('/roles', 'UsersManagementController@roleIndex')->name('roles.index');
+    $router->post('/roles', 'UsersManagementController@roleCreate')->name('roles.create');
+
+    $router->get('/users', 'UsersManagementController@userIndex')->name('users.index');
+    $router->post('/users', 'UsersManagementController@userCreate')->name('users.create');
+    $router->get('/users/{id_user}', 'UsersManagementController@userDetail')->name('users.detail');
+    $router->get('/users/edit/{id_user}', 'UsersManagementController@userEdit')->name('users.edit');
+    $router->post('/users/update/{id_user}', 'UsersManagementController@userUpdate')->name('users.update');
+
+
+});

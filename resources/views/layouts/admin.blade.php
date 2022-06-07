@@ -265,6 +265,24 @@
                     <span>{{ __('About') }}</span>
                 </a>
             </li> --}}
+            <li class="nav-item">
+                <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse" data-target="#users"
+                    aria-expanded="true" aria-controls="users">
+                    <i class="fas fa-fw text-gray-500 fa-list-alt"></i>
+                    <span>Users Management</span>
+                </a>
+                <div id="users" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-primary py-2 collapse-inner rounded">
+                        
+                        <a href="{{ route('roles.index') }}" class="collapse-item text-light">
+                            <span>{{ __('Role Aplikasi') }}</span>
+                        </a>
+                        <a href="{{ route('users.index') }}" class="collapse-item text-light">
+                            <span>{{ __('Users Management') }}</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
