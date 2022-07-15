@@ -28,29 +28,29 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <div id="container"></div>
                         {{-- <div id="containers"></div> --}}
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
                                             <div style="width: 100%">
-                                                <table class="table table-striped auto">
+                                                <table class="table table-striped table-responsive">
                                                     <thead>
                                                         <tr>
-                                                            <th scope="col">Layanan Publik</th>
-                                                            <th scope="col">Administrasi Pemerintahan</th>
-                                                            <th scope="col">Total</th>
+                                                            <th scope="col" style="width: 50%">Layanan Publik</th>
+                                                            <th scope="col" style="width: 50%">Administrasi Pemerintahan</th>
+                                                            <th scope="col" style="width: 40%">Total</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <td>
-                                                                <div id="total_aplikasi_layanan_publik" class="stle:center"></div>
+                                                                <div id="total_aplikasi_layanan_publik"></div>
                                                                 <div id="total_layanan_publik"></div>
                                                             </td>
                                                             <td>

@@ -4,35 +4,6 @@
         height: 900px;
     }
     
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-    }
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .dropdown a:hover {
-        background-color: #ddd;
-    }
-
-    .show {
-        display: block;
-    }
 </style>
 @section('main-content')
     <div class="container-fluid">
@@ -81,11 +52,11 @@
                                         {{ $menara->status != 0 ? 'ON' : 'OFF' }}</td>
                                     <td>
                                         <div class="dropdown no-arrow"><a class="dropdown-toggle" href="#"
-                                                role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false" onclick="myFunction()"><i
+                                                role="button" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false"><i
                                                     class="fas fa-ellipsis-v fa-fw text-gray-800"></i></a>
                                             <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                                aria-labelledby="dropdownMenuLink" id="myDropdown"><a class="dropdown-item"
+                                                aria-labelledby="dropdownMenuLink"><a class="dropdown-item"
                                                     href="#">Ubah</a></div>
                                         </div>
 
@@ -109,21 +80,4 @@
     </div>
 @endsection
 <script>
-    // function myFunction() {
-    //     document.getElementById("myDropdown").classList.toggle("show");
-    // }
-
-    // // Close the dropdown if the user clicks outside of it
-    // window.onclick = function(event) {
-    //     if (!event.target.matches('.dropbtn')) {
-    //         var dropdowns = document.getElementsByClassName("dropdown-content");
-    //         var i;
-    //         for (i = 0; i < dropdowns.length; i++) {
-    //             var openDropdown = dropdowns[i];
-    //             if (openDropdown.classList.contains('show')) {
-    //                 openDropdown.classList.remove('show');
-    //             }
-    //         }
-    //     }
-    // }
 </script>
