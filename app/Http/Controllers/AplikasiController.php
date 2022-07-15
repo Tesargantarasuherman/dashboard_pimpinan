@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class AplikasiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $curl = curl_init();
 

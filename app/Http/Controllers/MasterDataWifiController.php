@@ -11,15 +11,7 @@ class MasterDataWifiController extends Controller
     public function __construct()
     {   
         $this->middleware(
-            'auth',
-            [
-                'except' => [
-                    'getAllMasterDataWifi',
-                    'getMasterDataWifiById',
-                    'updateMasterDataWifiById',
-                    'cariMasterDataWifi',
-                ]
-            ]
+            'auth'
         );
     }
     public function addMasterDataWifi(Request $request)

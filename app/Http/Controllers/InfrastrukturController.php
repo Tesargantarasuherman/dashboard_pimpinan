@@ -13,20 +13,7 @@ class InfrastrukturController extends Controller
     public function __construct()
     {   
         $this->middleware(
-            'auth',
-            [
-                'except' => [
-                    'index',
-                    'cctvIndex',
-                    'cctvCreate',
-                    'wifiIndex',
-                    'wifiCreate',
-                    'menaraIndex',
-                    'menaraCreate',
-                    'getMenara',
-                    'getWifi'
-                ]
-            ]
+            'auth'
         );
     }
     public function index(){

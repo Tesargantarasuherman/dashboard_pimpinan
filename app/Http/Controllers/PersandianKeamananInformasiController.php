@@ -12,15 +12,7 @@ class PersandianKeamananInformasiController extends Controller
     public function __construct()
     {   
         $this->middleware(
-            'auth',
-            [
-                'except' => [
-                    'pentestIndex',
-                    'csirtIndex',
-                    'insidenSiberIndex',
-                    'tteIndex',
-                ]
-            ]
+            'auth'
         );
     }
     public function pentestIndex()

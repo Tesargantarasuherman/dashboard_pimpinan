@@ -205,7 +205,7 @@
         type: "GET",
         url: `../api/v1/cuaca`,
         success: function (res) {
-            console.log(res)
+            // console.log(res)
             $('#suhu').text(res?.data?.response?.data?.main?.temp)
         }
     }) 
@@ -218,7 +218,7 @@
         setTimeout(() => {
             dateNow();
         }, 1000);
-        console.log(date)
+        // console.log(date)
         $('#hari').text(hari+', '+bulan)
         $('#tanggal').text(date[1])
     }
@@ -427,7 +427,7 @@ Highcharts.chart('chart', {
         type: "GET",
         url: `../infrastruktur-tik/api/cctv`,
         success: function (res) {
-            console.log(res.length)
+            // console.log(res.length)
             cctvLength = res.length;
             setChart();
         }
@@ -438,7 +438,7 @@ Highcharts.chart('chart', {
         type: "GET",
         url: `../api/v1/master-data-wifi`,
         success: function (res) {
-            console.log(res)
+            // console.log(res)
             wifiLength = res.length;
             setChart();
         }

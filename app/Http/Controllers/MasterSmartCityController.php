@@ -16,26 +16,7 @@ class MasterSmartCityController extends Controller
     public function __construct()
     {   
         $this->middleware(
-            'auth',
-            [
-                'except' => [
-                    'getAllKebutuhanDataPendukung',
-                    'getKuisionerBySkpd',
-                    'getByIdKebutuhanDataPendukung',
-                    'updatedKebutuhanDataPendukung',
-                    'getAllNilaiKuisionerSmartCity',
-                    'getAllMasterKuisionerSmartCity',
-                    'getIdMasterKuisionerSmartCity',
-                    'getIdNilaiKuisionerSmartCity',
-                    'kuisionerIndex',
-                    'nilaiIndex',
-                    'getNilaiSkpd',
-                    'getKuisionerBySkpdPertahun',
-                    'getDataTahun',
-                    'getDataNilai',
-                    'getSkpd',
-                ]
-            ]
+            'auth'
         );
     }
     

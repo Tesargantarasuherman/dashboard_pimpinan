@@ -12,14 +12,6 @@ class MasterDataCctvController extends Controller
     {
         $this->middleware(
             'auth',
-            [
-                'except' => [
-                    'addMasterDataCctv',
-                    'getAllMasterDataCctv',
-                    'getMasterDataCctvById',
-                    'cariMasterDataCctv',
-                ]
-            ]
         );
     }
     public function addMasterDataCctv(Request $request)

@@ -8,13 +8,7 @@ class MasterRoleController extends Controller
     public function __construct()
     {   
         $this->middleware(
-            'auth',
-            [
-                'except' => [
-                    'getAllMasterRole',
-                    
-                ]
-            ]
+            'auth'
         );
     }
     public function addMasterRole(Request $request)

@@ -11,14 +11,7 @@ class MasterSkpdController extends Controller
     public function __construct()
     {   
         $this->middleware(
-            'auth',
-            [
-                'except' => [
-                    'getAllMasterSkpd',
-                    'getIdMasterSkpd',
-                    'cariMasterSkpd'
-                ]
-            ]
+            'auth'
         );
     }
     public function getAllMasterSkpd(Request $request)

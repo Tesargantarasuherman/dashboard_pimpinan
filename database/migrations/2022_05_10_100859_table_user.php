@@ -39,6 +39,7 @@ class TableUser extends Migration
             $table->string('dibuat_pada')->nullable();
             $table->string('diubah_oleh')->nullable();
             $table->string('diubah_pada')->nullable();
+            $table->string('remember_token')->nullable();
 
             $table->timestamps();
         });

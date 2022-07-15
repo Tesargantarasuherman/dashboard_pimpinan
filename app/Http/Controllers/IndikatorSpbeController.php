@@ -20,31 +20,6 @@ class IndikatorSpbeController extends Controller
     {   
         $this->middleware(
             'auth',
-            [
-                'except' => [
-                    'addMasterIndikatorSpbe',
-                    'getAllMasterIndikatorSpbe',
-                    'addSkalaNilaiSpbe',
-                    'getIndexSpbeTahun',
-                    'getAllNilaiIndexPertahun',
-                    'getNilaiIndex',
-                    'getIndexSpbe',
-                    'getAllMasterDomain',
-                    'updateMasterDataIndikatorSpbeById',
-                    'getAllMasterAspek',
-                    'getUpdataSkalaNilai',
-                    'getIndexSpbeAll',
-                    'import',
-                    'importMasterIndikatorSpbe',
-                    'domainIndikatorIndex',
-                    'indeksSpbeIndex',
-                    'addSpbe',
-                    'updateSpbe',
-                    'detailIndeksSpbe',
-                    'indeksSbeTahun',
-                    'chartDetailIndeksSpbe'
-                ]
-            ]
         );
     }
 
