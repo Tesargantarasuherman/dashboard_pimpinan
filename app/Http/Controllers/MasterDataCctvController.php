@@ -8,6 +8,20 @@ use Illuminate\Http\Request;
 
 class MasterDataCctvController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(
+            'auth',
+            [
+                'except' => [
+                    'addMasterDataCctv',
+                    'getAllMasterDataCctv',
+                    'getMasterDataCctvById',
+                    'cariMasterDataCctv',
+                ]
+            ]
+        );
+    }
     public function addMasterDataCctv(Request $request)
     {
         //validate incoming request 

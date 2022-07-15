@@ -50,7 +50,7 @@
                                     <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
                                         {{ $cctv->vendor }}</td>
                                     <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
-                                        {{ $cctv->status }}</td>
+                                        {{ $cctv->status != 0 ? 'ON' : 'OFF' }}</td>
                                     <td>
                                         <div class="dropdown no-arrow"><a class="dropdown-toggle" href="#" role="button"
                                                 id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"

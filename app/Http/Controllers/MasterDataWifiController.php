@@ -8,6 +8,20 @@ use Illuminate\Http\Request;
 
 class MasterDataWifiController extends Controller
 {
+    public function __construct()
+    {   
+        $this->middleware(
+            'auth',
+            [
+                'except' => [
+                    'getAllMasterDataWifi',
+                    'getMasterDataWifiById',
+                    'updateMasterDataWifiById',
+                    'cariMasterDataWifi',
+                ]
+            ]
+        );
+    }
     public function addMasterDataWifi(Request $request)
     {
         //validate incoming request 

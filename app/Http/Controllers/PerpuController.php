@@ -9,6 +9,18 @@ use Illuminate\Http\Request;
 
 class PerpuController extends Controller
 {
+    public function __construct()
+    {   
+        $this->middleware(
+            'auth',
+            [
+                'except' => [
+                    'perpuIndex',
+                ]
+            ]
+        );
+    }
+    
     public function perpuIndex()
     {
         $getData = Perpu::orderBy('id', 'desc')->get();

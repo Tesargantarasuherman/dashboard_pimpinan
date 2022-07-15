@@ -8,7 +8,19 @@ use Illuminate\Http\Request;
 
 class MasterSkpdController extends Controller
 {
-
+    public function __construct()
+    {   
+        $this->middleware(
+            'auth',
+            [
+                'except' => [
+                    'getAllMasterSkpd',
+                    'getIdMasterSkpd',
+                    'cariMasterSkpd'
+                ]
+            ]
+        );
+    }
     public function getAllMasterSkpd(Request $request)
     {
         try {

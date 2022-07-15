@@ -16,6 +16,37 @@ use Maatwebsite\Excel\Facades\Excel;
 class IndikatorSpbeController extends Controller
 {
 
+    public function __construct()
+    {   
+        $this->middleware(
+            'auth',
+            [
+                'except' => [
+                    'addMasterIndikatorSpbe',
+                    'getAllMasterIndikatorSpbe',
+                    'addSkalaNilaiSpbe',
+                    'getIndexSpbeTahun',
+                    'getAllNilaiIndexPertahun',
+                    'getNilaiIndex',
+                    'getIndexSpbe',
+                    'getAllMasterDomain',
+                    'updateMasterDataIndikatorSpbeById',
+                    'getAllMasterAspek',
+                    'getUpdataSkalaNilai',
+                    'getIndexSpbeAll',
+                    'import',
+                    'importMasterIndikatorSpbe',
+                    'domainIndikatorIndex',
+                    'indeksSpbeIndex',
+                    'addSpbe',
+                    'updateSpbe',
+                    'detailIndeksSpbe',
+                    'indeksSbeTahun',
+                    'chartDetailIndeksSpbe'
+                ]
+            ]
+        );
+    }
 
     public function addMasterIndikatorSpbe(Request $request)
     {

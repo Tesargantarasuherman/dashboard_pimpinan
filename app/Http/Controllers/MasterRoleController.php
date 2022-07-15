@@ -5,6 +5,18 @@ use App\Models\MasterRole;
 use Illuminate\Http\Request;
 class MasterRoleController extends Controller
 {
+    public function __construct()
+    {   
+        $this->middleware(
+            'auth',
+            [
+                'except' => [
+                    'getAllMasterRole',
+                    
+                ]
+            ]
+        );
+    }
     public function addMasterRole(Request $request)
     {
         try {

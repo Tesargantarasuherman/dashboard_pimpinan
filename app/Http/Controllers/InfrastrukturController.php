@@ -10,6 +10,25 @@ use Illuminate\Http\Request;
 
 class InfrastrukturController extends Controller
 {
+    public function __construct()
+    {   
+        $this->middleware(
+            'auth',
+            [
+                'except' => [
+                    'index',
+                    'cctvIndex',
+                    'cctvCreate',
+                    'wifiIndex',
+                    'wifiCreate',
+                    'menaraIndex',
+                    'menaraCreate',
+                    'getMenara',
+                    'getWifi'
+                ]
+            ]
+        );
+    }
     public function index(){
         $getCctv = MasterDataCctv::orderBy('id', 'desc')->get();
         return $getCctv;

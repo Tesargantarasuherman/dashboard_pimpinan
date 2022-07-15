@@ -75,7 +75,7 @@
                 url: "../api/v1/covid",
                 async: false,
                 success: function(res) {
-                    // console.log('re',res.data);
+                    console.log('re',res.data);
                     covid = res.data;
                 }
 

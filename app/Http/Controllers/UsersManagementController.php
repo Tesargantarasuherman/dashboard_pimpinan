@@ -11,6 +11,20 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersManagementController extends Controller
 {
+    public function __construct()
+    {   
+        $this->middleware(
+            'auth',
+            [
+                'except' => [
+                    'roleIndex',
+                    'userIndex',
+                    'userDetail',
+                    'userEdit',
+                ]
+            ]
+        );
+    }
     public function roleIndex()
     {
         $getData = MasterRole::orderBy('id', 'desc')->get();
