@@ -39,26 +39,22 @@
                             </thead>
                             @foreach ($getCctv as $cctv)
                                 <tr>
-                                    @if ($cctv->link_stream != '')
-                                        <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
-                                            {{ $loop->iteration }}
-                                        </td>
-                                        <td style="position: sticky; left: 0px; z-index: 2; background-color: white;">
-                                            {{ $cctv->lokasi }}</td>
-                                        <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
-                                            {{ $cctv->dinas }}</td>
-                                        <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
-                                            {{ $cctv->vendor }}</td>
-                                        <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
-                                            {{ $cctv->status != 0 ? 'ON' : 'OFF' }}</td>
-                                        <td>
-                                            <button class="btn btn-sm btn-warning" data-toggle="modal"
-                                                data-target="#edit-modal-{{ $cctv->id }}">Edit
-                                            </button>
-                                        </td>
-                                    @else
-                                    @endif
-
+                                    <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
+                                        {{ $loop->iteration }}
+                                    </td>
+                                    <td style="position: sticky; left: 0px; z-index: 2; background-color: white;">
+                                        {{ $cctv->lokasi }}</td>
+                                    <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
+                                        {{ $cctv->dinas }}</td>
+                                    <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
+                                        {{ $cctv->vendor }}</td>
+                                    <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
+                                        {{ $cctv->status != 0 ? 'ON' : 'OFF' }}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-warning" data-toggle="modal"
+                                            data-target="#edit-modal-{{ $cctv->id }}">Edit
+                                        </button>
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>

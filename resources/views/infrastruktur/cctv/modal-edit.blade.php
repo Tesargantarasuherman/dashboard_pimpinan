@@ -61,12 +61,21 @@
 
                     </div> --}}
                     <div class="modal-body">
-                        <select class="form-control" id="status"
-                            name="status" value="{{ old('status') }}" required>
-                            <option value="{{ old('status') }}">Pilih</option>
-                            <option value="0"  {{ $cctv->status == 0 ? 'selected' : '' }} >OFF</option>
-                            <option value="1" {{ $cctv->status != 0 ? 'selected' : '' }} >ON</option>
-                        </select>
+                        <div class="form-group">
+                            <label for="name">Status</label>
+                            <select class="form-control" id="status" name="status" value="{{ old('status') }}"
+                                required>
+                                <option value="{{ old('status') }}">Pilih</option>
+                                <option value="0" {{ $cctv->status == 0 ? 'selected' : '' }}>OFF</option>
+                                <option value="1" {{ $cctv->status != 0 ? 'selected' : '' }}>ON</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Link Streaming</label>
+                            <input type="text" class="form-control form-control-user" name="link streaming"
+                                placeholder="{{ __('link streaming') }}"
+                                value="{{ old('link streaming', $cctv->link_stream) }}" required autofocus>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">
