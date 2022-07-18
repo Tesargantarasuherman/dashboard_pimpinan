@@ -18,7 +18,7 @@
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
     <!-- Favicon -->
-    <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
+    <link rel="shortcut icon" href="https://www.bandung.go.id/assets/img/logo.svg">
 </head>
 <body class="bg-gradient-primary min-vh-100 d-flex justify-content-center align-items-center">
 
