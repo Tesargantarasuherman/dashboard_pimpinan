@@ -3,7 +3,6 @@
     #map {
         height: 900px;
     }
-
 </style>
 @section('main-content')
     <div class="container-fluid">
@@ -14,7 +13,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h6 class="m-0 font-weight-bold text-gray-800">Tabel CCTV di Kota Bandung
-                                ({{ $dataCount['dataCctv'] }})</h6>
+                                ( Total : {{ $dataCount['dataCctv'] }} CCTV)</h6>
                             <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add-modal">Tambah Data
                                 CCTV
                             </button>
@@ -37,24 +36,29 @@
                                     <th scope="col" style="min-width: 60px; max-height: 25px; z-index: 1;">Status</th>
                                     <th scope="col" style="min-width: 60px; max-height: 25px; z-index: 1;">Aksi</th>
                                 </tr>
-                            </thead>`
+                            </thead>
                             @foreach ($getCctv as $cctv)
                                 <tr>
-                                    <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
-                                        {{ $loop->iteration }}
-                                    </td>
-                                    <td style="position: sticky; left: 0px; z-index: 2; background-color: white;">
-                                        {{ $cctv->lokasi }}</td>
-                                    <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
-                                        {{ $cctv->dinas }}</td>
-                                    <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
-                                        {{ $cctv->vendor }}</td>
-                                    <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
-                                        {{ $cctv->status != 0 ? 'ON' : 'OFF' }}</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit-modal-{{$cctv->id}}">Edit
-                                        </button>
-                                    </td>
+                                    @if ($cctv->link_stream != '')
+                                        <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
+                                            {{ $loop->iteration }}
+                                        </td>
+                                        <td style="position: sticky; left: 0px; z-index: 2; background-color: white;">
+                                            {{ $cctv->lokasi }}</td>
+                                        <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
+                                            {{ $cctv->dinas }}</td>
+                                        <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
+                                            {{ $cctv->vendor }}</td>
+                                        <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
+                                            {{ $cctv->status != 0 ? 'ON' : 'OFF' }}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning" data-toggle="modal"
+                                                data-target="#edit-modal-{{ $cctv->id }}">Edit
+                                            </button>
+                                        </td>
+                                    @else
+                                    @endif
+
                                 </tr>
                             @endforeach
                         </table>
@@ -88,15 +92,22 @@
 
         $.getJSON('api/cctv', function(data) {
             $.each(data, function(i) {
-                L.marker([data[i].latitude, data[i].longitude]).addTo(map).on('click', (e) => {
-                    L.marker([data[i].latitude, data[i].longitude]).addTo(map)
-                        .bindPopup(
-                            '<div><video id="my-video" class="video-js" controls preload="auto" width="300px" data-setup="{}"><source src="https://pelindung.bandung.go.id:3443/video/DAHUA/Pusda.m3u8" type="application/vnd.apple.mpegurl" /></video><p>' +
-                            data[i].lokasi + '</p></div>'
-                        ).openPopup();
-                    var player = videojs('my-video');
-                    player.play();
-                });
+                if (data[i].link_stream != '') {
+                    L.marker([data[i].latitude, data[i].longitude]).addTo(map).on('click', (e) => {
+                        L.marker([data[i].latitude, data[i].longitude]).addTo(map)
+                            .bindPopup(
+                                '<div><video id="my-video" autoplay="autoplay" controls="controls" muted="muted" loop="loop" class="video-js" controls preload="auto" width="300px" data-setup="{}"><source src=" ' +
+                                data[i].link_stream +
+                                ' " type="application/vnd.apple.mpegurl" /></video><p>' +
+                                data[i].lokasi + '</p></div>'
+                            ).openPopup();
+                        var player = videojs('my-video');
+                        player.play();
+                    });
+                } else {
+
+                }
+
             });
         });
         $(document).ready(function() {
