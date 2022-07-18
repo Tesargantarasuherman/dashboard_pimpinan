@@ -157,6 +157,7 @@ $router->group(['prefix' => 'aplikasi'], function () use ($router) {
 $router->group(['prefix' => 'infrastruktur-tik'], function () use ($router) {
     $router->get('/cctv', 'InfrastrukturController@cctvindex')->name('cctv.index');
     $router->post('/cctv', 'InfrastrukturController@cctvCreate')->name('cctv.create');
+    $router->post('/cctv/{id}', 'InfrastrukturController@cctvUpdate')->name('cctv.update');
 
     $router->get('/wifi', 'InfrastrukturController@wifiIndex')->name('wifi.index');
     $router->post('/wifi', 'InfrastrukturController@wifiCreate')->name('wifi.create');

@@ -11,12 +11,13 @@ use Illuminate\Http\Request;
 class InfrastrukturController extends Controller
 {
     public function __construct()
-    {   
+    {
         $this->middleware(
             'auth'
         );
     }
-    public function index(){
+    public function index()
+    {
         $getCctv = MasterDataCctv::orderBy('id', 'desc')->get();
         return $getCctv;
     }
@@ -89,7 +90,7 @@ class InfrastrukturController extends Controller
     public function wifi()
     {
         $getWifi = MasterDataWifi::orderBy('id', 'desc')->get();
-        
+
         return $getWifi;
     }
 
@@ -189,12 +190,48 @@ class InfrastrukturController extends Controller
         }
     }
 
-    public function getMenara(){
+    public function getMenara()
+    {
         $getMenara = MasterDataMenaraTelekomunikasi::orderBy('id', 'desc')->get();
         return $getMenara;
     }
-    public function getWifi(){
+    public function getWifi()
+    {
         $getMenara = MasterDataWifi::orderBy('id', 'desc')->get();
         return $getMenara;
+    }
+
+    public function cctvUpdate(Request $request, $id)
+    {
+        //validate incoming request 
+        // $this->validate($request, [
+        //     'lokasi'  => 'required|string',
+        //     'latitude' => 'required|string',
+        //     'longitude' => 'required|string',
+        //     // 'vendor' => 'required|string',
+        //     // 'dinas' => 'required|string',
+        // ]);
+
+        try {
+            $dataCctv = MasterDataCctv::where('id', $id)->first();
+            // $dataCctv->lokasi = $request->input('lokasi');
+            // $dataCctv->latitude = $request->input('latitude');
+            // $dataCctv->longitude = $request->input('longitude');
+            // $dataCctv->status = 1;
+            // $dataCctv->vendor = $request->input('vendor');
+            // $dataCctv->dinas = $request->input('dinas');
+            // $dataCctv->link_stream = $request->input('link_stream');
+            $dataCctv->status = $request->input('status');
+            $dataCctv->save();
+
+            Toastr::success('Data successfully update', 'Success');
+            return back();
+        } catch (\Throwable $th) {
+            //return error message
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
     }
 }

@@ -37,7 +37,7 @@
                                     <th scope="col" style="min-width: 60px; max-height: 25px; z-index: 1;">Status</th>
                                     <th scope="col" style="min-width: 60px; max-height: 25px; z-index: 1;">Aksi</th>
                                 </tr>
-                            </thead>
+                            </thead>`
                             @foreach ($getCctv as $cctv)
                                 <tr>
                                     <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
@@ -52,14 +52,8 @@
                                     <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
                                         {{ $cctv->status != 0 ? 'ON' : 'OFF' }}</td>
                                     <td>
-                                        <div class="dropdown no-arrow"><a class="dropdown-toggle" href="#" role="button"
-                                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false"><i
-                                                    class="fas fa-ellipsis-v fa-fw text-gray-800"></i></a>
-                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                                aria-labelledby="dropdownMenuLink"><a class="dropdown-item"
-                                                    href="#">Ubah</a></div>
-                                        </div>
+                                        <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit-modal-{{$cctv->id}}">Edit
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -77,6 +71,8 @@
             </div>
         </div>
     </div>
+    @include('infrastruktur.cctv.modal-edit')
+
 @section('js')
     <script>
         var map = L.map('map').setView([-6.914744, 107.609810], 13);
