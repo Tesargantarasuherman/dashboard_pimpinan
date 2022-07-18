@@ -234,4 +234,72 @@ class InfrastrukturController extends Controller
             ], 409);
         }
     }
+
+    public function menaraUpdate(Request $request, $id)
+    {
+        //validate incoming request 
+        // $this->validate($request, [
+        //     'lokasi'  => 'required|string',
+        //     'latitude' => 'required|string',
+        //     'longitude' => 'required|string',
+        //     // 'vendor' => 'required|string',
+        //     // 'dinas' => 'required|string',
+        // ]);
+
+        try {
+            $dataMenara = MasterDataMenaraTelekomunikasi::where('id', $id)->first();
+            // $dataMenara->lokasi = $request->input('lokasi');
+            // $dataMenara->latitude = $request->input('latitude');
+            // $dataMenara->longitude = $request->input('longitude');
+            // $dataMenara->status = 1;
+            // $dataMenara->vendor = $request->input('vendor');
+            // $dataMenara->dinas = $request->input('dinas');
+            // $dataMenara->link_stream = $request->input('link_stream');
+            $dataMenara->status = $request->input('status');
+            $dataMenara->save();
+
+            Toastr::success('Data successfully update', 'Success');
+            return back();
+        } catch (\Throwable $th) {
+            //return error message
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
+
+    public function wifiUpdate(Request $request, $id)
+    {
+        //validate incoming request 
+        // $this->validate($request, [
+        //     'lokasi'  => 'required|string',
+        //     'latitude' => 'required|string',
+        //     'longitude' => 'required|string',
+        //     // 'vendor' => 'required|string',
+        //     // 'dinas' => 'required|string',
+        // ]);
+
+        try {
+            $datas = MasterDataWifi::where('id', $id)->first();
+            // $datas->lokasi = $request->input('lokasi');
+            // $datas->latitude = $request->input('latitude');
+            // $datas->longitude = $request->input('longitude');
+            // $datas->status = 1;
+            // $datas->vendor = $request->input('vendor');
+            // $datas->dinas = $request->input('dinas');
+            // $datas->link_stream = $request->input('link_stream');
+            $datas->status = $request->input('status');
+            $datas->save();
+
+            Toastr::success('Data successfully update', 'Success');
+            return back();
+        } catch (\Throwable $th) {
+            //return error message
+            return response()->json([
+                'success' => false,
+                'message' => $th
+            ], 409);
+        }
+    }
 }

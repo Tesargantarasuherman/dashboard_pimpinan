@@ -51,15 +51,8 @@
                                     <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
                                         {{ $menara->status != 0 ? 'ON' : 'OFF' }}</td>
                                     <td>
-                                        <div class="dropdown no-arrow"><a class="dropdown-toggle" href="#"
-                                                role="button" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false"><i
-                                                    class="fas fa-ellipsis-v fa-fw text-gray-800"></i></a>
-                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                                aria-labelledby="dropdownMenuLink"><a class="dropdown-item"
-                                                    href="#">Ubah</a></div>
-                                        </div>
-
+                                        <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit-modal-{{$menara->id}}">Edit
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -78,6 +71,8 @@
         </div>
         @include('infrastruktur.menara.js')
     </div>
+    @include('infrastruktur.menara.modal-edit')
+
 @endsection
 <script>
 </script>

@@ -161,9 +161,12 @@ $router->group(['prefix' => 'infrastruktur-tik'], function () use ($router) {
 
     $router->get('/wifi', 'InfrastrukturController@wifiIndex')->name('wifi.index');
     $router->post('/wifi', 'InfrastrukturController@wifiCreate')->name('wifi.create');
+    $router->post('/wifi/{id}', 'InfrastrukturController@wifiUpdate')->name('wifi.update');
+
 
     $router->get('/menara-telekomunikasi', 'InfrastrukturController@menaraIndex')->name('menara.index');
     $router->post('/menara-telekomunikasi', 'InfrastrukturController@menaraCreate')->name('menara.create');
+    $router->post('/menara-telekomunikasi/{id}', 'InfrastrukturController@menaraUpdate')->name('menara.update');
 
 });
 
