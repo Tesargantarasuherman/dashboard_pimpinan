@@ -422,6 +422,18 @@ Highcharts.chart('chart', {
             }
         });
     }
+    function getTicketToday(){
+        $.ajax({
+            type: "GET",
+            url:   "../ticket",
+            dataType: 'json',
+
+            async: false,
+            success: function (res){
+                console.log('res',res)
+            }
+        });
+    }
     function getCCTV(){
         $.ajax({
         type: "GET",
@@ -445,6 +457,7 @@ Highcharts.chart('chart', {
     })
     }
     $(document).ready(function() {
+        getTicketToday();
         setTimeout(() => {
             dateNow();
             getShalat();

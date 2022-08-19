@@ -18,4 +18,13 @@ class DataStatistikController extends Controller
 
         return view('data-statistik.vaksin');
     }
+
+    public function saktiIndex()
+    {
+        return view('data-statistik.sakti112');
+    }
+    public function pklIndex()
+    {
+        return view('data-statistik.pkl');
+    }
 }

@@ -99,13 +99,18 @@
                     L.marker([data[i].latitude, data[i].longitude]).addTo(map).on('click', (e) => {
                         L.marker([data[i].latitude, data[i].longitude]).addTo(map)
                             .bindPopup(
-                                '<div><video id="my-video" class="video-js" controls preload="auto" width="300px" data-setup="{}"><source src="https://pelindung.bandung.go.id:3443/video/DAHUA/Pusda.m3u8" type="application/vnd.apple.mpegurl" /></video><p>'+data[i].lokasi+'</p></div>'
+                                '<div><video id="my-video-'+data[i].id+'" class="video-js" controls preload="auto" width="300px" data-setup="{}"><source id="link" src="" type="application/vnd.apple.mpegurl" /></video><p>'+data[i].lokasi+'</p></div>'
                                 ).openPopup();
-                                var player = videojs('my-video');
-                                player.play();
+                                setCctv(data[i].link_stream,data[i].id);
                     });
                 });
             });
+            function setCctv(link,id){
+                let _link = $('#link');
+                _link.attr('src',link)
+                var player = videojs(`my-video-${id}`);
+                player.play();
+            }
             $(document).ready(function() {
 
             })

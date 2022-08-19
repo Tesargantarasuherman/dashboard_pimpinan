@@ -14,7 +14,7 @@ class MasterRoleSeeder extends Seeder
      */
     public function run()
     {
-        MasterRole::truncate();
+        // MasterRole::truncate();
         MasterRole::insert([
             [
                 'nama' => 'Administrator',

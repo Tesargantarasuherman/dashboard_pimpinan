@@ -21,6 +21,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/ticket', 'SaktiController@getTicketToday')->name('ticket');
+Route::get('/category', 'SaktiController@getCategoryToday')->name('category');
 Route::get('/infrastruktur-tik/map', 'HomeController@map')->name('map');
 // Route::post('/', 'HomeController@login')->name('login');
 
@@ -187,7 +189,8 @@ $router->get('infrastruktur-tik/api/cctv', 'InfrastrukturController@index')->nam
 $router->group(['prefix' => 'data-statistik'], function () use ($router) {
     $router->get('/covid19', 'DataStatistikController@covidIndex')->name('covid.index');
     $router->get('/vaksin', 'DataStatistikController@vaksinIndex')->name('vaksin.index');
-
+    $router->get('/sakti-112', 'DataStatistikController@saktiIndex')->name('sakti.index');
+    $router->get('/pkl', 'DataStatistikController@pklIndex')->name('pkl.index');
 });
 
 $router->group(['prefix' => 'smart-city'], function () use ($router) {

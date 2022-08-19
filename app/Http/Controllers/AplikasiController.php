@@ -25,8 +25,10 @@ class AplikasiController extends Controller
 
         $response = curl_exec($curl);
 
-        curl_close($curl);
-        echo json_encode($response);
+        $arr =[
+            'data'=> json_decode($response)
+        ];
+        return $arr;
     }
     public function aplikasiIndex()
     {
