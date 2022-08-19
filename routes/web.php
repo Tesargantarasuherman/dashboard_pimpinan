@@ -197,6 +197,21 @@ $router->group(['prefix' => 'data-statistik'], function () use ($router) {
     $router->get('/vaksin', 'DataStatistikController@vaksinIndex')->name('vaksin.index');
     $router->get('/sakti-112', 'DataStatistikController@saktiIndex')->name('sakti.index');
     $router->get('/pkl', 'DataStatistikController@pklIndex')->name('pkl.index');
+    $router->get('/pkl/api/wilayah', 'DataStatistikController@pklPerwilayah');
+    $router->get('/pkl/api/status-pendidikan', 'DataStatistikController@pklPerpendidikan');
+    $router->get('/pkl/api/area', 'DataStatistikController@pklArea');
+    $router->get('/pkl/api/status-agama', 'DataStatistikController@pklReligion');
+    $router->get('/pkl/api/produk', 'DataStatistikController@pklProduk');
+    $router->get('/pkl/api/waktu', 'DataStatistikController@pklWaktu');
+    $router->get('/pkl/api/media', 'DataStatistikController@pklMedia');
+    $router->get('/pkl/api/status-pemilik', 'DataStatistikController@pklStatusPemilik');
+    $router->get('/pkl/api/status-pernikahan', 'DataStatistikController@pklStatusPernikahan');
+    $router->get('/pkl/api/status-nik', 'DataStatistikController@pklStatusNik');
+    $router->get('/pkl/api/pemilik-bisnis', 'DataStatistikController@pklTotalPemilikBisnis');
+    $router->get('/pkl/api/omset', 'DataStatistikController@pklOmset');
+    $router->get('/pkl/api/bisnis', 'DataStatistikController@pklBisnis');
+    $router->get('/pkl/api/cetak-kartu', 'DataStatistikController@pklCetakKartu');
+    $router->get('/pkl/api/profile', 'DataStatistikController@pklProfileBisnis');
 });
 
 $router->group(['prefix' => 'smart-city'], function () use ($router) {
