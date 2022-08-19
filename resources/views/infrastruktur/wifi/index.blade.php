@@ -1,5 +1,10 @@
 @extends('layouts.admin')
+<style>
+    #map {
+        height: 900px;
+    }
 
+</style>
 @section('main-content')
     <div class="container-fluid">
         <h6 class="m-0 font-weight-bold text-gray-800">Data Wifi</h6>
@@ -13,9 +18,7 @@
                                 data-toggle="modal" data-target="#add-modal">Tambah Data Wifi</button>
                             @include('infrastruktur.wifi.modal-add')
                         </div>
-                        <div>
-                            {!! Toastr::message() !!}
-                        </div>
+                        
                         <div class="d-flex justify-content-between">
                             <div class="row">
                                 <div class="col-md-12"></div>
@@ -46,16 +49,10 @@
                                     <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
                                         {{ $wifi->vendor }}</td>
                                     <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
-                                        {{ $wifi->status }}</td>
+                                        {{ $wifi->status != 0 ? 'ON' : 'OFF' }}</td>
                                     <td>
-                                        <div class="dropdown no-arrow"><a class="dropdown-toggle" href="#" role="button"
-                                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false"><i
-                                                    class="fas fa-ellipsis-v fa-fw text-gray-800"></i></a>
-                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                                aria-labelledby="dropdownMenuLink"><a class="dropdown-item"
-                                                    href="#">Ubah</a></div>
-                                        </div>
+                                        <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit-modal-{{$wifi->id}}">Edit
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -66,10 +63,15 @@
             <div class="col-md-7">
                 <div class="card">
                     <div class="card-body">
+                        <div id="map"></div>
 
                     </div>
                 </div>
             </div>
         </div>
+        @include('infrastruktur.wifi.js')
+
     </div>
+    @include('infrastruktur.wifi.modal-edit')
+
 @endsection

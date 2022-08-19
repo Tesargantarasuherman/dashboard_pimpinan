@@ -11,7 +11,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Dashboard Diskominfo</title>
 
     <!-- Fonts -->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
@@ -26,7 +26,7 @@
         integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
         crossorigin="" />
     <!-- Favicon -->
-    <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
+    <link rel="shortcut icon" href="https://www.bandung.go.id/assets/img/logo.svg">
     <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
 
@@ -34,10 +34,11 @@
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css"
+        rel="stylesheet" />
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
-<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/stock/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/accessibility.js"></script>
 </head>
 
 <body id="page-top">
@@ -50,57 +51,70 @@
         .nav-item.active>a {
             color: white !important;
         }
+
         .lds-facebook {
-        display: inline-block;
-        position: absolute;
-        top:50%;
-        width: 80px;
-        height: 80px;
-        z-index:999999;
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            width: 80px;
+            height: 80px;
+            z-index: 999999;
         }
+
         .lds-facebook div {
-        display: inline-block;
-        position: absolute;
-        left: 8px;
-        width: 16px;
-        background: #4E73DF;
-        animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+            display: inline-block;
+            position: absolute;
+            left: 8px;
+            width: 16px;
+            background: #4E73DF;
+            animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
         }
+
         .lds-facebook div:nth-child(1) {
-        left: 8px;
-        animation-delay: -0.24s;
+            left: 8px;
+            animation-delay: -0.24s;
         }
+
         .lds-facebook div:nth-child(2) {
-        left: 32px;
-        animation-delay: -0.12s;
+            left: 32px;
+            animation-delay: -0.12s;
         }
+
         .lds-facebook div:nth-child(3) {
-        left: 56px;
-        animation-delay: 0;
+            left: 56px;
+            animation-delay: 0;
         }
+
         @keyframes lds-facebook {
-        0% {
-            top: 8px;
-            height: 64px;
+            0% {
+                top: 8px;
+                height: 64px;
+            }
+
+            50%,
+            100% {
+                top: 24px;
+                height: 32px;
+            }
         }
-        50%, 100% {
-            top: 24px;
-            height: 32px;
-        }
-        }
-        .overlay{
-            z-index:99999;
-            position:fixed;
-            top:0;
-            left:0;
-            bottom:0;
-            right:0;
-            background-color:rgba(130,130,130,0.8);
-            text-align:center;
+
+        .overlay {
+            z-index: 99999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: rgba(130, 130, 130, 0.8);
+            text-align: center;
         }
     </style>
     <div class="loading overlay">
-        <div class="lds-facebook"><div></div><div></div><div></div></div>
+        <div class="lds-facebook">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
     <div>
         {!! Toastr::message() !!}
@@ -113,9 +127,11 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon">
-                <img src="{{ asset('img/bsc 1.png') }}"  alt="" srcset="" style="width:40px;height:50px"> 
+                    <img src="{{ asset('img/bsc 1.png') }}" alt="" srcset=""
+                        style="width:40px;height:50px">
                 </div>
-                <div class="sidebar-brand-text"><img src="{{ asset('img/bsc 2.png') }}"  alt="" srcset="" style="width:120px;height:50px"></div>
+                <div class="sidebar-brand-text"><img src="{{ asset('img/bsc 2.png') }}" alt="" srcset=""
+                        style="width:120px;height:50px"></div>
             </a>
 
             <!-- Divider -->
@@ -154,13 +170,12 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse" data-target="#dataStatistik"
-                    aria-expanded="true" aria-controls="dataStatistik">
+                <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse"
+                    data-target="#dataStatistik" aria-expanded="true" aria-controls="dataStatistik">
                     <i class="fas fa-fw text-gray-500 fa-list-alt"></i>
                     <span>Data dan Statistik</span>
                 </a>
-                <div id="dataStatistik" class="collapse" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
+                <div id="dataStatistik" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-primary py-2 collapse-inner rounded">
 
                         <a href="{{ route('covid.index') }}" class="collapse-item text-light">
@@ -201,13 +216,12 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse" data-target="#persandian"
-                    aria-expanded="true" aria-controls="persandian">
+                <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse"
+                    data-target="#persandian" aria-expanded="true" aria-controls="persandian">
                     <i class="fas fa-fw text-gray-500 fa-list-alt"></i>
                     <span>Persandian dan Keamaan Informasi</span>
                 </a>
-                <div id="persandian" class="collapse" aria-labelledby="headingTwo"
-                    data-parent="#accordionSidebar">
+                <div id="persandian" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-primary py-2 collapse-inner rounded">
                         <a href="{{ route('csirt.index') }}" class="collapse-item text-light">
                             <span>{{ __('CSIRT') }}</span>
@@ -247,14 +261,14 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse" data-target="#kuisioner"
-                    aria-expanded="true" aria-controls="kuisioner">
+                <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse"
+                    data-target="#kuisioner" aria-expanded="true" aria-controls="kuisioner">
                     <i class="fas fa-fw text-gray-500 fa-list-alt"></i>
                     <span>Smart City</span>
                 </a>
                 <div id="kuisioner" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-primary py-2 collapse-inner rounded">
-                        
+
                         <a href="{{ route('kuisioner.index') }}" class="collapse-item text-light">
                             <span>{{ __('Kuisioner') }}</span>
                         </a>
@@ -271,6 +285,28 @@
                     <span>{{ __('About') }}</span>
                 </a>
             </li> --}}
+            @if (Auth::user()->id_role == 1)
+                <li class="nav-item">
+                    <a class="nav-link collapsed text-dark" href="#" data-toggle="collapse"
+                        data-target="#users" aria-expanded="true" aria-controls="users">
+                        <i class="fas fa-fw text-gray-500 fa-list-alt"></i>
+                        <span>Users Management</span>
+                    </a>
+                    <div id="users" class="collapse" aria-labelledby="headingTwo"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-primary py-2 collapse-inner rounded">
+
+                            <a href="{{ route('roles.index') }}" class="collapse-item text-light">
+                                <span>{{ __('Role Aplikasi') }}</span>
+                            </a>
+                            <a href="{{ route('users.index') }}" class="collapse-item text-light">
+                                <span>{{ __('Users Management') }}</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            @endif
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -300,8 +336,8 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small"
+                                placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -338,7 +374,7 @@
                         </li>
 
                         <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
+                        {{-- <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
@@ -359,7 +395,8 @@
                                     </div>
                                     <div>
                                         <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                        <span class="font-weight-bold">A new monthly report is ready to
+                                            download!</span>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -384,12 +421,13 @@
                                         Spending Alert: We've noticed unusually high spending for your account.
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All
+                                    Alerts</a>
                             </div>
-                        </li>
+                        </li> --}}
 
                         <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
+                        {{-- <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
@@ -404,8 +442,8 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60"
-                                            alt="">
+                                        <img class="rounded-circle"
+                                            src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -416,8 +454,8 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60"
-                                            alt="">
+                                        <img class="rounded-circle"
+                                            src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -428,8 +466,8 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60"
-                                            alt="">
+                                        <img class="rounded-circle"
+                                            src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
@@ -440,8 +478,8 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="">
+                                        <img class="rounded-circle"
+                                            src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
@@ -454,7 +492,7 @@
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More
                                     Messages</a>
                             </div>
-                        </li>
+                        </li> --}}
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -483,7 +521,8 @@
                                     {{ __('Activity Log') }}
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="#" data-toggle="modal"
+                                    data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     {{ __('Logout') }}
                                 </a>
@@ -565,19 +604,23 @@
         crossorigin=""></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/.js/2.29.3/-with-locales.min.js" integrity="sha512-vFABRuf5oGUaztndx4KoAEUVQnOvAIFs59y4tO0DILGWhQiFnFHiR+ZJfxLDyJlXgeut9Z07Svuvm+1Jv89w5g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js"
+        integrity="sha512-vFABRuf5oGUaztndx4KoAEUVQnOvAIFs59y4tO0DILGWhQiFnFHiR+ZJfxLDyJlXgeut9Z07Svuvm+1Jv89w5g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
     <script>
-    function showLoading() {
-        $(".loading").css("display", "block")
-    }
+        function showLoading() {
+            $(".loading").css("display", "block")
+        }
 
-    function hideLoading() {
-        $(".loading").css("display", "none")
-    }
-    $(document).ready(function () {
-        setTimeout(() => {
-            hideLoading();
-        }, 2000);
-    });
+        function hideLoading() {
+            $(".loading").css("display", "none")
+        }
+        $(document).ready(function() {
+            setTimeout(() => {
+                hideLoading();
+            }, 2000);
+        });
     </script>
     @yield('js')
 </body>

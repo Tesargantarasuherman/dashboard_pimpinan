@@ -39,15 +39,16 @@ class TableUser extends Migration
             $table->string('dibuat_pada')->nullable();
             $table->string('diubah_oleh')->nullable();
             $table->string('diubah_pada')->nullable();
+            $table->string('remember_token')->nullable();
 
             $table->timestamps();
         });
 
-        Schema::table('users', function (Blueprint $kolom) {
-            $kolom->foreign('id_role')
-                ->references('id')
-                ->on('master_role');
-        });
+        // Schema::table('users', function (Blueprint $kolom) {
+        //     $kolom->foreign('id_role')
+        //         ->references('id')
+        //         ->on('master_role');
+        // });
     }
 
     /**

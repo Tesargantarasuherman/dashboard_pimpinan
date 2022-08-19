@@ -1,8 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+
 class IntegrasiController extends Controller
 {
     public function users(Request $request)
@@ -148,7 +151,6 @@ class IntegrasiController extends Controller
 
         $data = json_decode($response);
         dd($data);
-
     }
     public function cuaca(Request $request)
     {
@@ -167,8 +169,8 @@ class IntegrasiController extends Controller
 
         $response = curl_exec($curl);
 
-        $arr =[
-            'data'=> json_decode($response)
+        $arr = [
+            'data' => json_decode($response)
         ];
         return $arr;
     }
@@ -189,24 +191,27 @@ class IntegrasiController extends Controller
 
         $response = curl_exec($curl);
 
-        $arr =[
-            'data'=> json_decode($response)
+        $arr = [
+            'data' => json_decode($response)
         ];
         return $arr;
     }
 
-    public function covid(){
+    public function covid()
+    {
         $curl = curl_init();
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://covid19.bandung.go.id/ajax/chart-summary',
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => '',
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_URL => 'https://covid19.bandung.go.id/ajax/chart-summary',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
         ));
         header("Access-Control-Allow-Origin: *");
 
@@ -216,14 +221,8 @@ class IntegrasiController extends Controller
         // curl_close($curl);
         // echo $response;
 
-        $jsonData = ["data"=>json_decode($response)];
+        $jsonData = ["data" => json_decode($response)];
 
         return $jsonData;
-
-
-
-
     }
-
-    
 }

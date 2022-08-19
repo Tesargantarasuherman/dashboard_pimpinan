@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class PersandianKeamananInformasiController extends Controller
 {
+    public function __construct()
+    {   
+        $this->middleware(
+            'auth'
+        );
+    }
     public function pentestIndex()
     {
         $getPentest = PersandianPentest::orderBy('id', 'desc')->get();

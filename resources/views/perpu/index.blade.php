@@ -1,9 +1,6 @@
 @extends('layouts.admin')
 
 @section('main-content')
-    <div>
-        {!! Toastr::message() !!}
-    </div>
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
@@ -12,7 +9,7 @@
                     <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add-modal">Tambah Data</button>
                     @include('perpu.modal-add')
                 </div>
-                <table class="table table-striped table-responsive mt-4">
+                <table class="table table-striped  mt-4">
                     <thead>
                         <tr>
                             <th scope="col">Tahun</th>

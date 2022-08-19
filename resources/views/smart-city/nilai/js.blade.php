@@ -100,9 +100,9 @@
                                                     <label>Unit Penyedia Data</label>
                                                     <select class="form-control" name="penyedia[]" id="penyedia-${res.id}" required>
                                                     <option value="">Pilih</option>
-@foreach($skpd as $p)
+                                                    @foreach($skpd as $p)
                                                         <option value={{ $p->id }}>{{ $p->nama }}</option>
-@endforeach
+                                                    @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-sm-3">

@@ -159,12 +159,16 @@ $router->group(['prefix' => 'aplikasi'], function () use ($router) {
 $router->group(['prefix' => 'infrastruktur-tik'], function () use ($router) {
     $router->get('/cctv', 'InfrastrukturController@cctvindex')->name('cctv.index');
     $router->post('/cctv', 'InfrastrukturController@cctvCreate')->name('cctv.create');
+    $router->post('/cctv/{id}', 'InfrastrukturController@cctvUpdate')->name('cctv.update');
 
     $router->get('/wifi', 'InfrastrukturController@wifiIndex')->name('wifi.index');
     $router->post('/wifi', 'InfrastrukturController@wifiCreate')->name('wifi.create');
+    $router->post('/wifi/{id}', 'InfrastrukturController@wifiUpdate')->name('wifi.update');
+
 
     $router->get('/menara-telekomunikasi', 'InfrastrukturController@menaraIndex')->name('menara.index');
     $router->post('/menara-telekomunikasi', 'InfrastrukturController@menaraCreate')->name('menara.create');
+    $router->post('/menara-telekomunikasi/{id}', 'InfrastrukturController@menaraUpdate')->name('menara.update');
 
 });
 
@@ -185,6 +189,8 @@ $router->group(['prefix' => 'persandian'], function () use ($router) {
 });
 
 $router->get('infrastruktur-tik/api/cctv', 'InfrastrukturController@index')->name('cctv');
+$router->get('infrastruktur-tik/api/menara', 'InfrastrukturController@getMenara')->name('menara');
+$router->get('infrastruktur-tik/api/wifi', 'InfrastrukturController@getWifi')->name('wifi');
 
 $router->group(['prefix' => 'data-statistik'], function () use ($router) {
     $router->get('/covid19', 'DataStatistikController@covidIndex')->name('covid.index');
@@ -213,6 +219,19 @@ $router->get('/skpd', 'MasterSmartCityController@getSkpd');
 $router->group(['prefix' => 'peraturan-perundangan'], function () use ($router) {
     $router->get('/perpu', 'PerpuController@perpuIndex')->name('perpu.index');
     $router->post('/perpu', 'PerpuController@perpuCreate')->name('perpu.create');
+
+
+});
+
+$router->group(['prefix' => 'user-management'], function () use ($router) {
+    $router->get('/roles', 'UsersManagementController@roleIndex')->name('roles.index');
+    $router->post('/roles', 'UsersManagementController@roleCreate')->name('roles.create');
+
+    $router->get('/users', 'UsersManagementController@userIndex')->name('users.index');
+    $router->post('/users', 'UsersManagementController@userCreate')->name('users.create');
+    $router->get('/users/{id_user}', 'UsersManagementController@userDetail')->name('users.detail');
+    $router->get('/users/edit/{id_user}', 'UsersManagementController@userEdit')->name('users.edit');
+    $router->post('/users/update/{id_user}', 'UsersManagementController@userUpdate')->name('users.update');
 
 
 });

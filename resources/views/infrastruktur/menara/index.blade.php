@@ -1,21 +1,23 @@
 @extends('layouts.admin')
-
+<style>
+    #map {
+        height: 900px;
+    }
+    
+</style>
 @section('main-content')
     <div class="container-fluid">
-        <h6 class="m-0 font-weight-bold text-gray-800">Data CCTV</h6>
+        <h6 class="m-0 font-weight-bold text-gray-800">Data Menara</h6>
         <div class="row my-4">
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-gray-800">Tabel Menara Telekomunikasi di Kota Bandung 
+                            <h6 class="m-0 font-weight-bold text-gray-800">Tabel Menara Telekomunikasi di Kota Bandung
                                 ({{ $dataCount['dataMenara'] }})
-                                </h6><button class="btn btn-sm btn-primary"
-                                data-toggle="modal" data-target="#add-modal">Tambah Data</button>
+                            </h6><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add-modal">Tambah
+                                Data</button>
                             @include('infrastruktur.menara.modal-add')
-                        </div>
-                        <div>
-                            {!! Toastr::message() !!}
                         </div>
                         <div class="d-flex justify-content-between">
                             <div class="row">
@@ -47,16 +49,10 @@
                                     <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
                                         {{ $menara->vendor }}</td>
                                     <td style="height:5px;text-align:center;padding:0px;font-size:12px;">
-                                        {{ $menara->status }}</td>
+                                        {{ $menara->status != 0 ? 'ON' : 'OFF' }}</td>
                                     <td>
-                                        <div class="dropdown no-arrow"><a class="dropdown-toggle" href="#" role="button"
-                                                id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false"><i
-                                                    class="fas fa-ellipsis-v fa-fw text-gray-800"></i></a>
-                                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                                aria-labelledby="dropdownMenuLink"><a class="dropdown-item"
-                                                    href="#">Ubah</a></div>
-                                        </div>
+                                        <button class="btn btn-sm btn-warning" data-toggle="modal" data-target="#edit-modal-{{$menara->id}}">Edit
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -68,9 +64,15 @@
                 <div class="card">
                     <div class="card-body">
 
+                        <div id="map"></div>
                     </div>
                 </div>
             </div>
         </div>
+        @include('infrastruktur.menara.js')
     </div>
+    @include('infrastruktur.menara.modal-edit')
+
 @endsection
+<script>
+</script>

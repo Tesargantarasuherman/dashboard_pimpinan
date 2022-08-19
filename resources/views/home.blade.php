@@ -35,9 +35,10 @@
                                     <div class="col-auto bg-info d-none d-md-none d-lg-block p-2 rounded text-light"><i
                                             class="fa fa-lg fa-list" aria-hidden="true"></i></div>
                                     <div class="col-md-6 ml-4">
-                                        <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Indeks SPBE
+                                        <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1" id="spbe_tahun">Indeks SPBE
+                                            <div id="spbe_tahun">Tahun </div>
                                         </div>
-                                        <div class="text-sm font-weight-bold text-gray-800 text-uppercase">3.21</div>
+                                        <div class="text-sm font-weight-bold text-gray-800 text-uppercase" id="nilai_index"></div>
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +206,7 @@
         type: "GET",
         url: `../api/v1/cuaca`,
         success: function (res) {
-            console.log(res)
+            // console.log(res)
             $('#suhu').text(res?.data?.response?.data?.main?.temp)
         }
     }) 
@@ -218,7 +219,7 @@
         setTimeout(() => {
             dateNow();
         }, 1000);
-        console.log(date)
+        // console.log(date)
         $('#hari').text(hari+', '+bulan)
         $('#tanggal').text(date[1])
     }
@@ -439,7 +440,7 @@ Highcharts.chart('chart', {
         type: "GET",
         url: `../infrastruktur-tik/api/cctv`,
         success: function (res) {
-            console.log(res.length)
+            // console.log(res.length)
             cctvLength = res.length;
             setChart();
         }
@@ -450,7 +451,7 @@ Highcharts.chart('chart', {
         type: "GET",
         url: `../api/v1/master-data-wifi`,
         success: function (res) {
-            console.log(res)
+            // console.log(res)
             wifiLength = res.length;
             setChart();
         }
@@ -468,9 +469,31 @@ Highcharts.chart('chart', {
         setChart();
         getCCTV();
         getWifi();
+        indexSpbe();
     })
     function displayMessage(message) {
         toastr.success(message, 'Event');
+    }
+    function indexSpbe(){
+        let year_now = new Date().getFullYear();
+        years = year_now - 1;
+        $('#spbe_tahun').append(years)
+        let tahun = [];
+        let data = [];
+
+        $.ajax({
+            type: "GET",
+            url: '../spbe/api/indeks-spbe-tahun',
+            dataType: 'json',
+            async: false,
+            success: function (res) {
+                $.each(res, function(i, value) {
+                    if (res[i].tahun == years ) {
+                        $('#nilai_index').append(res[i].nilai)
+                    }
+                });
+            }
+        });
     }
 </script>
 @stop
