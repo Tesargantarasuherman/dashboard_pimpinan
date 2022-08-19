@@ -35,7 +35,7 @@
                                     <div class="col-auto bg-info d-none d-md-none d-lg-block p-2 rounded text-light"><i
                                             class="fa fa-lg fa-list" aria-hidden="true"></i></div>
                                     <div class="col-md-6 ml-4">
-                                        <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1" id="spbe_tahun">Indeks SPBE
+                                        <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Indeks SPBE
                                             <div id="spbe_tahun">Tahun </div>
                                         </div>
                                         <div class="text-sm font-weight-bold text-gray-800 text-uppercase" id="nilai_index"></div>
