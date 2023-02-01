@@ -179,7 +179,7 @@ class IntegrasiController extends Controller
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api.myquran.com/v1/sholat/jadwal/1219/2022/03/06',
+            CURLOPT_URL => 'https://api.myquran.com/v1/sholat/jadwal/1219/'.date('Y').'/'.date('m').'/'.date('d').'',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,

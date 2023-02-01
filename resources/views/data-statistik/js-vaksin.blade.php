@@ -269,10 +269,67 @@
 
                     $('#total_vaksin_gotong_royong3').append(total_vaksin_gotong_royong3)
 
-
+                    setVaksin(result_nakes1)
 
                 }
             });
+        }
+        function setVaksin(vaksin_nakes1){
+            Highcharts.chart('chart_vaksin2', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                align: 'left',
+                text: 'Data Rekapitulasi'
+            },
+            subtitle: {
+                align: 'left',
+                text: 'Source: '
+            },
+            accessibility: {
+                announceNewData: {
+                    enabled: true
+                }
+            },
+            xAxis: {
+                type: 'category'
+            },
+            yAxis: {
+                title: {
+                    text: 'Total Data'
+                }
+
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                series: {
+                    borderWidth: 0,
+                    dataLabels: {
+                        enabled: true,
+                        format: ''
+                    }
+                }
+            },
+
+            tooltip: {
+                headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b><br/>'
+            },
+
+            series: [{
+                name: "Data",
+                colorByPoint: true,
+                data: [{
+                        name: "Aplikasi",
+                        y: vaksin_nakes1,
+                        drilldown: "Aplikasi"
+                    }
+                ]
+            }],
+        });
         }
         $(document).ready(function() {
             getVaksin()

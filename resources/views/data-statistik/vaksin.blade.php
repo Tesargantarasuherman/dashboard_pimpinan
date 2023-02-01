@@ -143,7 +143,8 @@
                                 <div class=" text-sm mb-0 font-weight-bold text-gray-600 mb-2 text-uppercase mb-4">
                                     Ketercapaian Vaksin 2</div>
                                 <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2 text-center">
+                                    <div id="chart_vaksin2"></div>
+                                    <!-- <div class="col mr-2 text-center">
                                         <div class="row">
                                             <div class="col mr-2 text-center my-2">
                                                 <div class="card shadow h-100 py-2">
@@ -258,7 +259,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
