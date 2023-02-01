@@ -22,6 +22,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/ticket', 'SaktiController@getTicketToday')->name('ticket');
+Route::get('/get-district', 'SaktiController@getDistrict');
+Route::post('/get-subdistrict', 'SaktiController@getSubdistrict');
+Route::get('/ticket-stats-today', 'SaktiController@ticketStatsToday');
+Route::get('/category', 'SaktiController@category');
+Route::get('/category-today', 'SaktiController@categoryToday');
+Route::get('/district-today', 'SaktiController@districtToday');
+Route::get('/opd-today', 'SaktiController@opdToday');
+Route::get('/telephony-stats-today', 'SaktiController@telephonyStatsToday');
+
 Route::get('/category', 'SaktiController@getCategoryToday')->name('category');
 Route::get('/infrastruktur-tik/map', 'HomeController@map')->name('map');
 // Route::post('/', 'HomeController@login')->name('login');
