@@ -115,7 +115,6 @@
         })
         setChart(idElement,arr,title,type)
     }
-
     $(document).ready(function () {
         totalPemilikBisnis()
         totalProfileBisnis()
