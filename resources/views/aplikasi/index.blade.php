@@ -1,10 +1,10 @@
 @extends('layouts.admin')
-
+@section('title','Data Aplikasi')
 @section('main-content')
     <!-- Page Heading -->
     <div class="container-fluid">
 
-        <h1 class="h3 mb-4 text-gray-800">{{ __('Aplikasi') }}</h1>
+        <h1 class="h3 mb-4 text-gray-800">{{ __('Data Aplikasi Pemkot Bandung') }}</h1>
 
         @if (session('success'))
             <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
@@ -38,31 +38,34 @@
                                 <div class="card shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row align-items-center">
-                                            <div style="width: 100%">
-                                                <table class="table table-striped table-responsive">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col" style="width: 50%">Layanan Publik</th>
-                                                            <th scope="col" style="width: 50%">Administrasi Pemerintahan</th>
-                                                            <th scope="col" style="width: 40%">Total</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <div id="total_aplikasi_layanan_publik"></div>
-                                                                <div id="total_layanan_publik"></div>
-                                                            </td>
-                                                            <td>
-                                                                <div id="total_aplikasi_administrasi_pemerintahan"></div>
-                                                                <div id="total_administrasi_pemerintahan"></div>
-                                                            </td>
-                                                            <td>
-                                                                <div id="total_aplikasi"></div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <div class="col-md-12">
+                                                <h4 class="text-center">Tabel Aplikasi Berdasarkan Layanan</h4>
+                                                <div style="width: 100%">
+                                                    <table class="table table-striped table-responsive">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col" style="width: 50%">Layanan Publik</th>
+                                                                <th scope="col" style="width: 50%">Administrasi Pemerintahan</th>
+                                                                <th scope="col" style="width: 40%">Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <div id="total_aplikasi_layanan_publik"></div>
+                                                                    <!-- <div id="total_layanan_publik"></div> -->
+                                                                </td>
+                                                                <td>
+                                                                    <div id="total_aplikasi_administrasi_pemerintahan"></div>
+                                                                    <!-- <div id="total_administrasi_pemerintahan"></div> -->
+                                                                </td>
+                                                                <td>
+                                                                    <div id="total_aplikasi"></div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

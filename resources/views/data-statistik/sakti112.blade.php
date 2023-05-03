@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title','Data Sakti 112')
 @section('main-content')
 <!-- Page Heading -->
 <div class="container-fluid">

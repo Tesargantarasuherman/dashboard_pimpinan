@@ -145,7 +145,7 @@
             </div>
         </div>
     </div>
-    <div class="row my-4">
+    <!-- <div class="row my-4">
         <div class="col-md-12">
             <div class="card shadow mb-4">
                 <div class="card-body">
@@ -162,7 +162,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -354,11 +354,10 @@
             },
             title: {
                 align: 'left',
-                text: 'Data Rekapitulasi'
+                text: ''
             },
             subtitle: {
                 align: 'left',
-                text: 'Source: '
             },
             accessibility: {
                 announceNewData: {

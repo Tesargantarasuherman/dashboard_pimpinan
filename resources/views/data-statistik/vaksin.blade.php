@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title','Data Vaksin Covid')
 @section('main-content')
     <!-- Page Heading -->
     <div class="container-fluid">
@@ -12,8 +12,10 @@
                             <div class="card-body">
                                 <div class=" text-sm mb-0 font-weight-bold text-gray-600 mb-2 text-uppercase mb-4">
                                     Ketercapaian Vaksin Kota Bandung</div>
-                                <div class="row no-gutters align-items-center">
-                                    <div id="chart_vaksin2"></div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-md-12">
+                                            <div id="chart_vaksin2"></div>
+                                        </div>
                                     <!-- <div class="col mr-2 text-center">
                                         <div class="row">
                                             <div class="col mr-2 text-center my-2">

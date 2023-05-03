@@ -120,17 +120,17 @@
                         <li class="active">
                             <a href="#Dashboard" class="has-arrow"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
                             <ul>
-                                <li class="active"><a href="{{ route('home') }}">Index</a></li>
+                                <li class="active"><a href="{{ route('home') }}">Nilai indeks</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#App" class="has-arrow"><i class="fa fa-th-large"></i><span>{{ __('Aplikasi') }}</span></a>
                             <ul>
-                                <li><a href="{{ route('aplikasi.index') }}">{{ __('Aplikasi') }}</a></li>
+                                <li><a href="{{ route('aplikasi.index') }}">{{ __('Data Aplikasi') }}</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#Widgets" class="has-arrow"><i class="fa fa-puzzle-piece"></i><span>Data Dan Statistik</span></a>
+                            <a href="#Widgets" class="has-arrow"><i class="fa fa-puzzle-piece"></i><span>Data dan Statistik</span></a>
                             <ul>
                                 <li><a href="{{ route('covid.index') }}">{{ __('Covid 19') }}</a></li>
                                 <li><a href="{{ route('vaksin.index') }}">{{ __('Vaksin') }}</a></li>

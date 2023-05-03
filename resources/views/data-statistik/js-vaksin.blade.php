@@ -342,7 +342,7 @@
         ) {
         Highcharts.chart('chart_vaksin2', {
             chart: {
-                type: 'bar'
+                type: 'column'
             },
             title: {
                 align: 'left',
@@ -357,13 +357,17 @@
                     enabled: true
                 }
             },
-            xAxis: {
-                categories: ['Tenaga Kesehatan', 'Petugas Publik', 'Lansia', 'Masyarakat', 'Remaja','Anak','Gotong Royong'],
+            yAxis: {
+                // categories: ['Tenaga Kesehatan', 'Petugas Publik', 'Lansia', 'Masyarakat', 'Remaja','Anak','Gotong Royong'],
                 title: {
                     text: '',
+                },
+                labels: {
+                    format: '{value}%'
                 }
             },
-            yAxis: {
+            xAxis: {
+                categories: ['Tenaga Kesehatan', 'Petugas Publik', 'Lansia', 'Masyarakat', 'Remaja','Anak','Gotong Royong'],
                 title: {
                     text: 'Total Data %'
                 }

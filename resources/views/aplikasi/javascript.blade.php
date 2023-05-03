@@ -170,7 +170,11 @@
                     type: 'pie'
                 },
                 title: {
-                    text: 'Grafik Berdasarkan Pelayanan'
+                    text: 'Grafik Berdasarkan Layanan'
+                },
+                subtitle:{
+                    align:'left',
+                    text: 'Sumber:https://aplikasi.bandung.go.id/ '
                 },
                 accessibility: {
                     announceNewData: {
@@ -342,7 +346,7 @@
                 },
                 subtitle: {
                     align: 'left',
-                    text: ''
+                    text: 'Sumber:https://aplikasi.bandung.go.id/ '
                 },
                 accessibility: {
                     announceNewData: {

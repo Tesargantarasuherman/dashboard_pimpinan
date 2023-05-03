@@ -89,7 +89,7 @@
                     text: 'Data Covid 19 Kota Bandung'
                 },
                 subtitle: {
-                    text: 'Source: bandung.go.id'
+                    text: 'Sumber: bandung.go.id'
                 },
                 xAxis: {
                     categories: covid.labels,
@@ -477,7 +477,7 @@
                     text: 'Detail PerKecamatan'
                 },
                 subtitle: {
-                    text: 'Source: Bandung.go.id'
+                    text: 'Sumber: Bandung.go.id'
                 },
                 xAxis: {
                     categories: kecamatan,

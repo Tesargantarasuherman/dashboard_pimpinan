@@ -54,6 +54,7 @@
         }
     }
 </style>
+@section('title','Data CCTV')
 @section('main-content')
 <div class="content">
     <h6 class="m-0 font-weight-bold text-gray-800">Data CCTV</h6>
@@ -95,7 +96,7 @@
         }).addTo(map);
 
     async function showDetailCCTV(lat, lng) {
-        const response = await fetch("https://pelindung.bandung.go.id:8443/api/cek");
+        const response = await fetch(`../api/v1/cctv`);
         const jsonData = await response.json();
         const res = jsonData.filter((d, rows) => {
             return d.lat == lat && d.lng == lng
@@ -116,7 +117,7 @@
     }
 
     async function getAllCCTV() {
-        const response = await fetch("https://pelindung.bandung.go.id:8443/api/cek");
+        const response = await fetch(`../api/v1/cctv`);
         const jsonData = await response.json();
         let listCCTC = [];
 
@@ -131,7 +132,7 @@
             e.preventDefault();
             let lokasi = $('#location').val();
 
-            const response = await fetch("https://pelindung.bandung.go.id:8443/api/cek");
+            const response = await fetch(`../api/v1/cctv`);
             const jsonData = await response.json();
             let listCCTC = [];
 
@@ -157,7 +158,7 @@
     $(document).ready(function () {
         getAllCCTV()
 
-        $.getJSON('https://pelindung.bandung.go.id:8443/api/cek', function (data) {
+        $.getJSON(`../api/v1/cctv`, function (data) {
             $.each(data, function (i) {
                 if (data[i].stream_cctv != '') {
                     L.marker([data[i].lat, data[i].lng]).addTo(map).on('click', (e) => {

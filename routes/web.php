@@ -47,6 +47,7 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->get('users', 'IntegrasiController@users');
     $router->get('covid', 'IntegrasiController@covid');
     $router->get('shalat', 'IntegrasiController@shalat');
+    $router->get('cctv', 'IntegrasiController@getCCTV');
 
 
     //tambah Skala Nilai

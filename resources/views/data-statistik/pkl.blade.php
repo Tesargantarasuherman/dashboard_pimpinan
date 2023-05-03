@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title','Data PKL')
 @section('main-content')
 <!-- Page Heading -->
 <div class="container-fluid">
